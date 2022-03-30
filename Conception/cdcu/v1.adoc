@@ -29,3 +29,15 @@ Un chef d'agence :
 * Effectuer un Débit exceptionnel
 * Simuler un emprunt
 * Simuler une assurance d’emprunt
+
+
+Contraintes techniques :
+
+ * Depot sur un repo github
+ * Utilisation du format asciidoc 
+
+
+   
+
+
+
