@@ -22,6 +22,7 @@ Un guichetier peut :
 * Générer un relevé mensuel d’un compte en PDF
 * Gérer (faire le « CRUD[2] ») les prélèvements automatiques
 
+image::../plantuml/UCv1.png[]
 
 Un chef d'agence : 
 
@@ -35,8 +36,6 @@ Contraintes techniques :
 
  * Depot sur un repo github
  * Utilisation du format asciidoc 
-
-image::../plantuml/UCv1.png[]
    
 
 
