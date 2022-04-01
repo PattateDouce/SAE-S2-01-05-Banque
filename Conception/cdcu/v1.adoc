@@ -23,7 +23,7 @@ Dans la version existante  un chef d’agence peut :
 * Rendre inactif un client
 
 ## Diagramme des UC
-image::../plantuml/UCv0.png[] 
+image::../plantuml/UCv0.png[UCv0,200,200,float="right",align="center"] 
 
 # 3. Objectifs
 
