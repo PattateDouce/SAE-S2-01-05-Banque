@@ -1,7 +1,7 @@
 SAE DailyBank
 =====================
 
-### Objectif
+## Objectif
 
 Mettre à jour l'application DailyBank.
 
