@@ -31,26 +31,22 @@ L’application doit permettre de gérer des comptes bancaires de dépôt pour d
 
 ## Use Cases
 
-Un guichetier peut :
+Guichetier :
 
-* Modifier informations client (adresse, téléphone, …)
-* Créer un nouveau client
-* Consulter un compte
-* Débiter un compte (BD)
 * Créditer/débiter un compte (java et BD avec procédure stockée)
-* Créer un compte
-* Effectuer un virement de compte à compte
-* Clôturer un compte
-* Générer un relevé mensuel d’un compte en PDF
-* Gérer (faire le « CRUD[2] ») les prélèvements automatiques
 
-Un chef d'agence : 
+* Créer un compte
+
+* Effectuer un virement de compte à compte
+
+* Clôturer un compte
+
+Chef d’Agence :
 
 * Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
-* Effectuer un Débit exceptionnel
-* Simuler un emprunt
-* Simuler une assurance d’emprunt
 
+
+## Diagramme des UC
 image::../plantuml/UCv1.png[]
 
 Contraintes techniques :
