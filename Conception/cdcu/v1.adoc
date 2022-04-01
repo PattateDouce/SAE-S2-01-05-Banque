@@ -56,7 +56,7 @@ image::../plantuml/UCv1.png[]
    
 # Solutions :
 * Utilisation du language Java
-* Utilisation de la librairie Swing 
+* Utilisation de l'API Swing 
 
 
 
