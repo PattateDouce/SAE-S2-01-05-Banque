@@ -6,3 +6,7 @@ SAE DailyBank
 Mettre à jour l'application DailyBank.
 
 // TODO
+
+## Documentation
+
+// TODO
