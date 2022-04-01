@@ -54,6 +54,9 @@ image::../plantuml/UCv1.png[]
  * Depot sur un repo github
  * Utilisation du format asciidoc 
    
+# Solutions :
+* Utilisation du language Java
+* Utilisation de la librairie Swing 
 
 
 
