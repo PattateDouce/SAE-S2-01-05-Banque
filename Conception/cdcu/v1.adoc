@@ -49,7 +49,7 @@ Chef d’Agence :
 ## Diagramme des UC
 image::../plantuml/UCv1.png[]
 
-Contraintes techniques :
+# Contraintes techniques :
 
  * Depot sur un repo github
  * Utilisation du format asciidoc 
