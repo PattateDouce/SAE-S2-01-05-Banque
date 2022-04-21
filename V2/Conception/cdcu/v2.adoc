@@ -78,7 +78,6 @@ Gestion de la répartion des tâches à l'aide des "issues" proposés par github
 
 TODO : ADD GANTT
 
-
 # 8. Livrables
 
 * Gantt
