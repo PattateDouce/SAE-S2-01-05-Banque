@@ -60,7 +60,6 @@ Chef d’Agence :
 * Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
 Permettre de pouvoir créer, accéder, mettre à jour ou bien supprimer les employés de la banque
 
-
 ## Diagramme des UC
 image::../plantuml/UCv1.png[]
 
