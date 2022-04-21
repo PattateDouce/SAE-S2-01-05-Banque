@@ -1,7 +1,7 @@
 = Cahier des Charges Version 2
 
 == Page de garde
-elle ne comporte que vos noms à compléter
+TODO : add summary
 
 # 1. Le contexte
 
@@ -85,10 +85,9 @@ TODO : ADD GANTT
 
 [cols="1,2",options=header]
 |===
-| Date    | Nom        
+| Date    | Nom            |
 | 03/04   | Gantt V1       | 
 |         | CdC V1         |  
-|         | 
 | 22/04   | CdC V2/V3 final|                                     
 |         | Gantt V2    |                                
 |         | Gantt V3 |            
