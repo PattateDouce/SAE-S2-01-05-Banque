@@ -1,0 +1,15 @@
+@startuml UCv1
+title Diagramme des Cas d'Utilisation V1
+skinparam actorStyle awesome
+left to right direction
+
+"Chef d'Agence" as Admin
+
+Guichetier --> (Créditer/débiter un compte)
+Guichetier --> (Créer un compte)
+Guichetier --> (Effectuer un virement \nde compte à compte)
+Guichetier --> (Clôturer un compte)
+Guichetier <|-right- Admin
+Admin --> (Gérer les employés)
+
+@enduml
