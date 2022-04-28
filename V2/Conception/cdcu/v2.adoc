@@ -1,5 +1,5 @@
 = Cahier des Charges Version 2
-:toc: macro
+:toc:
 :toc-title: Sommaire
 
 # 1. Le contexte
