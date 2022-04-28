@@ -59,8 +59,6 @@ Chef d’Agence :
 
 * Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
 Permettre de pouvoir créer, accéder, mettre à jour ou bien supprimer les employés de la banque
-* Les spécifications finalisées de la version 2
-* Options et fonctionnalités supplémentaires (retour client par exemple)
 
 Batch :
 
