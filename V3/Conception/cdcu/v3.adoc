@@ -100,6 +100,9 @@ Chef d’Agence :
 * Générer les relevés mensuels en PDF
 * Exécuter les prélèvements automatiques
 
+### Diagramme des UC
+image::../plantuml/UCv3.png[]
+
 # 6. Contraintes
 
  * Respecter les contraintes juridiques (RGPD ...)
