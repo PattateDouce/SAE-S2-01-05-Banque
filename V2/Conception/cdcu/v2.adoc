@@ -31,7 +31,7 @@ Dans la version existante un guichetier peut :
 
 * Débiter un compte (BD)
 
-Dans la version existante  un chef d’agence peut :
+Dans la version existante un chef d’agence peut :
 
 * Rendre inactif un client (Activer ou désactiver un compte)
 
@@ -43,7 +43,7 @@ image::../plantuml/UCv0.png[]
 
 ## Use Cases
 
-Guichetier :
+Guichetier
 
 * Créditer/débiter un compte (java et BD avec procédure stockée)
 
@@ -61,7 +61,7 @@ Permettre de pouvoir créer, accéder, mettre à jour ou bien supprimer les empl
 ## Diagramme des UC
 image::../plantuml/UCv1.png[]
 
-# 6. Contraintes :
+# 6. Contraintes
 
  * Respecter les contraintes juridiques (RGPD ...)
  * Utilisation et adaption d'une base de donnée existante
@@ -69,7 +69,7 @@ image::../plantuml/UCv1.png[]
  * Création de plusieurs gantt pour "planifier" les tâches
  * Utilisation du format asciidoc 
    
-# 7. Modalités d'organisation :
+# 7. Modalités d'organisation
 
 Afin de collaborer nous devons utiliser l'outil de "versioning" git.
 Gestion de la répartion des tâches à l'aide des "issues" proposés par github.
