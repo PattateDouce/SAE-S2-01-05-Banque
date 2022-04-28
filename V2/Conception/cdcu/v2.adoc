@@ -1,7 +1,9 @@
 = Cahier des Charges Version 2
-test
 :toc:
 :toc-title: Sommaire
+
+# Équipe
+Nolan Jacquemont ; James SANDALL ROBERTSON ; Rémy GUIBERT
 
 # 1. Le contexte
 
