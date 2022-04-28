@@ -25,8 +25,10 @@ L’application doit permettre de gérer des comptes bancaires de dépôt pour d
 
 # 4. Analyse de l'existant
 
+## Version 0
 Actuellement l'application possède déjà un certain nombre de fonctionnalités.
 
+### Use Cases
 Dans la version existante un guichetier peut :
 
 * Modifier informations client (adresse, téléphone, …)
@@ -41,7 +43,7 @@ Dans la version existante un chef d’agence peut :
 
 * Rendre inactif un client (Activer ou désactiver un compte)
 
-## Diagramme des UC
+### Diagramme des UC
 image::../plantuml/UCv0.png[] 
 
 
