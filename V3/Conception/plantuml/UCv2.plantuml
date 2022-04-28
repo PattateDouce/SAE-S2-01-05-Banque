@@ -1,0 +1,15 @@
+@startuml UCv2
+title Diagramme des Cas d'Utilisation V2
+skinparam actorStyle awesome
+left to right direction
+
+"Chef d'Agence" as Admin
+
+Guichetier --> (Générer un relevé mensuel \nd'un compte en PDF)
+Guichetier --> (Gérer les prélévements automatiques)
+Admin --> (Effectuer un débit exceptionnel)
+Admin --> (Simuler un emprunt)
+Admin --> (Simuler une assurance d'emprunt)
+Guichetier <|-right- Admin
+
+@enduml
