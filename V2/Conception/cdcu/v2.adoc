@@ -1,7 +1,7 @@
 = Cahier des Charges Version 2
 
 == Page de garde
-TODO : add summary
+:toc:
 
 # 1. Le contexte
 
