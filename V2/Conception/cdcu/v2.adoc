@@ -1,4 +1,5 @@
 = Cahier des Charges Version 2
+Nolan Jacquemont; James SANDALL ROBERTSON; Rémy GUIBERT
 :toc:
 :toc-title: Sommaire
 
