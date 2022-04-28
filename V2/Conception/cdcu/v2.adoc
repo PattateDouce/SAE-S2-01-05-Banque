@@ -1,5 +1,4 @@
 = Cahier des Charges Version 2
-
 :toc:
 :toc-title: Sommaire
 
