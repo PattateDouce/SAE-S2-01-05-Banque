@@ -113,8 +113,8 @@ image::../plantuml/UCv3.png[]
    
 # 7. Modalités d'organisation
 
-Afin de collaborer nous devons utiliser l'outil de "versioning" git.
-Gestion de la répartion des tâches à l'aide des "issues" proposés par github.
+- Afin de collaborer nous devons utiliser l'outil de "versioning" git.
+- Gestion de la répartion des tâches à l'aide des "issues" proposés par github.
 
 
 # 8. Livrables
