@@ -1,13 +1,12 @@
 = Cahier des Charges Version 2
+:toc:
 
-== Page de garde
-
-# 1. Le contexte
+== 1. Le contexte
 
 La banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients pour remplacer plusieurs outils obsolètes. Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
 
 
-# 2. Analyse du client
+== 2. Analyse du client
 
 Les utilisateurs de cette application seront les guichetiers et les chefs d'agences qui chacun doivent bénéficier d'accès et de fonctionnalités différentes.
 Les guichetiers pourront créer de nouveaux clients et faire les opétations courantes.
