@@ -1,0 +1,14 @@
+@startuml UCv3
+title Diagramme des Cas d'Utilisation V3
+skinparam actorStyle awesome
+left to right direction
+
+"Batch" as batch << Application >>
+
+Guichetier --> (Générer un relevé mensuel \nd'un compte en PDF)
+Guichetier --> (Gérer les prélévements automatiques)
+Guichetier --> (Options et fonctionnalités \nsupplémentaires)
+batch --> (Générer les relevés mensuels en PDF)
+batch --> (Exécuter les prélèvements automatiques)
+
+@enduml
