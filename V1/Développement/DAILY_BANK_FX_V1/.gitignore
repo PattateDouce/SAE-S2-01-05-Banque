@@ -2,6 +2,7 @@ out
 bin
 .idea
 META-INF
+*.iml
 
 # Eclipse
 .classpath
