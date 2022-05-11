@@ -1,16 +1,15 @@
 SAE DailyBank
 =====================
 
-## Objectif
+== Objectif
 
 Mettre à jour l'application DailyBank.
 
-// TODO ?????
 
-## Documentation
 
-// TODO ?????
-FICHIER ADOC !!!
+== Documentation
+
+
 
 == Livrables
 
