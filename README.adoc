@@ -1,5 +1,4 @@
-SAE DailyBank
-=====================
+= SAE DailyBank
 
 == Objectif
 
