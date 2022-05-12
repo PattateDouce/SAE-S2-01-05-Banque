@@ -3,7 +3,7 @@
 :toc-title: Sommaire
 
 == Équipe
-* Nolan Jacquemont 
+* Nolan JACQUEMONT 
 * James SANDALL ROBERTSON 
 * Rémy GUIBERT
 
