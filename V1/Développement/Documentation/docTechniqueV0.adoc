@@ -16,7 +16,7 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 Les packages :
 
     application
-        DailyBank : main() de départ
+        * DailyBank : main() de départ
 
     application.control
         Contrôleurs de dialogue et accès aux données : gestion des fonctions de l’application
@@ -41,8 +41,8 @@ Les packages :
 Si on prend le modèle MVC pour l’application entière, on a :
 
     Modèle :
-        model.orm : le "vrai" modèle
-        model.data : classes nécessaires pour transporter les données
+        * model.orm : le "vrai" modèle
+        * model.data : classes nécessaires pour transporter les données
 
     Vue :
         application.view : toutes les parties visibles de l’utilisateur, sans accès aux données, sans accès les unes aux autres
