@@ -2,28 +2,28 @@
 :toc:
 :toc-title: Sommaire
 
-# Équipe
+== Équipe
 * Nolan Jacquemont 
 * James SANDALL ROBERTSON 
 * Rémy GUIBERT
 
-# 1. Contexte
+== 1. Contexte
 
 La banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients pour remplacer plusieurs outils obsolètes. Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
 
 
-# 2. Analyse du client
+== 2. Analyse du client
 
 Les utilisateurs de cette application seront les guichetiers et les chefs d'agences qui chacun doivent bénéficier d'accès et de fonctionnalités différentes.
 Les guichetiers pourront créer de nouveaux clients et faire les opétations courantes.
 Les chefs d'agences pourront gérer les employé set les opérations exeptionnelles. 
 
 
-# 3. Objectifs
+== 3. Objectifs
 
 L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet.
 
-# 4. Analyse de l'existant
+== 4. Analyse de l'existant
 
 ## Version 0
 Actuellement l'application possède déjà un certain nombre de fonctionnalités.
@@ -47,7 +47,7 @@ Dans la version existante un chef d’agence peut :
 image::../plantuml/UCv0.png[] 
 
 
-# 5. Analyse des nouveaux besoins
+== 5. Analyse des nouveaux besoins
 
 ## Version 1
 ### Use Cases
@@ -87,7 +87,7 @@ Chef d’Agence :
 ### Diagramme des UC
 image::../plantuml/UCv2.png[]
 
-# 6. Contraintes
+== 6. Contraintes
 
  * Respecter les contraintes juridiques (RGPD ...)
  * Utilisation et adaption d'une base de donnée existante
@@ -95,13 +95,13 @@ image::../plantuml/UCv2.png[]
  * Création de plusieurs gantt pour "planifier" les tâches
  * Utilisation du format asciidoc 
    
-# 7. Modalités d'organisation
+== 7. Modalités d'organisation
 
 * Afin de collaborer nous devons utiliser l'outil de "versioning" git.
 * Gestion de la répartion des tâches à l'aide des "issues" proposés par github.
 
 
-# 8. Livrables
+== 8. Livrables
 
 * Gantt
 * Cahier des charges

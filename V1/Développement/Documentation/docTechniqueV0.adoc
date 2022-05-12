@@ -1,0 +1,82 @@
+= Cahier des Charges Version 3
+:toc:
+:toc-title: Sommaire
+
+== Équipe
+* Nolan Jacquemont 
+* James SANDALL ROBERTSON 
+* Rémy GUIBERT
+
+== 1. Contexte
+
+La banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients pour remplacer plusieurs outils obsolètes. Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
+
+== 2. Structure du code
+
+Les packages :
+
+    application
+
+        DailyBank : main() de départ
+
+    application.control
+
+        Contrôleurs de dialogue et accès aux données : gestion des fonctions de l’application
+
+    application.view
+
+        Vues de l’application - fichiers fxml et contrôleurs associés - : gestion des vues uniquement : affichages, contrôle de saisies, …
+
+    application.tools
+
+        Utilitaires pour application.view et application.control
+
+    model.data
+
+        Classes java mappant les table de la BD. Une table ⇒ 1 classe. On peut en ajouter (classes pour jointures, …)
+
+    model.orm
+
+        Classes d’accès physiques à la BD. Une table ⇒ 1 classe offrant différentes méthodes pour accéder à la table : select, insert, delete, update, appel de procédure stockée (elles sont données). On peut en ajouter.
+
+    model.exception
+
+        Classes des exceptions spécifiques d’accès à la BD, levées par les classes de model.orm
+
+== Le paradigme MVC
+
+Si on prend le modèle MVC pour l’application entière, on a :
+
+    Modèle :
+
+        model.orm : le "vrai" modèle
+
+        model.data : classes nécessaires pour transporter les données
+
+    Vue :
+
+        application.view : toutes les parties visibles de l’utilisateur, sans accès aux données, sans accès les unes aux autres
+
+    Contrôleur :
+
+        application.control : classes de contrôle du "déroulement"
+
+            Routage entre fenêtres
+
+            Accès aux données lorsque de besoin
+
+        application avec la classe DailyBank : main() de lancement de l’application. Et encore, elle ne fait que faire un runApp() sur un contrôleur.
+
+Le reste est juste de "l’aide" :
+
+    model.exception
+
+    application.tools
+
+
+
+==  Le rôle des classes
+
+
+
+    
