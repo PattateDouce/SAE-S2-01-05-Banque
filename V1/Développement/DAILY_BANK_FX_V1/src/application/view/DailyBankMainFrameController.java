@@ -38,7 +38,7 @@ public class DailyBankMainFrameController implements Initializable {
      * @param _dbmf            the dbmf
      * @param _dbstate         the dbstate
      */
-// Manipulation de la fenêtre
+	// Manipulation de la fenêtre
 	public void initContext(Stage _containingStage, DailyBankMainFrame _dbmf, DailyBankState _dbstate) {
 		this.dbmf = _dbmf;
 		this.dbs = _dbstate;

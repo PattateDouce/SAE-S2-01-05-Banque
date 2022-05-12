@@ -4,6 +4,7 @@ import application.control.DailyBankMainFrame;
 
 /**
  * The type Daily bank app.
+ * Used as a launcher.
  */
 public class DailyBankApp  {
 
