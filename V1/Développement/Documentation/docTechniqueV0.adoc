@@ -1,9 +1,9 @@
-= Cahier des Charges Version 3
+= Documentation Technique V0
 :toc:
 :toc-title: Sommaire
 
 == Équipe
-* Nolan Jacquemont 
+* Nolan JACQUEMONT 
 * James SANDALL ROBERTSON 
 * Rémy GUIBERT
 
@@ -36,7 +36,7 @@ Les packages :
     model.exception
         Classes des exceptions spécifiques d’accès à la BD, levées par les classes de model.orm
 
-== Le paradigme MVC
+== 3. Le paradigme MVC
 
 Si on prend le modèle MVC pour l’application entière, on a :
 
@@ -59,7 +59,7 @@ Le reste est juste de "l’aide" :
 
 
 
-==  Le rôle des classes
+==  4. Le rôle des classes
 
     application
         - DailyBank : main() de l’application
