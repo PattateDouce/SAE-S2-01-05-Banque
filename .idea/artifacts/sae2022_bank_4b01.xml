@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="sae2022-bank-4b01">
+    <output-path>$PROJECT_DIR$/..</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="application.control.DailyBankMainFrame" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="Sae Bank" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="sae2022_bank_4b01.jar">
+        <element id="module-output" name="sae2022-bank-4b01" />
+      </element>
+    </root>
+  </artifact>
+</component>
