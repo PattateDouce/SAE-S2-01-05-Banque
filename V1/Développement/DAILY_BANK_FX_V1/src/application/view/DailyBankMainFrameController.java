@@ -54,6 +54,9 @@ public class DailyBankMainFrameController implements Initializable {
 		this.primaryStage.show();
 	}
 
+    /**
+	 * Initialise les labels et les events et d'autres objets
+	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 		this.btnConn.managedProperty().bind(this.btnConn.visibleProperty());

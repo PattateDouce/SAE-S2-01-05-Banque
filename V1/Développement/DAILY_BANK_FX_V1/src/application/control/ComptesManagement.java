@@ -85,7 +85,7 @@ public class  ComptesManagement {
 	}
 
     /**
-     * Creer compte compte courant.
+     * Créer Compte compte courant.
      *
      * @return the compte courant
      */
@@ -113,9 +113,9 @@ public class  ComptesManagement {
 	}
 
     /**
-     * Gets comptes dun client.
+     * Gets comptes d'un client.
      *
-     * @return the comptes dun client
+     * @return the comptes d'un client
      */
     public ArrayList<CompteCourant> getComptesDunClient() {
 		ArrayList<CompteCourant> listeCpt = new ArrayList<>();

@@ -52,6 +52,9 @@ public class ComptesManagementController implements Initializable {
 		this.configure();
 	}
 
+	/**
+	 * Initialise les labels et les events et d'autres objets
+	 */
 	private void configure() {
 		String info;
 

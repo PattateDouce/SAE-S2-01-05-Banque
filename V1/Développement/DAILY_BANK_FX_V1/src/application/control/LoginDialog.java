@@ -55,14 +55,14 @@ public class LoginDialog {
 	}
 
     /**
-     * Do login dialog.
+     * Ouvre la fenêtre de login
      */
     public void doLoginDialog() {
 		this.ldc.displayDialog();
 	}
 
     /**
-     * Chercher par login employe.
+     * Vérifie la correspondance avec la BD du login et mot de passe, si c'est correcte alors l'employé sera connecté.
      *
      * @param login    the login
      * @param password the password

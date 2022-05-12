@@ -43,6 +43,9 @@ public class LoginDialogController implements Initializable {
 		this.configure();
 	}
 
+	/**
+	 * Initialise les labels et les events et d'autres objets
+	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}

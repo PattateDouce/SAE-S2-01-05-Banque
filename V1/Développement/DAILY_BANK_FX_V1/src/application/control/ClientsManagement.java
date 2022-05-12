@@ -65,9 +65,9 @@ public class ClientsManagement {
 	}
 
     /**
-     * Modifier client client.
+     * Modifier client.
      *
-     * @param c the c
+     * @param c the client
      * @return the client
      */
     public Client modifierClient(Client c) {
@@ -92,7 +92,7 @@ public class ClientsManagement {
 	}
 
     /**
-     * Nouveau client client.
+     * Nouveau client.
      *
      * @return the client
      */
@@ -120,9 +120,9 @@ public class ClientsManagement {
 	}
 
     /**
-     * Gerer comptes client.
+     * Gerer comptes du client.
      *
-     * @param c the c
+     * @param c the client
      */
     public void gererComptesClient(Client c) {
 		ComptesManagement cm = new ComptesManagement(this.primaryStage, this.dbs, c);
@@ -130,7 +130,7 @@ public class ClientsManagement {
 	}
 
     /**
-     * Gets comptes.
+     * Gets comptes from num compte.
      *
      * @param _numCompte   the num compte
      * @param _debutNom    the debut nom

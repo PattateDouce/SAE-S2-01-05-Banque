@@ -52,7 +52,7 @@ public class ExceptionDialog {
 	}
 
     /**
-     * Do exception dialog.
+     * Affiche la fenêtre d'exception
      */
     public void doExceptionDialog() {
 		this.edc.displayDialog();

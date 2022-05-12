@@ -44,6 +44,9 @@ public class ExceptionDialogController implements Initializable {
 		this.configure();
 	}
 
+	/**
+	 * Initialise les labels et les events et d'autres objets
+	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 		this.lblTitre.setText(this.ae.getMessage());
@@ -64,6 +67,10 @@ public class ExceptionDialogController implements Initializable {
 	}
 
 	// Gestion du stage
+	/** Retourne un Objet null
+	 * @param e       WindowEvent
+	 * @return null
+	 */
 	private Object closeWindow(WindowEvent e) {
 		return null;
 	}
@@ -84,6 +91,9 @@ public class ExceptionDialogController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
+	/**
+	 * Ferme la fenêtre
+	 */
 	@FXML
 	private void doOK() {
 		this.primaryStage.close();
