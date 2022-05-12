@@ -16,12 +16,17 @@ import model.orm.exception.DatabaseConnexionException;
 
 /**
  * The type Daily bank main frame.
+ * Control the main window.
  */
 public class DailyBankMainFrame extends Application {
 
 	private DailyBankState dbs;
 	private Stage primaryStage;
 
+	/**
+	 * Créer l'état de l'app, charge le FMl et son controleur
+	 * @param primaryStage	stage given by JavaFX
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -96,13 +101,14 @@ public class DailyBankMainFrame extends Application {
 	}
 
     /**
-     * Run app.
+     * Run the app.
      */
     public static void runApp() {
 		Application.launch();
 	}
 
     /**
+     * Réinitialise l'état de l'app, et ferme la connexion à la BD
      * Disconnect.
      */
     public void disconnect() {
@@ -118,6 +124,8 @@ public class DailyBankMainFrame extends Application {
 	}
 
     /**
+     * Charge la fenêtre de login et si a sa fermeture l'employé actif n'est pas null
+     * alors, on donne la BD à l'état de l'app
      * Login.
      */
     public void login() {

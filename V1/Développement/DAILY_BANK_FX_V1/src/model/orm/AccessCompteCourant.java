@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.data.Client;
 import model.data.CompteCourant;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -18,6 +19,61 @@ public class AccessCompteCourant {
 
 	public AccessCompteCourant() {
 	}
+
+
+
+	/**
+	 * Insertion d'un compte
+	 *
+	 * @param compte IN/OUT Tous les attributs IN sauf idNumCli en OUT
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 */
+	public void insertCompte(CompteCourant compte)
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		try {
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "INSERT INTO COMPTECOURANT VALUES (" + "seq_id_client.NEXTVAL" + ", " + "?" + ", " + "?" + ", "
+					+ "?" + ", " + "?" + ")";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, compte.debitAutorise);
+			pst.setDouble(2, compte.solde);
+			pst.setInt(3, compte.idNumCli);
+			pst.setString(4, compte.estCloture);
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.INSERT,
+						"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
+			}
+
+			query = "SELECT seq_id_client.CURRVAL from DUAL";
+
+			System.err.println(query);
+			PreparedStatement pst2 = con.prepareStatement(query);
+
+			ResultSet rs = pst2.executeQuery();
+			rs.next();
+			int numCliBase = rs.getInt(1);
+
+			con.commit();
+			rs.close();
+			pst2.close();
+
+			compte.idNumCli = numCliBase;
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Client, Order.INSERT, "Erreur accès", e);
+		}
+	}
+
 
 	/**
 	 * Recherche des CompteCourant d'un client à partir de son id.
