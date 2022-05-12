@@ -15,6 +15,9 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.orm.exception.ApplicationException;
 
+/**
+ * The type Exception dialog controller.
+ */
 public class ExceptionDialogController implements Initializable {
 
 	// Etat application
@@ -27,7 +30,14 @@ public class ExceptionDialogController implements Initializable {
 	private ApplicationException ae;
 	// Manipulation de la fenêtre
 
-	public void initContext(Stage _primaryStage, DailyBankState _dbstate, ApplicationException _ae) {
+    /**
+     * Init context.
+     *
+     * @param _primaryStage the primary stage
+     * @param _dbstate      the dbstate
+     * @param _ae           the ae
+     */
+    public void initContext(Stage _primaryStage, DailyBankState _dbstate, ApplicationException _ae) {
 		this.primaryStage = _primaryStage;
 		this.dbs = _dbstate;
 		this.ae = _ae;
@@ -46,7 +56,10 @@ public class ExceptionDialogController implements Initializable {
 		this.txtDetails.setText(sw.toString());
 	}
 
-	public void displayDialog() {
+    /**
+     * Display dialog.
+     */
+    public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
 

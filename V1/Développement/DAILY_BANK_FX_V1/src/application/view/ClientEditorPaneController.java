@@ -24,6 +24,9 @@ import model.orm.exception.ApplicationException;
 import model.orm.exception.Order;
 import model.orm.exception.Table;
 
+/**
+ * The type Client editor pane controller.
+ */
 public class ClientEditorPaneController implements Initializable {
 
 	// Etat application
@@ -37,7 +40,13 @@ public class ClientEditorPaneController implements Initializable {
 	private EditionMode em;
 	private Client clientResult;
 
-	// Manipulation de la fenêtre
+	/**
+	 * Init context.
+	 *
+	 * @param _primaryStage the primary stage
+	 * @param _dbstate      the dbstate
+	 */
+// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
 		this.primaryStage = _primaryStage;
 		this.dbs = _dbstate;
@@ -48,6 +57,13 @@ public class ClientEditorPaneController implements Initializable {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
 
+	/**
+	 * Display dialog client.
+	 *
+	 * @param client the client
+	 * @param mode   the mode
+	 * @return the client
+	 */
 	public Client displayDialog(Client client, EditionMode mode) {
 
 		this.em = mode;

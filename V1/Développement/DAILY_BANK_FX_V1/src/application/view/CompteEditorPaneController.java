@@ -20,6 +20,9 @@ import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
 
+/**
+ * The type Compte editor pane controller.
+ */
 public class CompteEditorPaneController implements Initializable {
 
 	// Etat application
@@ -34,7 +37,13 @@ public class CompteEditorPaneController implements Initializable {
 	private CompteCourant compteEdite;
 	private CompteCourant compteResult;
 
-	// Manipulation de la fenêtre
+    /**
+     * Init context.
+     *
+     * @param _primaryStage the primary stage
+     * @param _dbstate      the dbstate
+     */
+// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
 		this.primaryStage = _primaryStage;
 		this.dbs = _dbstate;
@@ -48,7 +57,15 @@ public class CompteEditorPaneController implements Initializable {
 		this.txtSolde.focusedProperty().addListener((t, o, n) -> this.focusSolde(t, o, n));
 	}
 
-	public CompteCourant displayDialog(Client client, CompteCourant cpte, EditionMode mode) {
+    /**
+     * Display dialog compte courant.
+     *
+     * @param client the client
+     * @param cpte   the cpte
+     * @param mode   the mode
+     * @return the compte courant
+     */
+    public CompteCourant displayDialog(Client client, CompteCourant cpte, EditionMode mode) {
 		this.clientDuCompte = client;
 		this.em = mode;
 		if (cpte == null) {

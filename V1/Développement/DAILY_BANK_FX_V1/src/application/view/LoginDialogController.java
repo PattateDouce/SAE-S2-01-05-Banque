@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Employe;
 
+/**
+ * The type Login dialog controller.
+ */
 public class LoginDialogController implements Initializable {
 
 	// Etat application
@@ -25,7 +28,14 @@ public class LoginDialogController implements Initializable {
 
 	// Données de la fenêtre
 
-	// Manipulation de la fenêtre
+    /**
+     * Init context.
+     *
+     * @param _primaryStage the primary stage
+     * @param _ld           the ld
+     * @param _dbstate      the dbstate
+     */
+// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, LoginDialog _ld, DailyBankState _dbstate) {
 		this.primaryStage = _primaryStage;
 		this.ld = _ld;
@@ -37,7 +47,10 @@ public class LoginDialogController implements Initializable {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
 
-	public void displayDialog() {
+    /**
+     * Display dialog.
+     */
+    public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
 

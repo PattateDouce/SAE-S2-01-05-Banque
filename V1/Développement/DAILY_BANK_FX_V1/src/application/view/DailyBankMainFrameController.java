@@ -17,6 +17,9 @@ import javafx.stage.WindowEvent;
 import model.data.AgenceBancaire;
 import model.data.Employe;
 
+/**
+ * The type Daily bank main frame controller.
+ */
 public class DailyBankMainFrameController implements Initializable {
 
 	// Etat application
@@ -28,7 +31,14 @@ public class DailyBankMainFrameController implements Initializable {
 
 	// Données de la fenêtre
 
-	// Manipulation de la fenêtre
+    /**
+     * Init context.
+     *
+     * @param _containingStage the containing stage
+     * @param _dbmf            the dbmf
+     * @param _dbstate         the dbstate
+     */
+// Manipulation de la fenêtre
 	public void initContext(Stage _containingStage, DailyBankMainFrame _dbmf, DailyBankState _dbstate) {
 		this.dbmf = _dbmf;
 		this.dbs = _dbstate;
@@ -37,7 +47,10 @@ public class DailyBankMainFrameController implements Initializable {
 		this.validateComponentState();
 	}
 
-	public void displayDialog() {
+    /**
+     * Display dialog.
+     */
+    public void displayDialog() {
 		this.primaryStage.show();
 	}
 

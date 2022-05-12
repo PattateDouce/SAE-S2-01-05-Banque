@@ -22,6 +22,9 @@ import model.orm.exception.DatabaseConnexionException;
 import model.orm.exception.Order;
 import model.orm.exception.Table;
 
+/**
+ * The type Comptes management.
+ */
 public class ComptesManagement {
 
 	private Stage primaryStage;
@@ -29,7 +32,14 @@ public class ComptesManagement {
 	private DailyBankState dbs;
 	private Client clientDesComptes;
 
-	public ComptesManagement(Stage _parentStage, DailyBankState _dbstate, Client client) {
+    /**
+     * Instantiates a new Comptes management.
+     *
+     * @param _parentStage the parent stage
+     * @param _dbstate     the dbstate
+     * @param client       the client
+     */
+    public ComptesManagement(Stage _parentStage, DailyBankState _dbstate, Client client) {
 
 		this.clientDesComptes = client;
 		this.dbs = _dbstate;
@@ -56,16 +66,29 @@ public class ComptesManagement {
 		}
 	}
 
-	public void doComptesManagementDialog() {
+    /**
+     * Do comptes management dialog.
+     */
+    public void doComptesManagementDialog() {
 		this.cmc.displayDialog();
 	}
 
-	public void gererOperations(CompteCourant cpt) {
+    /**
+     * Gerer operations.
+     *
+     * @param cpt the cpt
+     */
+    public void gererOperations(CompteCourant cpt) {
 		OperationsManagement om = new OperationsManagement(this.primaryStage, this.dbs, this.clientDesComptes, cpt);
 		om.doOperationsManagementDialog();
 	}
 
-	public CompteCourant creerCompte() {
+    /**
+     * Creer compte compte courant.
+     *
+     * @return the compte courant
+     */
+    public CompteCourant creerCompte() {
 		CompteCourant compte;
 		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
 		compte = cep.doCompteEditorDialog(this.clientDesComptes, null, EditionMode.CREATION);
@@ -96,7 +119,12 @@ public class ComptesManagement {
 		return compte;
 	}
 
-	public ArrayList<CompteCourant> getComptesDunClient() {
+    /**
+     * Gets comptes dun client.
+     *
+     * @return the comptes dun client
+     */
+    public ArrayList<CompteCourant> getComptesDunClient() {
 		ArrayList<CompteCourant> listeCpt = new ArrayList<>();
 
 		try {

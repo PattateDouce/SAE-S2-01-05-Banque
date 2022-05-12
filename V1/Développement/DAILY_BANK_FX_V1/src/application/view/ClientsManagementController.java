@@ -18,6 +18,9 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 
+/**
+ * The type Clients management controller.
+ */
 public class ClientsManagementController implements Initializable {
 
 	// Etat application
@@ -30,7 +33,14 @@ public class ClientsManagementController implements Initializable {
 	// Données de la fenêtre
 	private ObservableList<Client> olc;
 
-	// Manipulation de la fenêtre
+    /**
+     * Init context.
+     *
+     * @param _primaryStage the primary stage
+     * @param _cm           the cm
+     * @param _dbstate      the dbstate
+     */
+// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, ClientsManagement _cm, DailyBankState _dbstate) {
 		this.cm = _cm;
 		this.primaryStage = _primaryStage;
@@ -49,7 +59,10 @@ public class ClientsManagementController implements Initializable {
 		this.validateComponentState();
 	}
 
-	public void displayDialog() {
+    /**
+     * Display dialog.
+     */
+    public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
 

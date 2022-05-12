@@ -13,12 +13,21 @@ import javafx.stage.Stage;
 import model.data.Client;
 import model.data.CompteCourant;
 
+/**
+ * The type Compte editor pane.
+ */
 public class CompteEditorPane {
 
 	private Stage primaryStage;
 	private CompteEditorPaneController cepc;
 
-	public CompteEditorPane(Stage _parentStage, DailyBankState _dbstate) {
+    /**
+     * Instantiates a new Compte editor pane.
+     *
+     * @param _parentStage the parent stage
+     * @param _dbstate     the dbstate
+     */
+    public CompteEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
 			FXMLLoader loader = new FXMLLoader(CompteEditorPaneController.class.getResource("compteeditorpane.fxml"));
@@ -43,7 +52,15 @@ public class CompteEditorPane {
 		}
 	}
 
-	public CompteCourant doCompteEditorDialog(Client client, CompteCourant cpte, EditionMode em) {
+    /**
+     * Do compte editor dialog compte courant.
+     *
+     * @param client the client
+     * @param cpte   the cpte
+     * @param em     the em
+     * @return the compte courant
+     */
+    public CompteCourant doCompteEditorDialog(Client client, CompteCourant cpte, EditionMode em) {
 		return this.cepc.displayDialog(client, cpte, em);
 	}
 }

@@ -22,6 +22,9 @@ import javafx.stage.WindowEvent;
 import model.data.CompteCourant;
 import model.data.Operation;
 
+/**
+ * The type Operation editor pane controller.
+ */
 public class OperationEditorPaneController implements Initializable {
 
 	// Etat application
@@ -35,7 +38,13 @@ public class OperationEditorPaneController implements Initializable {
 	private CompteCourant compteEdite;
 	private Operation operationResultat;
 
-	// Manipulation de la fenêtre
+    /**
+     * Init context.
+     *
+     * @param _primaryStage the primary stage
+     * @param _dbstate      the dbstate
+     */
+// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
 		this.primaryStage = _primaryStage;
 		this.dbs = _dbstate;
@@ -46,7 +55,14 @@ public class OperationEditorPaneController implements Initializable {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
 
-	public Operation displayDialog(CompteCourant cpte, CategorieOperation mode) {
+    /**
+     * Display dialog operation.
+     *
+     * @param cpte the cpte
+     * @param mode the mode
+     * @return the operation
+     */
+    public Operation displayDialog(CompteCourant cpte, CategorieOperation mode) {
 		this.categorieOperation = mode;
 		this.compteEdite = cpte;
 

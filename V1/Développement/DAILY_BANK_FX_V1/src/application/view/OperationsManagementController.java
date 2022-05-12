@@ -22,6 +22,9 @@ import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Operation;
 
+/**
+ * The type Operations management controller.
+ */
 public class OperationsManagementController implements Initializable {
 
 	// Etat application
@@ -36,7 +39,16 @@ public class OperationsManagementController implements Initializable {
 	private CompteCourant compteConcerne;
 	private ObservableList<Operation> olOperation;
 
-	// Manipulation de la fenêtre
+    /**
+     * Init context.
+     *
+     * @param _primaryStage the primary stage
+     * @param _om           the om
+     * @param _dbstate      the dbstate
+     * @param client        the client
+     * @param compte        the compte
+     */
+// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, OperationsManagement _om, DailyBankState _dbstate, Client client, CompteCourant compte) {
 		this.primaryStage = _primaryStage;
 		this.dbs = _dbstate;
@@ -56,7 +68,10 @@ public class OperationsManagementController implements Initializable {
 		this.validateComponentState();
 	}
 
-	public void displayDialog() {
+    /**
+     * Display dialog.
+     */
+    public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
 

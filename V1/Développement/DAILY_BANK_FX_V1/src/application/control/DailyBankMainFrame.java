@@ -14,6 +14,9 @@ import model.orm.LogToDatabase;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 
+/**
+ * The type Daily bank main frame.
+ */
 public class DailyBankMainFrame extends Application {
 
 	private DailyBankState dbs;
@@ -92,11 +95,17 @@ public class DailyBankMainFrame extends Application {
 		}
 	}
 
-	public static void runApp() {
+    /**
+     * Run app.
+     */
+    public static void runApp() {
 		Application.launch();
 	}
 
-	public void disconnect() {
+    /**
+     * Disconnect.
+     */
+    public void disconnect() {
 		this.dbs.setAgAct(null);
 		this.dbs.setEmpAct(null);
 		this.dbs.setChefDAgence(false);
@@ -108,7 +117,10 @@ public class DailyBankMainFrame extends Application {
 		}
 	}
 
-	public void login() {
+    /**
+     * Login.
+     */
+    public void login() {
 		LoginDialog ld = new LoginDialog(this.primaryStage, this.dbs);
 		ld.doLoginDialog();
 
@@ -136,7 +148,10 @@ public class DailyBankMainFrame extends Application {
 		}
 	}
 
-	public void gestionClients() {
+    /**
+     * Gestion clients.
+     */
+    public void gestionClients() {
 		ClientsManagement cm = new ClientsManagement(this.primaryStage, this.dbs);
 		cm.doClientManagementDialog();
 	}

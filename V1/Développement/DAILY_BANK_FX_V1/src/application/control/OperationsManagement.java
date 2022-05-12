@@ -21,6 +21,9 @@ import model.orm.AccessOperation;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 
+/**
+ * The type Operations management.
+ */
 public class OperationsManagement {
 
 	private Stage primaryStage;
@@ -29,7 +32,15 @@ public class OperationsManagement {
 	private Client clientDuCompte;
 	private CompteCourant compteConcerne;
 
-	public OperationsManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant compte) {
+    /**
+     * Instantiates a new Operations management.
+     *
+     * @param _parentStage the parent stage
+     * @param _dbstate     the dbstate
+     * @param client       the client
+     * @param compte       the compte
+     */
+    public OperationsManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant compte) {
 
 		this.clientDuCompte = client;
 		this.compteConcerne = compte;
@@ -58,11 +69,19 @@ public class OperationsManagement {
 		}
 	}
 
-	public void doOperationsManagementDialog() {
+    /**
+     * Do operations management dialog.
+     */
+    public void doOperationsManagementDialog() {
 		this.omc.displayDialog();
 	}
 
-	public Operation enregistrerDebit() {
+    /**
+     * Enregistrer debit operation.
+     *
+     * @return the operation
+     */
+    public Operation enregistrerDebit() {
 
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
 		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.DEBIT);
@@ -86,7 +105,12 @@ public class OperationsManagement {
 		return op;
 	}
 
-	public PairsOfValue<CompteCourant, ArrayList<Operation>>  operationsEtSoldeDunCompte() {
+    /**
+     * Operations et solde dun compte pairs of value.
+     *
+     * @return the pairs of value
+     */
+    public PairsOfValue<CompteCourant, ArrayList<Operation>>  operationsEtSoldeDunCompte() {
 		ArrayList<Operation> listeOP = new ArrayList<>();
 
 		try {

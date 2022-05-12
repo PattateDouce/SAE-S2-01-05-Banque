@@ -13,12 +13,21 @@ import javafx.stage.Stage;
 import model.data.CompteCourant;
 import model.data.Operation;
 
+/**
+ * The type Operation editor pane.
+ */
 public class OperationEditorPane {
 
 	private Stage primaryStage;
 	private OperationEditorPaneController oepc;
 
-	public OperationEditorPane(Stage _parentStage, DailyBankState _dbstate) {
+    /**
+     * Instantiates a new Operation editor pane.
+     *
+     * @param _parentStage the parent stage
+     * @param _dbstate     the dbstate
+     */
+    public OperationEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
 			FXMLLoader loader = new FXMLLoader(
@@ -44,7 +53,14 @@ public class OperationEditorPane {
 		}
 	}
 
-	public Operation doOperationEditorDialog(CompteCourant cpte, CategorieOperation cm) {
+    /**
+     * Do operation editor dialog operation.
+     *
+     * @param cpte the cpte
+     * @param cm   the cm
+     * @return the operation
+     */
+    public Operation doOperationEditorDialog(CompteCourant cpte, CategorieOperation cm) {
 		return this.oepc.displayDialog(cpte, cm);
 	}
 }

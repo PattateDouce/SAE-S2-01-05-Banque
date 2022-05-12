@@ -11,12 +11,22 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.orm.exception.ApplicationException;
 
+/**
+ * The type Exception dialog.
+ */
 public class ExceptionDialog {
 
 	private Stage primaryStage;
 	private ExceptionDialogController edc;
 
-	public ExceptionDialog(Stage _parentStage, DailyBankState _dbstate, ApplicationException ae) {
+    /**
+     * Instantiates a new Exception dialog.
+     *
+     * @param _parentStage the parent stage
+     * @param _dbstate     the dbstate
+     * @param ae           the ae
+     */
+    public ExceptionDialog(Stage _parentStage, DailyBankState _dbstate, ApplicationException ae) {
 
 		try {
 			FXMLLoader loader = new FXMLLoader(ExceptionDialogController.class.getResource("exceptiondialog.fxml"));
@@ -41,7 +51,10 @@ public class ExceptionDialog {
 		}
 	}
 
-	public void doExceptionDialog() {
+    /**
+     * Do exception dialog.
+     */
+    public void doExceptionDialog() {
 		this.edc.displayDialog();
 	}
 

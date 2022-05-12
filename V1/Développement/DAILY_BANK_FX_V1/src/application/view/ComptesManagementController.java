@@ -19,6 +19,9 @@ import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
 
+/**
+ * The type Comptes management controller.
+ */
 public class ComptesManagementController implements Initializable {
 
 	// Etat application
@@ -32,7 +35,15 @@ public class ComptesManagementController implements Initializable {
 	private Client clientDesComptes;
 	private ObservableList<CompteCourant> olCompteCourant;
 
-	// Manipulation de la fenêtre
+    /**
+     * Init context.
+     *
+     * @param _primaryStage the primary stage
+     * @param _cm           the cm
+     * @param _dbstate      the dbstate
+     * @param client        the client
+     */
+// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, ComptesManagement _cm, DailyBankState _dbstate, Client client) {
 		this.cm = _cm;
 		this.primaryStage = _primaryStage;
@@ -60,7 +71,10 @@ public class ComptesManagementController implements Initializable {
 		this.validateComponentState();
 	}
 
-	public void displayDialog() {
+    /**
+     * Display dialog.
+     */
+    public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
 

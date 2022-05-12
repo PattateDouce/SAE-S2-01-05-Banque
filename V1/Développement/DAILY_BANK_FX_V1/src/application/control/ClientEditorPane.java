@@ -13,12 +13,21 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
 
+/**
+ * The type Client editor pane.
+ */
 public class ClientEditorPane {
 
 	private Stage primaryStage;
 	private ClientEditorPaneController cepc;
 
-	public ClientEditorPane(Stage _parentStage, DailyBankState _dbstate) {
+    /**
+     * Instantiates a new Client editor pane.
+     *
+     * @param _parentStage the parent stage
+     * @param _dbstate     the dbstate
+     */
+    public ClientEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
 			FXMLLoader loader = new FXMLLoader(ClientsManagementController.class.getResource("clienteditorpane.fxml"));
@@ -43,7 +52,14 @@ public class ClientEditorPane {
 		}
 	}
 
-	public Client doClientEditorDialog(Client client, EditionMode em) {
+    /**
+     * Do client editor dialog client.
+     *
+     * @param client the client
+     * @param em     the em
+     * @return the client
+     */
+    public Client doClientEditorDialog(Client client, EditionMode em) {
 		return this.cepc.displayDialog(client, em);
 	}
 }

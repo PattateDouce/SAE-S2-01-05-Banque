@@ -14,13 +14,22 @@ import model.orm.AccessEmploye;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 
+/**
+ * The type Login dialog.
+ */
 public class LoginDialog {
 
 	private Stage primaryStage;
 	private DailyBankState dbs;
 	private LoginDialogController ldc;
 
-	public LoginDialog(Stage _parentStage, DailyBankState _dbstate) {
+    /**
+     * Instantiates a new Login dialog.
+     *
+     * @param _parentStage the parent stage
+     * @param _dbstate     the dbstate
+     */
+    public LoginDialog(Stage _parentStage, DailyBankState _dbstate) {
 		this.dbs = _dbstate;
 		try {
 			FXMLLoader loader = new FXMLLoader(LoginDialogController.class.getResource("logindialog.fxml"));
@@ -45,11 +54,21 @@ public class LoginDialog {
 		}
 	}
 
-	public void doLoginDialog() {
+    /**
+     * Do login dialog.
+     */
+    public void doLoginDialog() {
 		this.ldc.displayDialog();
 	}
 
-	public Employe chercherParLogin(String login, String password) {
+    /**
+     * Chercher par login employe.
+     *
+     * @param login    the login
+     * @param password the password
+     * @return the employe
+     */
+    public Employe chercherParLogin(String login, String password) {
 		Employe employe = null;
 		try {
 			AccessEmploye ae = new AccessEmploye();
