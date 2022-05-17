@@ -19,18 +19,11 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 |id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
 
 // 1ère ligne
-|id
-|nom
-|cas
-|satisfaction
-|pré-condition
-
-// 2e ligne
-|id
-|nom
-|cas
-|satisfaction
-|pré-condition
+|10
+|TestCréerCompte
+|Créer un compte
+|**Etant donnée un client** existant, crée un nouveau compte pour ce client. L'identification du compte est unique et son solde est 50 €
+|Le client existe
 
 // fin
 |===
