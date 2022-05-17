@@ -13,7 +13,7 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 
 == 2. Fiches de test
 
-=== Nom fonctionnalité
+=== Créer un compte
 [cols="1,1,1,1,1"]
 |===
 |id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
