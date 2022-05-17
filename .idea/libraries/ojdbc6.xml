@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="ojdbc6">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/V1/Développement/DAILY_BANK_FX_V1/LIBS/ojdbc6.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
