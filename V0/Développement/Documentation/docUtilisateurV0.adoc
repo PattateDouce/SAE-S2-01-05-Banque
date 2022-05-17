@@ -10,3 +10,54 @@
 == 1. Contexte
 
 La banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients pour remplacer plusieurs outils obsolètes. Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
+
+== 2. Installation
+
+Cette application nécessite d'avoir Java 8 d'installé au préalable.
+Pour se faire, il suffit de se rendre sur le site d'Oracle https://www.oracle.com/java/technologies/java8.html
+
+Il se peut que la version de Java ne soit prioritaire, si c'est le cas, il faut suivre les étapes suivantes
+
+=== Windows
+**Windows 10 et Windows 8**
+
+    Dans Rechercher, lancez une recherche et sélectionnez : Système (Panneau de configuration)
+    Cliquez sur le lien Paramètres système avancés.
+    Cliquez sur Variables d'environnement. Dans la section Variables système recherchez la variable d'environnement PATH et sélectionnez-la. Cliquez sur Modifier. Si la variable d'environnement PATH n'existe pas, cliquez sur Nouvelle.
+    Dans la fenêtre Modifier la variable système (ou Nouvelle variable système), indiquez la valeur de la variable d'environnement PATH. Cliquez sur OK. Fermez toutes les fenêtres restantes en cliquant sur OK.
+    Ouvrez à nouveau la fenêtre d'invite de commande et exécutez votre code Java.
+
+**Windows 7**
+
+    A partir du bureau, cliquez avec le bouton droit de la souris sur l'icône Ordinateur.
+    Choisissez Propriétés dans le menu contextuel.
+    Cliquez sur le lien Paramètres système avancés.
+    Cliquez sur Variables d'environnement. Dans la section Variables système recherchez la variable d'environnement PATH et sélectionnez-la. Cliquez sur Modifier. Si la variable d'environnement PATH n'existe pas, cliquez sur Nouvelle.
+    Dans la fenêtre Modifier la variable système (ou Nouvelle variable système), indiquez la valeur de la variable d'environnement PATH. Cliquez sur OK. Fermez toutes les fenêtres restantes en cliquant sur OK.
+    Ouvrez à nouveau la fenêtre d'invite de commande et exécutez votre code Java.
+
+
+=== Mac OS X
+
+% /usr/libexec/java_home -v 1.8.0_73 --exec javac -version 
+
+
+=== Linux
+
+Depuis le Shell bash
+
+Modifiez le fichier de démarrage (~/.bashrc).
+
+    Modifiez la variable PATH
+    PATH=/usr/local/jdk1.8.0/bin:$PATH
+    export PATH
+    Enregistrez et fermez le fichier.
+    Chargez le fichier de démarrage
+    % . /.profile
+    Vérifiez que la variable PATH est définie en répétant la commande java
+    % java -version
+
+
+
+
+
