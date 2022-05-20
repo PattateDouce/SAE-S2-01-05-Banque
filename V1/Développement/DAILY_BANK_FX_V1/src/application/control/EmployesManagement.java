@@ -12,9 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.data.Client;
 import model.data.Employe;
-import model.orm.AccessClient;
 import model.orm.AccessEmploye;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
@@ -72,26 +70,26 @@ public class EmployesManagement {
      * @param e the employe
      * @return the employe
      */
-//    public Employe modifierEmploye(Employe e) {
-//		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
-//		Employe result = cep.doEmployeEditorDialog(e, EditionMode.MODIFICATION);
-//		if (result != null) {
-//			try {
-//				AccessClient ac = new AccessClient();
-//				ac.updateClient(result);
-//			} catch (DatabaseConnexionException dce) {
-//				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, dce);
-//				ed.doExceptionDialog();
-//				result = null;
-//				this.primaryStage.close();
-//			} catch (ApplicationException ae) {
-//				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
-//				ed.doExceptionDialog();
-//				result = null;
-//			}
-//		}
-//		return result;
-//	}
+    public Employe modifierEmploye(Employe e) {
+		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dbs);
+		Employe result = cep.doEmployeEditorDialog(e, EditionMode.MODIFICATION);
+		if (result != null) {
+			try {
+				AccessEmploye ae = new AccessEmploye();
+				ae.updateEmploye(result);
+			} catch (DatabaseConnexionException dce) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, dce);
+				ed.doExceptionDialog();
+				result = null;
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				result = null;
+			}
+		}
+		return result;
+	}
 
     /**
      * Nouvel employé.
@@ -120,7 +118,7 @@ public class EmployesManagement {
 		return employe;
 	}
 
-    /** TODO mettre à jour
+    /**
      * Gets comptes from num compte.
      *
      * @param _idEmp   the num compte
@@ -131,10 +129,10 @@ public class EmployesManagement {
     public ArrayList<Employe> getlisteEmploye(int _idEmp, String _debutNom, String _debutPrenom) {
 		ArrayList<Employe> listeEmp = new ArrayList<>();
 		try {
-			// Recherche des clients en BD. cf. AccessClient > getClients(.)
-			// numCompte != -1 => recherche sur numCompte
-			// numCompte != -1 et debutNom non vide => recherche nom/prenom
-			// numCompte != -1 et debutNom vide => recherche tous les clients
+			// Recherche des employés en BD. cf. AccessEmploye > getEmployes(.)
+			// idEmp != -1 => recherche sur idEmp
+			// idEmp != -1 et debutNom non vide => recherche nom/prenom
+			// idEmp != -1 et debutNom vide => recherche tous les employés
 
 			AccessEmploye ac = new AccessEmploye();
 			listeEmp = ac.getEmployes(this.dbs.getEmpAct().idAg, _idEmp, _debutNom, _debutPrenom);

@@ -4,8 +4,6 @@ import application.DailyBankApp;
 import application.DailyBankState;
 import application.tools.EditionMode;
 import application.tools.StageManagement;
-import application.view.ClientEditorPaneController;
-import application.view.ClientsManagementController;
 import application.view.EmployeEditorPaneController;
 import application.view.EmployesManagementController;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.data.Client;
 import model.data.Employe;
 
 /**
@@ -63,7 +60,6 @@ public class EmployeEditorPane {
      * @return the employe
      */
     public Employe doEmployeEditorDialog(Employe employe, EditionMode em) {
-//		return this.eepc.displayDialog(employe, em);
-    	return new Employe(0, "", "", "", "", "", 0);
+		return this.eepc.displayDialog(employe, em);
 	}
 }
