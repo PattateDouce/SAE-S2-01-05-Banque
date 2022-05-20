@@ -65,13 +65,27 @@ Une fois que les dépendances sont installés, il suffit de lancer le cmd/shell 
 
 == 4. Fonctionnement
 
+=== Accéder à son agence
+
+Lorsque vous lancez l'application, vous arrivez sur la fenêtre suivante : 
+
 image::accueil.png["Fenêtre principale"]
+
+Pour se connecter, cliquez sur le bouton **"Connexion"** ou sur l'onglet **"Utilisateur" puis sur "Connexion"**. S'ouvrira ensuite cette fenêtre :
 
 image::connexion.png["Connexion"]
 
+Une fois vos identifiants rentrés, cliquez sur **"Valider"**. Vous arriverez ensuite sur l'**accueil de votre agence**, comme vous pouvez le voir ici pour le login "Tuff" :
+
 image::accueil_agence.png["Accueil agence"]
 
+=== Accéder à la page de gestion des clients
+
+Pour accéder à la page de gestion des clients, cliquez sur l'onglet **"Gestion" puis sur "Clients"**. Vous arriverez ensuite sur la page de gestion clients, qui sera tout d'abord vide. Pour afficher la liste de tous les clients, cliquez simplement sur le bouton **"Rechercher"**, en laissant tous les champs vides. Vous obtiendrez alors quelque chose comme ceci :
+
 image::gestion_clients.png["Gestion clients"]
+
+=== 
 
 image::gestion_comptes.png["Gestion comptes"]
 
