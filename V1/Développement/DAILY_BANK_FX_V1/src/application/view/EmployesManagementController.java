@@ -24,7 +24,6 @@ import model.data.Employe;
 public class EmployesManagementController implements Initializable {
 
 	// Etat application
-	private DailyBankState dbs;
 	private EmployesManagement em;
 
 	// Fenêtre physique
@@ -37,14 +36,12 @@ public class EmployesManagementController implements Initializable {
      * Init context.
      *
      * @param _primaryStage the primary stage
-     * @param _em           the cm
-     * @param _dbstate      the dbstate
+     * @param _em           the em
      */
 // Manipulation de la fenêtre
-	public void initContext(Stage _primaryStage, EmployesManagement _em, DailyBankState _dbstate) {
+	public void initContext(Stage _primaryStage, EmployesManagement _em) {
 		this.em = _em;
 		this.primaryStage = _primaryStage;
-		this.dbs = _dbstate;
 		this.configure();
 	}
 

@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.data.CompteCourant;
 import model.data.Employe;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -19,18 +18,18 @@ public class AccessEmploye {
 	public AccessEmploye() {
 	}
 
-	/** TODO mettre à jour
-	 * Recherche des clients paramétrée (tous/un seul par id/par nom-prénom).
+	/**
+	 * Recherche des employé paramétrée (tous/un seul par id/par nom-prénom).
 	 *
-	 * On recherche : - un client précis si idNumCli <> -1 - des clients par début
-	 * nom/prénom si debutNom donné - tous les clients de idAg sinon
+	 * On recherche : - un employé précis si idZmp <> -1 - des employés par début
+	 * nom/prénom si debutNom donné - tous les employés de idAg sinon
 	 *
-	 * @param idAg        : id de l'agence dont on cherche les clients
+	 * @param idAg        : id de l'agence dont on cherche les employés
 	 * @param idEmp    : vaut -1 si il n'est pas spécifié sinon numéro recherché
 	 * @param debutNom    : vaut "" si il n'est pas spécifié sinon sera le
 	 *                    nom/prenom recherchés
 	 * @param debutPrenom cf. @param debutNom
-	 * @return Le ou les clients recherchés, liste vide si non trouvé
+	 * @return Le ou les employés recherchés, liste vide si non trouvé
 	 * @throws DataAccessException
 	 * @throws DatabaseConnexionException
 	 */
@@ -95,7 +94,7 @@ public class AccessEmploye {
 	}
 	
 	/**
-	 * Recherche d'un employe par son login / mot de passe.
+	 * Recherche d'un employé par son login / mot de passe.
 	 *
 	 * @param login    login de l'employé recherché
 	 * @param password mot de passe donné
@@ -223,9 +222,7 @@ public class AccessEmploye {
 		try {
 			Connection con = LogToDatabase.getConnexion();
 
-			String query = "UPDATE EMPLOYE SET " + "nom = " + "? , " + "prenom = " + "? , " + "droitsaccess = "
-					+ "? , " + "login = " + "? , " + "motpasse = " + "? , " + " "
-					+ "WHERE idEmploye = ? ";
+			String query = "UPDATE EMPLOYE SET nom = ? , prenom = ? , droitsaccess = ? , login = ? , motpasse = ? WHERE idEmploye = ? ";
 
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setString(1, employe.nom);
@@ -242,12 +239,12 @@ public class AccessEmploye {
 			
 			if (result != 1) {
 				con.rollback();
-				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.UPDATE,
+				throw new RowNotFoundOrTooManyRowsException(Table.Employe, Order.UPDATE,
 						"Update anormal (update de moins ou plus d'une ligne)", null, result);
 			}
 			con.commit();
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.Client, Order.UPDATE, "Erreur accès", e);
+			throw new DataAccessException(Table.Employe, Order.UPDATE, "Erreur accès", e);
 		}
 	}
 
