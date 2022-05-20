@@ -25,5 +25,11 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 |**Etant donnée un client** existant, crée un nouveau compte pour ce client. L'identification du compte est unique et son solde est 50 €
 |Le client existe
 
+|20
+|TestCloturerCompte
+|Créer un compte
+|**Etant donnée un compte** existant, clôturer le compte, son solde doit être égal à 0 et son attribut `estCloture` doit être égal à "O"
+|Le client existe
+
 // fin
 |===
