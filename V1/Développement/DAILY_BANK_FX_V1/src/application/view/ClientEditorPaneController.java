@@ -216,6 +216,9 @@ public class ClientEditorPaneController implements Initializable {
 
 	}
 
+	/** Vérifie la validiter des saisies
+	 * @return True si tout est correct, False sinon
+	 */
 	private boolean isSaisieValide() {
 		this.clientEdite.nom = this.txtNom.getText().trim();
 		this.clientEdite.prenom = this.txtPrenom.getText().trim();

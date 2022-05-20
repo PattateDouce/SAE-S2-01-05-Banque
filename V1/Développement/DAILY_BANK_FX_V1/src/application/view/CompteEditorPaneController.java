@@ -43,7 +43,7 @@ public class CompteEditorPaneController implements Initializable {
      * @param _primaryStage the primary stage
      * @param _dbstate      the dbstate
      */
-// Manipulation de la fenêtre
+	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
 		this.primaryStage = _primaryStage;
 		this.dbs = _dbstate;
