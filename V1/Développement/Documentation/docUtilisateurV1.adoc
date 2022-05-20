@@ -1,6 +1,7 @@
 = Documentation Utilisateur V1
 :toc:
 :toc-title: Sommaire
+:imagesdir: ../../../resources/images
 
 == Équipe
 * Nolan JACQUEMONT 
@@ -64,3 +65,14 @@ Une fois que les dépendances sont installés, il suffit de lancer le cmd/shell 
 
 == 4. Fonctionnement
 
+image::accueil.png["Fenêtre principale"]
+
+image::connexion.png["Connexion"]
+
+image::accueil_agence.png["Accueil agence"]
+
+image::gestion_clients.png["Gestion clients"]
+
+image::gestion_comptes.png["Gestion comptes"]
+
+image::gestion_comptes.png["Gestion opérations"]
