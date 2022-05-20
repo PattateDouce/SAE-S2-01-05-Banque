@@ -13,11 +13,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.CompteCourant;
@@ -107,6 +109,32 @@ public class OperationEditorPaneController implements Initializable {
 			this.cbTypeOpe.setItems(listCredit);
 			this.cbTypeOpe.getSelectionModel().select(0);
 			break;
+
+		case VIREMENT:
+			String infoVirement = "Cpt. : " + this.compteEdite.idNumCompte + "  "
+					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
+					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
+			this.lblMessage.setText(infoVirement);
+
+			Label lblCompte = new Label("N° compte à créditer");
+			this.gridPane.add(lblCompte, 0, 2);
+			this.gridPane.setAlignment(Pos.CENTER_RIGHT);
+
+			TextField txtCompte = new TextField();
+			this.gridPane.add(txtCompte, 1, 2);
+
+			this.btnOk.setText("Effectuer virement");
+			this.btnCancel.setText("Annuler virement");
+
+			ObservableList<String> listVirement = FXCollections.observableArrayList();
+
+			for (String tyOp : ConstantesIHM.OPERATIONS_DEBIT_GUICHET) {
+				listVirement.add(tyOp);
+			}
+
+			this.cbTypeOpe.setItems(listVirement);
+			this.cbTypeOpe.getSelectionModel().select(0);
+			break;
 		}
 
 		// Paramétrages spécifiques pour les chefs d'agences
@@ -141,6 +169,8 @@ public class OperationEditorPaneController implements Initializable {
 	private Button btnOk;
 	@FXML
 	private Button btnCancel;
+	@FXML
+	private GridPane gridPane;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -220,6 +250,9 @@ public class OperationEditorPaneController implements Initializable {
 			String typeOp2 = this.cbTypeOpe.getValue();
 			this.operationResultat = new Operation(-1, montant, null, null, this.compteEdite.idNumCli, typeOp2);
 			this.primaryStage.close();
+			break;
+
+		case VIREMENT:
 			break;
 		}
 	}
