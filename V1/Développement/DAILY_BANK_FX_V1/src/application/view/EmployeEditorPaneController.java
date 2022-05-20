@@ -66,88 +66,88 @@ public class EmployeEditorPaneController implements Initializable {
 	 * @param mode   the mode
 	 * @return the employe
 	 */
-	public Employe displayDialog(Employe employe, EditionMode mode) {
-
-		this.em = mode;
-		if (employe == null) {
-			this.employeEdite = new Employe(0, "", "", "", "", "", this.dbs.getEmpAct().idAg);
-		} else {
-			this.employeEdite = new Employe(employe);
-		}
-		this.employeResult = null;
-		switch (mode) {
-		case CREATION:
-			this.txtIdemp.setDisable(true);
-			this.txtNom.setDisable(false);
-			this.txtPrenom.setDisable(false);
-			this.txtLogin.setDisable(false);
-			this.txtMotPasse.setDisable(false);
-			this.rbActif.setSelected(true);
-			this.rbInactif.setSelected(false);
-			if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
-				this.rbActif.setDisable(false);
-				this.rbInactif.setDisable(false);
-			} else {
-				this.rbActif.setDisable(true);
-				this.rbInactif.setDisable(true);
-			}
-			this.lblMessage.setText("Informations sur le nouveau client");
-			this.butOk.setText("Ajouter");
-			this.butCancel.setText("Annuler");
-			break;
-		case MODIFICATION:
-			this.txtIdemp.setDisable(true);
-			this.txtNom.setDisable(false);
-			this.txtPrenom.setDisable(false);
-			this.txtLogin.setDisable(false);
-			this.txtMotPasse.setDisable(false);
-			this.rbActif.setSelected(true);
-			this.rbInactif.setSelected(false);
-			if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
-				this.rbActif.setDisable(false);
-				this.rbInactif.setDisable(false);
-			} else {
-				this.rbActif.setDisable(true);
-				this.rbInactif.setDisable(true);
-			}
-			this.lblMessage.setText("Informations client");
-			this.butOk.setText("Modifier");
-			this.butCancel.setText("Annuler");
-			break;
-		case SUPPRESSION:
-			// ce mode n'est pas utilisé pour les Clients :
-			// la suppression d'un client n'existe pas il faut que le chef d'agence
-			// bascule son état "Actif" à "Inactif"
-			ApplicationException ae = new ApplicationException(Table.NONE, Order.OTHER, "SUPPRESSION CLIENT NON PREVUE",
-					null);
-			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
-			ed.doExceptionDialog();
-
-			break;
-		}
-		// Paramétrages spécifiques pour les chefs d'agences
-		if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
-			// rien pour l'instant
-		}
-		// initialisation du contenu des champs
-		this.txtIdemp.setText("" + this.employeEdite.idEmploye);
-		this.txtNom.setText(this.employeEdite.nom);
-		this.txtPrenom.setText(this.employeEdite.prenom);
-//		this.txtAdr.setText(this.employeEdite.adressePostale);
-//		this.txtMail.setText(this.employeEdite.email);
-//		this.txtTel.setText(this.employeEdite.telephone);
+//	public Employe displayDialog(Employe employe, EditionMode mode) {
 //
-//		if (ConstantesIHM.estInactif(this.employeEdite)) {
-//			this.rbInactif.setSelected(true);
+//		this.em = mode;
+//		if (employe == null) {
+//			this.employeEdite = new Employe(0, "", "", "", "", "", this.dbs.getEmpAct().idAg);
 //		} else {
-//			this.rbInactif.setSelected(false);
+//			this.employeEdite = new Employe(employe);
 //		}
-
-		this.employeResult = null;
-
-		this.primaryStage.showAndWait();
-		return this.employeResult;
-	}
+//		this.employeResult = null;
+//		switch (mode) {
+//		case CREATION:
+//			this.txtIdemp.setDisable(true);
+//			this.txtNom.setDisable(false);
+//			this.txtPrenom.setDisable(false);
+//			this.txtLogin.setDisable(false);
+//			this.txtMotPasse.setDisable(false);
+//			this.rbActif.setSelected(true);
+//			this.rbInactif.setSelected(false);
+//			if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
+//				this.rbActif.setDisable(false);
+//				this.rbInactif.setDisable(false);
+//			} else {
+//				this.rbActif.setDisable(true);
+//				this.rbInactif.setDisable(true);
+//			}
+//			this.lblMessage.setText("Informations sur le nouveau client");
+//			this.butOk.setText("Ajouter");
+//			this.butCancel.setText("Annuler");
+//			break;
+//		case MODIFICATION:
+//			this.txtIdemp.setDisable(true);
+//			this.txtNom.setDisable(false);
+//			this.txtPrenom.setDisable(false);
+//			this.txtLogin.setDisable(false);
+//			this.txtMotPasse.setDisable(false);
+//			this.rbActif.setSelected(true);
+//			this.rbInactif.setSelected(false);
+//			if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
+//				this.rbActif.setDisable(false);
+//				this.rbInactif.setDisable(false);
+//			} else {
+//				this.rbActif.setDisable(true);
+//				this.rbInactif.setDisable(true);
+//			}
+//			this.lblMessage.setText("Informations client");
+//			this.butOk.setText("Modifier");
+//			this.butCancel.setText("Annuler");
+//			break;
+//		case SUPPRESSION:
+//			// ce mode n'est pas utilisé pour les Clients :
+//			// la suppression d'un client n'existe pas il faut que le chef d'agence
+//			// bascule son état "Actif" à "Inactif"
+//			ApplicationException ae = new ApplicationException(Table.NONE, Order.OTHER, "SUPPRESSION CLIENT NON PREVUE",
+//					null);
+//			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+//			ed.doExceptionDialog();
+//
+//			break;
+//		}
+//		// Paramétrages spécifiques pour les chefs d'agences
+//		if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
+//			// rien pour l'instant
+//		}
+//		// initialisation du contenu des champs
+//		this.txtIdemp.setText("" + this.employeEdite.idEmploye);
+//		this.txtNom.setText(this.employeEdite.nom);
+//		this.txtPrenom.setText(this.employeEdite.prenom);
+////		this.txtAdr.setText(this.employeEdite.adressePostale);
+////		this.txtMail.setText(this.employeEdite.email);
+////		this.txtTel.setText(this.employeEdite.telephone);
+////
+////		if (ConstantesIHM.estInactif(this.employeEdite)) {
+////			this.rbInactif.setSelected(true);
+////		} else {
+////			this.rbInactif.setSelected(false);
+////		}
+//
+//		this.employeResult = null;
+//
+//		this.primaryStage.showAndWait();
+//		return this.employeResult;
+//	}
 
 	// Gestion du stage
 	private Object closeWindow(WindowEvent e) {

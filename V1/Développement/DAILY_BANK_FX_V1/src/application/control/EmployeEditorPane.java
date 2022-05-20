@@ -63,6 +63,7 @@ public class EmployeEditorPane {
      * @return the employe
      */
     public Employe doEmployeEditorDialog(Employe employe, EditionMode em) {
-		return this.eepc.displayDialog(employe, em);
+//		return this.eepc.displayDialog(employe, em);
+    	return new Employe(0, "", "", "", "", "", 0);
 	}
 }
