@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.data.Client;
 import model.data.Employe;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -156,7 +155,7 @@ public class AccessEmploye {
 	/**
 	 * Insertion d'un employé.
 	 *
-	 * @param employe IN/OUT Tous les attributs IN sauf idNumCli en OUT
+	 * @param employe IN/OUT Tous les attributs IN sauf idEmploye en OUT
 	 * @throws RowNotFoundOrTooManyRowsException
 	 * @throws DataAccessException
 	 * @throws DatabaseConnexionException
@@ -207,4 +206,46 @@ public class AccessEmploye {
 		}
 	}
 
+	/**
+	 * Mise à jour d'un Employé.
+	 *
+	 * employe.idEmploye est la clé primaire et doit exister tous les autres champs
+	 * sont des mises à jour. employe.idAg non mis à jour.
+	 *
+	 * @param employe IN employe.idEmploye (clé primaire) doit exister
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 */
+	public void updateEmploye(Employe employe)
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "UPDATE EMPLOYE SET " + "nom = " + "? , " + "prenom = " + "? , " + "droitsaccess = "
+					+ "? , " + "login = " + "? , " + "motpasse = " + "? , " + " "
+					+ "WHERE idEmploye = ? ";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, employe.nom);
+			pst.setString(2, employe.prenom);
+			pst.setString(3, employe.droitsAccess);
+			pst.setString(4, employe.login);
+			pst.setString(5, employe.motPasse);
+			pst.setInt(6, employe.idEmploye);
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.UPDATE,
+						"Update anormal (update de moins ou plus d'une ligne)", null, result);
+			}
+			con.commit();
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Client, Order.UPDATE, "Erreur accès", e);
+		}
+	}
 }
