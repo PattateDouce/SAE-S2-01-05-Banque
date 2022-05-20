@@ -85,7 +85,9 @@ Pour accéder à la page de gestion des clients, cliquez sur l'onglet **"Gestion
 
 image::gestion_clients.png["Gestion clients"]
 
-=== 
+=== Gérer les comptes d'un client
+
+Tout d'abord, accédez à la page de **gestion des clients** et sélectionnez le client auquel vous souhaitez gérer les comptes. Cliquez ensuite sur le bouton **"Comptes client"**
 
 image::gestion_comptes.png["Gestion comptes"]
 
