@@ -147,14 +147,14 @@ public class EmployesManagementController implements Initializable {
 
 	@FXML
 	private void doModifierEmploye() {
-		int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0) {
-			Employe empMod = this.ole.get(selectedIndice);
-			Employe result = this.em.modifierEmploye(empMod);
-			if (result != null) {
-				this.ole.set(selectedIndice, result);
-			}
-		}
+//		int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
+//		if (selectedIndice >= 0) {
+//			Employe empMod = this.ole.get(selectedIndice);
+//			Employe result = this.em.modifierEmploye(empMod);
+//			if (result != null) {
+//				this.ole.set(selectedIndice, result);
+//			}
+//		}
 	}
 
 	@FXML

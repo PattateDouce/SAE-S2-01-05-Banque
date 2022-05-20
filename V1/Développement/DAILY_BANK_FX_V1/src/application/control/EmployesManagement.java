@@ -72,26 +72,26 @@ public class EmployesManagement {
      * @param e the employe
      * @return the employe
      */
-    public Employe modifierEmploye(Employe e) {
-		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
-		Employe result = cep.doClientEditorDialog(e, EditionMode.MODIFICATION);
-		if (result != null) {
-			try {
-				AccessClient ac = new AccessClient();
-				ac.updateClient(result);
-			} catch (DatabaseConnexionException dce) {
-				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, dce);
-				ed.doExceptionDialog();
-				result = null;
-				this.primaryStage.close();
-			} catch (ApplicationException ae) {
-				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
-				ed.doExceptionDialog();
-				result = null;
-			}
-		}
-		return result;
-	}
+//    public Employe modifierEmploye(Employe e) {
+//		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
+//		Employe result = cep.doEmployeEditorDialog(e, EditionMode.MODIFICATION);
+//		if (result != null) {
+//			try {
+//				AccessClient ac = new AccessClient();
+//				ac.updateClient(result);
+//			} catch (DatabaseConnexionException dce) {
+//				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, dce);
+//				ed.doExceptionDialog();
+//				result = null;
+//				this.primaryStage.close();
+//			} catch (ApplicationException ae) {
+//				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+//				ed.doExceptionDialog();
+//				result = null;
+//			}
+//		}
+//		return result;
+//	}
 
     /**
      * Nouvel employé.
@@ -100,12 +100,12 @@ public class EmployesManagement {
      */
     public Employe nouvelEmploye() {
     	Employe employe;
-		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
-		employe = cep.doClientEditorDialog(null, EditionMode.CREATION);
+		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dbs);
+		employe = cep.doEmployeEditorDialog(null, EditionMode.CREATION);
 		if (employe != null) {
 			try {
-				AccessClient ac = new AccessClient();
-				ac.insertClient(employe);
+				AccessEmploye ae = new AccessEmploye();
+				ae.insertEmploye(employe);
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
 				ed.doExceptionDialog();
