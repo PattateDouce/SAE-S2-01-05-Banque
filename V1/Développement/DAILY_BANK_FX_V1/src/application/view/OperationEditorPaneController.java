@@ -24,6 +24,10 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.CompteCourant;
 import model.data.Operation;
+import model.orm.AccessCompteCourant;
+import model.orm.exception.DataAccessException;
+import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.RowNotFoundOrTooManyRowsException;
 
 /**
  * The type Operation editor pane controller.
@@ -40,6 +44,10 @@ public class OperationEditorPaneController implements Initializable {
 	private CategorieOperation categorieOperation;
 	private CompteCourant compteEdite;
 	private Operation operationResultat;
+
+	// Elements de la fenetre de virement
+	Label lblCompte;
+	TextField txtCompte;
 
     /**
      * Init context.
@@ -116,10 +124,10 @@ public class OperationEditorPaneController implements Initializable {
 					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
 			this.lblMessage.setText(infoVirement);
 
-			Label lblCompte = new Label("N° compte à créditer");
+			lblCompte = new Label("    N° compte à créditer");
 			this.gridPane.add(lblCompte, 0, 2);
 
-			TextField txtCompte = new TextField();
+			txtCompte = new TextField();
 			this.gridPane.add(txtCompte, 1, 2);
 
 			this.btnOk.setText("Effectuer virement");
@@ -127,7 +135,7 @@ public class OperationEditorPaneController implements Initializable {
 
 			ObservableList<String> listVirement = FXCollections.observableArrayList();
 
-			for (String tyOp : ConstantesIHM.OPERATIONS_DEBIT_GUICHET) {
+			for (String tyOp : ConstantesIHM.OPERATIONS_VIREMENT) {
 				listVirement.add(tyOp);
 			}
 
@@ -252,6 +260,73 @@ public class OperationEditorPaneController implements Initializable {
 			break;
 
 		case VIREMENT:
+			// règles de validation d'un virement :
+			// - le montant doit être un nombre valide
+			// - et si l'utilisateur n'est pas chef d'agence,
+			// - le virement ne doit pas amener le compte en dessous de son découvert autorisé,
+			// - le compte source ne doit pas être le même que le compte cible
+			montant = 0;
+
+			this.txtMontant.getStyleClass().remove("borderred");
+			this.lblMontant.getStyleClass().remove("borderred");
+			this.lblMessage.getStyleClass().remove("borderred");
+			this.lblCompte.getStyleClass().remove("borderred");
+			this.txtCompte.getStyleClass().remove("borderred");
+			String infoVirement = "Cpt. : " + this.compteEdite.idNumCompte + "  "
+					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
+					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
+			this.lblMessage.setText(infoVirement);
+
+			try {
+				montant = Double.parseDouble(this.txtMontant.getText().trim());
+				if (montant <= 0)
+					throw new NumberFormatException();
+			} catch (NumberFormatException nfe) {
+				this.txtMontant.getStyleClass().add("borderred");
+				this.lblMontant.getStyleClass().add("borderred");
+				this.txtMontant.requestFocus();
+				return;
+			}
+			if (this.compteEdite.solde - montant < this.compteEdite.debitAutorise) {
+				infoVirement = "Dépassement du découvert ! - Cpt. : " + this.compteEdite.idNumCompte + "  "
+						+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
+						+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
+				this.lblMessage.setText(infoVirement);
+				this.txtMontant.getStyleClass().add("borderred");
+				this.lblMontant.getStyleClass().add("borderred");
+				this.lblMessage.getStyleClass().add("borderred");
+				this.txtMontant.requestFocus();
+				return;
+			}
+			String numCompte = this.txtCompte.getText().trim();
+			AccessCompteCourant acc = new AccessCompteCourant();
+			if (numCompte.equals(this.compteEdite.idNumCompte)) {
+				this.txtCompte.getStyleClass().add("borderred");
+				this.lblCompte.getStyleClass().add("borderred");
+				this.txtCompte.requestFocus();
+				return;
+			}
+			try {
+				CompteCourant cible = acc.getCompteCourant(Integer.parseInt(numCompte));
+				if(cible == null) {
+					this.txtCompte.getStyleClass().add("borderred");
+					this.lblCompte.getStyleClass().add("borderred");
+					this.txtCompte.requestFocus();
+					return;
+				}
+			} catch (RowNotFoundOrTooManyRowsException e) {
+				e.printStackTrace();
+			} catch (DatabaseConnexionException e) {
+				e.printStackTrace();
+			} catch (DataAccessException e) {
+				e.printStackTrace();
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+
+			String typeOpV = this.cbTypeOpe.getValue();
+			this.operationResultat = new Operation(-1, montant, null, null, this.compteEdite.idNumCli, typeOpV);
+			this.primaryStage.close();
 			break;
 		}
 	}
