@@ -107,6 +107,7 @@ public class CompteEditorPaneController implements Initializable {
 			// rien pour l'instant
 		}
 
+
 		// initialisation du contenu des champs
 		this.txtIdclient.setText("" + this.compteEdite.idNumCli);
 		this.txtIdNumCompte.setText("" + this.compteEdite.idNumCompte);

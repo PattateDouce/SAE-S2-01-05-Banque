@@ -118,7 +118,7 @@ public class OperationsManagement {
 			try {
 				AccessOperation ao = new AccessOperation();
 
-				ao.insertCredit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+				ao.insertDebit(this.compteConcerne.idNumCompte, 0-op.montant, op.idTypeOp);
 
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
