@@ -58,8 +58,9 @@ Modifiez le fichier de démarrage (~/.bashrc).
     % java -version
 
 
-== Lancement
+== 3. Lancement
 Une fois que les dépendances sont installés, il suffit de lancer le cmd/shell et executer la commande suivante `java -jar <nom-ici>.jar`
 
 
+== 4. Fonctionnement
 
