@@ -22,14 +22,40 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 |10
 |TestCréerCompte
 |Créer un compte
-|**Etant donnée un client** existant, crée un nouveau compte pour ce client. L'identification du compte est unique et son solde est 50 €
+|**Etant donné un client** existant, crée un nouveau compte pour ce client. L'identification du compte est unique et son solde est 50 €
 |Le client existe
+|===
+
+=== Clôturer un compte
+
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
 
 |20
 |TestCloturerCompte
 |Créer un compte
-|**Etant donnée un compte** existant, clôturer le compte, son solde doit être égal à 0 et son attribut `estCloture` doit être égal à "O"
+|**Etant donné un compte** existant, clôturer le compte, son solde doit être égal à 0 et son attribut `estCloture` doit être égal à "O"
 |Le client existe
 
-// fin
+|===
+
+=== Effectuer un crédit
+
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
+
+|30
+|testEffectuerCreditValide
+|Effectuer un crédit
+|**Etant donné un compte** existant, accéder à sa liste d'opérations, effectuer un crédit d'un montant m, le montant m doit être ajouté à l'attribut `solde`.
+|Le client existe, le compte existe
+
+|31
+|testEffectuerCreditInvalide
+|Effectuer un crédit
+|**Etant donné un compte** existant, accéder à sa liste d'opérations, effectuer un crédit d'un montant m strictement négatif, rien ne doit se passer hormis le changement de couleur du texte `Montant`.
+|Le compte est sélectionné
+
 |===
