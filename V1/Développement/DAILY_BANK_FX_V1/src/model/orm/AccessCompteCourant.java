@@ -115,6 +115,7 @@ public class AccessCompteCourant {
 		return alResult;
 	}
 
+
 	/**
 	 * Recherche d'un CompteCourant à partir de son id (idNumCompte).
 	 *
