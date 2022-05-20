@@ -171,6 +171,7 @@ public class ClientsManagementController implements Initializable {
 
 	@FXML
 	private void doDesactiverClient() {
+
 	}
 
 	@FXML

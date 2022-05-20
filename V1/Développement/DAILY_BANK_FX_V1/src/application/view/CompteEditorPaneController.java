@@ -37,6 +37,7 @@ public class CompteEditorPaneController implements Initializable {
 	private CompteCourant compteEdite;
 	private CompteCourant compteResult;
 
+	private boolean isConfirmed;
     /**
      * Init context.
      *
@@ -96,9 +97,12 @@ public class CompteEditorPaneController implements Initializable {
 			return null;
 		// break;
 		case SUPPRESSION:
-			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Suppression de compte n'est pas implémenté",
-					null, AlertType.ERROR);
-			return null;
+			this.txtSolde.setDisable(true);
+			this.txtDecAutorise.setDisable(true);
+			this.lblMessage.setText("Voulez-vous supprimer ce compte");
+			this.btnOk.setText("Ok");
+			this.btnCancel.setText("Annuler");
+			break;
 		// break;
 		}
 
@@ -209,6 +213,10 @@ public class CompteEditorPaneController implements Initializable {
 			}
 			break;
 		case SUPPRESSION:
+			if (compteEdite != null) {
+				this.compteEdite.solde = 0;
+				this.compteEdite.estCloture = "O";
+			}
 			this.compteResult = this.compteEdite;
 			this.primaryStage.close();
 			break;
@@ -220,4 +228,6 @@ public class CompteEditorPaneController implements Initializable {
 
 		return true;
 	}
+
+
 }

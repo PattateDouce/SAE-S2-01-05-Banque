@@ -230,10 +230,9 @@ public class AccessCompteCourant {
 
 			Connection con = LogToDatabase.getConnexion();
 
-			String query = "UPDATE COMPTECOURANT  SET solde = 0 AND estCloture = 'O' WHERE idNumCompte = ?";
+			String query = "UPDATE CompteCourant SET " + "solde = 0 "  + ", " + " estCloture = 'O' " + "WHERE idNumCompte = ?";
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, compte.idNumCompte);
-
 
 			System.err.println(query);
 
@@ -250,7 +249,7 @@ public class AccessCompteCourant {
 			con.commit();
 
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.Client, Order.INSERT, "Erreur accès", e);
+			throw new DataAccessException(Table.Client, Order.UPDATE, "Erreur accès", e);
 		}
 	}
 

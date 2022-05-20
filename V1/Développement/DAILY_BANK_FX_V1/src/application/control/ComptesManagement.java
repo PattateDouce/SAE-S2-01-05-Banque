@@ -4,24 +4,19 @@ import java.util.ArrayList;
 
 import application.DailyBankApp;
 import application.DailyBankState;
-import application.tools.AlertUtilities;
 import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.ComptesManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
 import model.data.CompteCourant;
-import model.orm.AccessClient;
 import model.orm.AccessCompteCourant;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
-import model.orm.exception.Order;
-import model.orm.exception.Table;
 
 /**
  * The type Comptes management.
@@ -119,7 +114,7 @@ public class  ComptesManagement {
 	 *
 	 * @param cpt the cpt
 	 */
-	public void modifierCompte(CompteCourant cpt) {
+	public CompteCourant modifierCompte(CompteCourant cpt) {
 		CompteCourant compte;
 		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
 		compte = cep.doCompteEditorDialog(this.clientDesComptes, cpt, EditionMode.MODIFICATION);
@@ -142,6 +137,7 @@ public class  ComptesManagement {
 				ed.doExceptionDialog();
 			}
 		}
+		return compte;
 
 	}
 
@@ -169,14 +165,14 @@ public class  ComptesManagement {
 		return listeCpt;
 	}
 
-	public void supprimerCompte(CompteCourant cpt) {
+	public CompteCourant supprimerCompte(CompteCourant cpt) {
 		CompteCourant compte;
 		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
 		compte = cep.doCompteEditorDialog(this.clientDesComptes, cpt, EditionMode.SUPPRESSION);
 
 		if (compte != null) {
-			try {
 
+			try {
 				AccessCompteCourant ac = new AccessCompteCourant();
 				ac.supprimerCompte(compte);
 			} catch (DatabaseConnexionException e) {
@@ -188,6 +184,8 @@ public class  ComptesManagement {
 				ed.doExceptionDialog();
 			}
 
+
 		}
+		return compte;
 	}
 }

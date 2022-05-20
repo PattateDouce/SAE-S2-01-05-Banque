@@ -122,17 +122,30 @@ public class ComptesManagementController implements Initializable {
 
 	@FXML
 	private void doModifierCompte() {
-		// int index = lvComptes.getSelectionModel().getSelectedIndex();
-		CompteCourant compte = lvComptes.getSelectionModel().getSelectedItem();
-		this.cm.modifierCompte(compte);
+
+
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			CompteCourant compteMod = this.lvComptes.getItems().get(selectedIndice);
+			CompteCourant result = this.cm.modifierCompte(compteMod);
+			if (result != null) {
+				this.olCompteCourant.set(selectedIndice, result);
+			}
+		}
 
 
 	}
 
 	@FXML
 	private void doSupprimerCompte() {
-		CompteCourant compte = lvComptes.getSelectionModel().getSelectedItem();
-		this.cm.supprimerCompte(compte);
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			CompteCourant compteMod = this.lvComptes.getItems().get(selectedIndice);
+			CompteCourant result = this.cm.supprimerCompte(compteMod);
+			if (result != null) {
+				this.olCompteCourant.set(selectedIndice, result);
+			}
+		}
 	}
 
 	@FXML
