@@ -134,6 +134,11 @@ public class OperationsManagement {
 		return op;
 	}
 
+	/**
+	 * Enregistrer virement.
+	 *
+	 * @return the operation
+	 */
 	public Operation enregistrerVirement() {
 
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);

@@ -118,7 +118,6 @@ public class OperationEditorPaneController implements Initializable {
 
 			Label lblCompte = new Label("N° compte à créditer");
 			this.gridPane.add(lblCompte, 0, 2);
-			this.gridPane.setAlignment(Pos.CENTER_RIGHT);
 
 			TextField txtCompte = new TextField();
 			this.gridPane.add(txtCompte, 1, 2);
