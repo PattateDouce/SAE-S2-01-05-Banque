@@ -122,10 +122,17 @@ public class ComptesManagementController implements Initializable {
 
 	@FXML
 	private void doModifierCompte() {
+		// int index = lvComptes.getSelectionModel().getSelectedIndex();
+		CompteCourant compte = lvComptes.getSelectionModel().getSelectedItem();
+		this.cm.modifierCompte(compte);
+
+
 	}
 
 	@FXML
 	private void doSupprimerCompte() {
+		CompteCourant compte = lvComptes.getSelectionModel().getSelectedItem();
+		this.cm.supprimerCompte(compte);
 	}
 
 	@FXML
@@ -148,14 +155,17 @@ public class ComptesManagementController implements Initializable {
 
 	private void validateComponentState() {
 		// Non implémenté => désactivé
-		this.btnModifierCompte.setDisable(true);
-		this.btnSupprCompte.setDisable(true);
+
 
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			this.btnVoirOpes.setDisable(false);
+			this.btnModifierCompte.setDisable(false);
+			this.btnSupprCompte.setDisable(false);
 		} else {
 			this.btnVoirOpes.setDisable(true);
+			this.btnModifierCompte.setDisable(true);
+			this.btnSupprCompte.setDisable(true);
 		}
 	}
 }

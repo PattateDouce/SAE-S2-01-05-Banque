@@ -213,4 +213,45 @@ public class AccessCompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
+
+
+
+	/**
+	 * Insertion d'un compte
+	 *
+	 * @param compte IN/OUT Tous les attributs IN sauf idNumCli en OUT
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 */
+	public void supprimerCompte(CompteCourant compte)
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		try {
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "UPDATE COMPTECOURANT  SET solde = 0 AND estCloture = 'O' WHERE idNumCompte = ?";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, compte.idNumCompte);
+
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.INSERT,
+						"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
+			}
+
+
+			con.commit();
+
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Client, Order.INSERT, "Erreur accès", e);
+		}
+	}
+
 }

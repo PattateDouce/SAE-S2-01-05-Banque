@@ -84,6 +84,8 @@ public class  ComptesManagement {
 		om.doOperationsManagementDialog();
 	}
 
+
+
     /**
      * Créer Compte compte courant.
      *
@@ -112,6 +114,37 @@ public class  ComptesManagement {
 		return compte;
 	}
 
+	/**
+	 * Modifier un compte
+	 *
+	 * @param cpt the cpt
+	 */
+	public void modifierCompte(CompteCourant cpt) {
+		CompteCourant compte;
+		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
+		compte = cep.doCompteEditorDialog(this.clientDesComptes, cpt, EditionMode.MODIFICATION);
+
+		if (compte != null) {
+
+			try {
+
+				AccessCompteCourant ac = new AccessCompteCourant();
+				ac.updateCompteCourant(compte);
+				//ac.insertCompte(compte);
+
+
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+			}
+		}
+
+	}
+
     /**
      * Gets comptes d'un client.
      *
@@ -134,5 +167,27 @@ public class  ComptesManagement {
 			listeCpt = new ArrayList<>();
 		}
 		return listeCpt;
+	}
+
+	public void supprimerCompte(CompteCourant cpt) {
+		CompteCourant compte;
+		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
+		compte = cep.doCompteEditorDialog(this.clientDesComptes, cpt, EditionMode.SUPPRESSION);
+
+		if (compte != null) {
+			try {
+
+				AccessCompteCourant ac = new AccessCompteCourant();
+				ac.supprimerCompte(compte);
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+			}
+
+		}
 	}
 }
