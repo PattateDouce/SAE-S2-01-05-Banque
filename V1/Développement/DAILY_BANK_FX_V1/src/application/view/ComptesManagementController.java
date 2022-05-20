@@ -175,21 +175,24 @@ public class ComptesManagementController implements Initializable {
 			this.btnVoirOpes.setDisable(false);
 			this.btnModifierCompte.setDisable(false);
 			this.btnSupprCompte.setDisable(false);
+
+			CompteCourant cpt = lvComptes.getItems().get(selectedIndice);
+
+			if (cpt != null) {
+
+				if (cpt.estCloture.equals("O")) {
+					btnSupprCompte.setDisable(true);
+					btnModifierCompte.setDisable(true);
+				}
+			}
+
 		} else {
 			this.btnVoirOpes.setDisable(true);
 			this.btnModifierCompte.setDisable(true);
 			this.btnSupprCompte.setDisable(true);
 		}
 
-		CompteCourant cpt = lvComptes.getItems().get(selectedIndice);
 
-		if (cpt != null) {
-
-			if (cpt.estCloture.equals("O")) {
-				btnSupprCompte.setDisable(true);
-				btnModifierCompte.setDisable(true);
-			}
-		}
 	}
 
 

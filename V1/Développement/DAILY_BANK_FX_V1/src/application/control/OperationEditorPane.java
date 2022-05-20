@@ -63,4 +63,8 @@ public class OperationEditorPane {
     public Operation doOperationEditorDialog(CompteCourant cpte, CategorieOperation cm) {
 		return this.oepc.displayDialog(cpte, cm);
 	}
+
+	public CompteCourant getCompteCible() {
+		return this.oepc.getCompteCible();
+	}
 }

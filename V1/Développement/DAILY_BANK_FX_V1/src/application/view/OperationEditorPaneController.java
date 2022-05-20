@@ -44,6 +44,7 @@ public class OperationEditorPaneController implements Initializable {
 	private CategorieOperation categorieOperation;
 	private CompteCourant compteEdite;
 	private Operation operationResultat;
+	private CompteCourant compteCible;
 
 	// Elements de la fenetre de virement
 	Label lblCompte;
@@ -307,8 +308,8 @@ public class OperationEditorPaneController implements Initializable {
 				return;
 			}
 			try {
-				CompteCourant cible = acc.getCompteCourant(Integer.parseInt(numCompte));
-				if(cible == null) {
+				compteCible = acc.getCompteCourant(Integer.parseInt(numCompte));
+				if(compteCible == null) {
 					this.txtCompte.getStyleClass().add("borderred");
 					this.lblCompte.getStyleClass().add("borderred");
 					this.txtCompte.requestFocus();
@@ -329,5 +330,9 @@ public class OperationEditorPaneController implements Initializable {
 			this.primaryStage.close();
 			break;
 		}
+	}
+
+	public CompteCourant getCompteCible() {
+		return compteCible;
 	}
 }

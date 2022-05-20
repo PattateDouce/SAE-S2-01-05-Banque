@@ -143,11 +143,13 @@ public class OperationsManagement {
 
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
 		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.VIREMENT);
+		CompteCourant cible = oep.getCompteCible();
 		if (op != null) {
 			try {
 				AccessOperation ao = new AccessOperation();
 
 				ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+				ao.insertDebit(cible.idNumCompte, 0-op.montant, op.idTypeOp);
 
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
