@@ -118,6 +118,29 @@ public class EmployesManagement {
 		return employe;
 	}
 
+    /** Supprime un compte d'employé
+     * @param idEmp		ID de l'employé
+     * @return true si cela fonction, false sinon
+     */
+    public boolean supprimerEmploye(int idEmp) {
+    	try {
+			AccessEmploye ae = new AccessEmploye();
+			ae.supprimerCompte(idEmp);
+			return true;
+
+		} catch (DatabaseConnexionException e) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+			ed.doExceptionDialog();
+			this.primaryStage.close();
+
+		} catch (ApplicationException ae) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+			ed.doExceptionDialog();
+		}
+
+    	return false;
+    }
+    
     /**
      * Gets comptes from num compte.
      *
@@ -134,8 +157,8 @@ public class EmployesManagement {
 			// idEmp != -1 et debutNom non vide => recherche nom/prenom
 			// idEmp != -1 et debutNom vide => recherche tous les employés
 
-			AccessEmploye ac = new AccessEmploye();
-			listeEmp = ac.getEmployes(this.dbs.getEmpAct().idAg, _idEmp, _debutNom, _debutPrenom);
+			AccessEmploye ae = new AccessEmploye();
+			listeEmp = ae.getEmployes(this.dbs.getEmpAct().idAg, _idEmp, _debutNom, _debutPrenom);
 
 		} catch (DatabaseConnexionException e) {
 			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);

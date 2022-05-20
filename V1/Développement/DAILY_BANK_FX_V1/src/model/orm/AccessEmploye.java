@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.data.CompteCourant;
 import model.data.Employe;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -238,6 +239,7 @@ public class AccessEmploye {
 
 			int result = pst.executeUpdate();
 			pst.close();
+			
 			if (result != 1) {
 				con.rollback();
 				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.UPDATE,
@@ -246,6 +248,44 @@ public class AccessEmploye {
 			con.commit();
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.Client, Order.UPDATE, "Erreur accès", e);
+		}
+	}
+
+	/**
+	 * Suppression d'un employé
+	 *
+	 * @param idEmploye		ID de l'employé
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 */
+	public void supprimerCompte(int idEmploye)
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		try {
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "DELETE FROM EMPLOYE WHERE IDEMPLOYE = ?";
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setInt(1, idEmploye);
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Employe, Order.INSERT,
+						"Delete anormal (delete de moins ou plus d'une ligne)", null, result);
+			}
+
+			con.commit();
+
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Employe, Order.UPDATE, "Erreur accès", e);
 		}
 	}
 }
