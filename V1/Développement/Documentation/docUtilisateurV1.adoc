@@ -91,4 +91,20 @@ Tout d'abord, accédez à la page de **gestion des clients** et sélectionnez le
 
 image::gestion_comptes.png["Gestion comptes"]
 
-image::gestion_comptes.png["Gestion opérations"]
+=== Créer un nouveau compte
+Il suffit de cliquer sur "Nouveau Compte"
+
+image::gestioncompte/gestion_compte_nouveau_5.png["Créer un compte"]
+
+Une fois sur la page nouveau compte
+
+=== Pour supprimer un compte
+Tout d'abord, il faut selectionner un compte dans la liste et puis cliquer sur "Supprimer Compte
+
+image::gestioncompte/gestion_compte_supprimer_5.png["Supprimer un compte"]
+
+Il suffit ensuite de cliquer sur "Ok" sur la page de confirmation
+
+image::gestioncompte/gestion_compte_supprimer_6.png["Confirmer la suppression d'un compte"]
+
+
