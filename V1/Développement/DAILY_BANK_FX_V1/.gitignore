@@ -3,6 +3,7 @@ bin
 .idea
 META-INF
 *.iml
+*.jar
 
 # Eclipse
 .classpath
