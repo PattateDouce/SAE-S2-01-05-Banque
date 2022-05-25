@@ -67,15 +67,21 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 |id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
 
 |40
-|-
+|testEffectuerVirementValide
 |Effectuer un virement de compte à compte
-|--
+|**Etant donné un compte** existant, accéder à sa liste d'opérations, effectuer un virement compte à compte valide vers un destinataire valide, le montant doit être retiré du compte sélectionné, et doit être ajouté au compte destinataire.
 |Le compte est sélectionné
 
 |41
-|-
-|Effectuer un virement de compte à compte invalide
-|--
+|testEffectuerVirementInvalide1
+|Effectuer un virement de compte à compte invalide (découvert)
+|**Étant donné un compte** existant, accéder à sa liste d'opérations, effectuer un virement compte à compte d'un montant entrainant le compte à un découvert, rien ne doit se passer hormis l'apparition du message "Dépassement du découvert".
+|Le compte est sélectionné
+
+|42
+|testEffectuerVirementInvalide2
+|Effectuer un virement de compte à compte invalide (destinataire invalide)
+|**Étant donné un compte** existant, accéder à sa liste d'opérations, effectuer un virement compte à compte vers un compte inexistant, rien ne doit se passer hormis un changement de couleur indiquant l'erreur.
 |Le compte est sélectionné
 
 |===
