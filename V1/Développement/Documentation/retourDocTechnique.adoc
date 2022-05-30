@@ -1,0 +1,42 @@
+= Documentations technique
+
+== Eléments obligatoires
+   
+- Page de garde
+- Sommaire
+-  Présentation de l'Application
+- Répartition des fonctionnalités par programmeur (Une section qui décrit le partage du travail)
+
+- Pas de page de garde
+ 
+- pas de répartition du tavail.
+
+== Forme :
+
+ Toutes les figures doivent avoir un numéro et un titre et un commentaire.
+
+
+== Ressources externes :
+Il faut indiquer , l’utilisation de java fx …
+Il faut donc s’assurer que les postes de travail des employés possèdent une JRE 1.8 pour pouvoir faire fonctionner le .jar sans encombre. 
+Voir comment lancer dans le bon environnement → IHM
+Comment installer l’application pour pouvoir la maintenir : accès à la base  …
+
+== Archi de l’application ok
+
+
+== l’application
+
+Les éléments attendus :
+
+  Pour chaque fonctionnalité : en les expliquant
+        Dans chaque partie : qui est le développeur responsable    
+        ◦  Partie de use case réalisé - scénarios éventuels
+        ◦ Partie du diagramme de classes données nécessaires : en lecture, en mise à jour
+        ◦ Copies écrans principales de la fonctionnalité (ou renvoi vers doc utilisateur) + maquettes états imprimés (si concerné)
+        ◦ Classes impliquées dans chaque package
+        ◦  Extraits de code significatifs commentés si nécessaires pour des points particuliers et importants avec spéc. ddées
+        ◦ Eléments essentiels à connaître, spécificités, … nécessaires à la mise en œuvre du développement. Cette partie peut être illustrée par un diagramme de séquence
+
+===  V0 non décrit
+=== V1 non décrit
