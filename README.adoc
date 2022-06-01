@@ -8,13 +8,13 @@ Mettre à jour l'application DailyBank.
 
 == Livrables SEMAINE 21
 
-Documentations V0 (utilisateur et technique) : https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V0/Développement/Documentation
+https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V0/Développement/Documentation[Documentations V0] (utilisateur et technique)
 
-Code V1 (développement terminé) : https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V1/Développement/DAILY_BANK_FX_V1
+https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V1/Développement/DAILY_BANK_FX_V1[Code V1] (développement terminé)
 
-Fichier .jar V1 : https://github.com/IUT-Blagnac/sae2022-bank-4b01/releases/download/V1/DailyBankV1.jar
+https://github.com/IUT-Blagnac/sae2022-bank-4b01/releases/download/V1/DailyBankV1.jar[Fichier JAR V1]
 
-Documentations V1 (utilisateur, technique et cahier de tests) : https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V1/Développement/Documentation (Doc utilisateur et cahier de tests non terminés, mais déjà bien avancés)
+https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V1/Développement/Documentation[Documentations V1] (utilisateur, technique et cahier de tests; doc utilisateur et cahier de tests non terminés, mais déjà bien avancés)
 
 
 
