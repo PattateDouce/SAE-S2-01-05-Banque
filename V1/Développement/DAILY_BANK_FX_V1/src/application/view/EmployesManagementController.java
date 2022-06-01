@@ -156,7 +156,6 @@ public class EmployesManagementController implements Initializable {
 
 	@FXML
 	private void doSuppEmploye() {
-		// TODO demander confirmation quant on supprime un employé
 		if (AlertUtilities.confirmYesCancel(this.primaryStage, "Suppression d'employé",
 				"Êtes vous sur de vouloir supprimer l'employé ?", null, AlertType.CONFIRMATION)) {
 			int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
