@@ -2,11 +2,15 @@ package model.orm;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -256,50 +260,188 @@ public class AccessCompteCourant {
 		}
 	}
 
+	/**
+	 * Génération d'un relevé mensuel d'un compte en pdf
+	 *
+	 * @param cpt IN le compte concerné
+	 *
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 * @throws FileNotFoundException
+	 * @throws DocumentException
+	 * @throws IOException
+	 */
 	public void generatePDF(CompteCourant cpt) {
 		try {
+			LocalDateTime date = LocalDateTime.now();
+
 			Document document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream("CompteCourant.pdf"));
+			PdfWriter.getInstance(document, Files.newOutputStream(Paths.get("CompteCourant.pdf")));
 			document.open();
-			document.add(new Paragraph("Compte Courant"));
-			document.add(new Paragraph("Numero de compte : " + cpt.idNumCompte));
-			document.add(new Paragraph("Solde : " + cpt.solde));
-			document.add(new Paragraph("Debit autorisé : " + cpt.debitAutorise));
-			document.add(new Paragraph("Client : " + cpt.idNumCli));
+
+			AccessClient ac = new AccessClient();
+			Client cli = ac.getClient(cpt.idNumCli);
+
+			document.addTitle("Relevé mensuel du compte " + cpt.idNumCompte);
+
+			Paragraph titre = new Paragraph("Relevé du mois de " + getMonth(date.getMonthValue()-1) + " " + date.getYear() + "\n\n", FontFactory.getFont(FontFactory.defaultEncoding, 22, Font.BOLD));
+			titre.setAlignment(Element.ALIGN_CENTER);
+			document.add(titre);
+
+			Paragraph client = new Paragraph("Propriétaire : " + cli.nom.toUpperCase() + " " + cli.prenom, FontFactory.getFont(FontFactory.defaultEncoding, 16, Font.BOLD));
+			document.add(client);
+
+			Paragraph compte = new Paragraph("N° de compte : " + cpt.idNumCompte, FontFactory.getFont(FontFactory.defaultEncoding, 16, Font.BOLD));
+			document.add(compte);
+
+			document.add(new Paragraph("Solde actuel : " + cpt.solde + " €"));
+			document.add(new Paragraph("Débit autorisé : " + cpt.debitAutorise + " €"));
+
+			document.add(new Paragraph("\n\n"));
+
 			AccessOperation ao = new AccessOperation();
-			float[] pointColumnWidths = {150F, 200F, 100F};
+			float[] pointColumnWidths = {200F, 600F, 200F, 200F};
 			PdfPTable table = new PdfPTable(pointColumnWidths);
+			table.setWidthPercentage(90);
 			table.setHeaderRows(1);
+
 			PdfPCell cellDate = new PdfPCell(
 					new Phrase("Date", FontFactory.getFont(FontFactory.defaultEncoding, 12, Font.BOLD))
 			);
 			cellDate.setHorizontalAlignment(Element.ALIGN_CENTER);
+			cellDate.setBorder(Rectangle.BOTTOM);
+			cellDate.setFixedHeight(30);
+			cellDate.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			cellDate.setVerticalAlignment(Element.ALIGN_MIDDLE);
+
 			PdfPCell cellOperation = new PdfPCell(
 					new Phrase("Opération", FontFactory.getFont(FontFactory.defaultEncoding, 12, Font.BOLD))
 			);
 			cellOperation.setHorizontalAlignment(Element.ALIGN_CENTER);
-			PdfPCell cellMontant = new PdfPCell(
-					new Phrase("Montant", FontFactory.getFont(FontFactory.defaultEncoding, 12, Font.BOLD))
+			cellOperation.setBorder(Rectangle.BOTTOM);
+			cellOperation.setFixedHeight(30);
+			cellOperation.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			cellOperation.setVerticalAlignment(Element.ALIGN_MIDDLE);
+
+			PdfPCell cellDebit = new PdfPCell(
+					new Phrase("Débit", FontFactory.getFont(FontFactory.defaultEncoding, 12, Font.BOLD))
 			);
-			cellMontant.setHorizontalAlignment(Element.ALIGN_CENTER);
+			cellDebit.setHorizontalAlignment(Element.ALIGN_CENTER);
+			cellDebit.setBorder(Rectangle.BOTTOM);
+			cellDebit.setFixedHeight(30);
+			cellDebit.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			cellDebit.setVerticalAlignment(Element.ALIGN_MIDDLE);
+
+			PdfPCell cellCredit = new PdfPCell(
+					new Phrase("Crédit", FontFactory.getFont(FontFactory.defaultEncoding, 12, Font.BOLD))
+			);
+			cellCredit.setHorizontalAlignment(Element.ALIGN_CENTER);
+			cellCredit.setBorder(Rectangle.BOTTOM);
+			cellCredit.setFixedHeight(30);
+			cellCredit.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			cellCredit.setVerticalAlignment(Element.ALIGN_MIDDLE);
+
 			table.addCell(cellDate);
 			table.addCell(cellOperation);
-			table.addCell(cellMontant);
-			Date date = Date.from(Instant.now());
+			table.addCell(cellDebit);
+			table.addCell(cellCredit);
+
+			PdfPCell cellVide = new PdfPCell(new Phrase(""));
+			cellVide.setBorder(Rectangle.NO_BORDER);
+			cellVide.setFixedHeight(20);
+
+			BaseColor light_light_gray = new BaseColor(224, 224, 224);
+			BaseColor color = BaseColor.WHITE;
+
 			for (Operation op : ao.getOperations(cpt.idNumCompte)) {
-				if (date.getMonth() == op.dateOp.getMonth()) {
+				if (date.getMonthValue()-1 == op.dateOp.getMonth()) {
 					PdfPCell cellD = new PdfPCell(new Phrase(op.dateOp.toString()));
+					cellD.setBorder(Rectangle.NO_BORDER);
+					cellD.setBackgroundColor(color);
+					cellD.setFixedHeight(20);
+
 					PdfPCell cellT = new PdfPCell(new Phrase(op.idTypeOp));
-					PdfPCell cellM = new PdfPCell(new Phrase(Double.toString(op.montant)));
+					cellT.setBorder(Rectangle.NO_BORDER);
+					cellT.setBackgroundColor(color);
+					cellT.setFixedHeight(20);
+
+					PdfPCell cellM = new PdfPCell(new Phrase(op.montant + " €"));
+					cellM.setBorder(Rectangle.NO_BORDER);
+					cellM.setBackgroundColor(color);
+					cellM.setFixedHeight(20);
+					cellM.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+					cellVide.setBackgroundColor(color);
+
 					table.addCell(cellD);
 					table.addCell(cellT);
-					table.addCell(cellM);
+					if(op.montant < 0) {
+						table.addCell(cellM);
+						table.addCell(cellVide);
+					} else {
+						table.addCell(cellVide);
+						table.addCell(cellM);
+					}
+					if(color == light_light_gray) color = BaseColor.WHITE;
+					else color = light_light_gray;
 				}
 			}
+			cellVide.setBorder(Rectangle.TOP);
+			cellVide.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table.addCell(cellVide);
+			table.addCell(cellVide);
+
 			document.add(table);
+
 			document.close();
-		}catch (Exception e){
+
+			Process p = Runtime.getRuntime().exec("cmd /c start CompteCourant.pdf");
+			p.waitFor();
+			p.destroy();
+
+		} catch (FileNotFoundException | DocumentException e) {
 			e.printStackTrace();
+		} catch (RowNotFoundOrTooManyRowsException e) {
+			throw new RuntimeException(e);
+		} catch (DatabaseConnexionException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (DataAccessException e) {
+			throw new RuntimeException(e);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	private String getMonth(int month) {
+		switch (month) {
+			case 0:
+				return "Janvier";
+			case 1:
+				return "Février";
+			case 2:
+				return "Mars";
+			case 3:
+				return "Avril";
+			case 4:
+				return "Mai";
+			case 5:
+				return "Juin";
+			case 6:
+				return "Juillet";
+			case 7:
+				return "Août";
+			case 8:
+				return "Septembre";
+			case 9:
+				return "Octobre";
+			case 10:
+				return "Novembre";
+			case 11:
+				return "Décembre";
+			default:
+				return "";
 		}
 	}
 }
