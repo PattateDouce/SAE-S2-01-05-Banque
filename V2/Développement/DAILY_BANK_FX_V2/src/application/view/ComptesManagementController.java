@@ -35,14 +35,14 @@ public class ComptesManagementController implements Initializable {
 	private Client clientDesComptes;
 	private ObservableList<CompteCourant> olCompteCourant;
 
-    /**
-     * Init context.
-     *
-     * @param _primaryStage the primary stage
-     * @param _cm           the cm
-     * @param _dbstate      the dbstate
-     * @param client        the client
-     */
+	/**
+	 * Init context.
+	 *
+	 * @param _primaryStage the primary stage
+	 * @param _cm           the cm
+	 * @param _dbstate      the dbstate
+	 * @param client        the client
+	 */
 // Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, ComptesManagement _cm, DailyBankState _dbstate, Client client) {
 		this.cm = _cm;
@@ -74,10 +74,10 @@ public class ComptesManagementController implements Initializable {
 		this.validateComponentState();
 	}
 
-    /**
-     * Display dialog.
-     */
-    public void displayDialog() {
+	/**
+	 * Display dialog.
+	 */
+	public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
 
@@ -95,6 +95,8 @@ public class ComptesManagementController implements Initializable {
 	private ListView<CompteCourant> lvComptes;
 	@FXML
 	private Button btnVoirOpes;
+	@FXML
+	private Button btnPdf;
 	@FXML
 	private Button btnModifierCompte;
 	@FXML
@@ -157,6 +159,17 @@ public class ComptesManagementController implements Initializable {
 		}
 	}
 
+	@FXML
+	private void generatePDF() {
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
+			this.cm.generatePDF(cpt);
+		}
+		this.loadList();
+		this.validateComponentState();
+	}
+
 	private void loadList () {
 		ArrayList<CompteCourant> listeCpt;
 		listeCpt = this.cm.getComptesDunClient();
@@ -173,6 +186,7 @@ public class ComptesManagementController implements Initializable {
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			this.btnVoirOpes.setDisable(false);
+			this.btnPdf.setDisable(false);
 			this.btnModifierCompte.setDisable(false);
 			this.btnSupprCompte.setDisable(false);
 
@@ -188,12 +202,11 @@ public class ComptesManagementController implements Initializable {
 
 		} else {
 			this.btnVoirOpes.setDisable(true);
+			this.btnPdf.setDisable(true);
 			this.btnModifierCompte.setDisable(true);
 			this.btnSupprCompte.setDisable(true);
 		}
 
 
 	}
-
-
 }

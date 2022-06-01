@@ -188,4 +188,9 @@ public class  ComptesManagement {
 		}
 		return compte;
 	}
+
+	public void generatePDF(CompteCourant cpt) {
+		AccessCompteCourant acc = new AccessCompteCourant();
+		acc.generatePDF(cpt);
+	}
 }

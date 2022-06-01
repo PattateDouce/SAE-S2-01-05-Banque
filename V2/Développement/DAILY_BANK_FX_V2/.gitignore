@@ -4,6 +4,7 @@ bin
 META-INF
 *.iml
 *.jar
+*.pdf
 
 # Eclipse
 .classpath

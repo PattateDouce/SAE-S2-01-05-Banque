@@ -1,19 +1,26 @@
 package model.orm;
 
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.IBlockElement;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.Operation;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
 import model.orm.exception.ManagementRuleViolation;
 import model.orm.exception.Order;
 import model.orm.exception.RowNotFoundOrTooManyRowsException;
-import model.orm.exception.Table;
 
 public class AccessCompteCourant {
 
@@ -51,7 +58,7 @@ public class AccessCompteCourant {
 
 			if (result != 1) {
 				con.rollback();
-				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.INSERT,
+				throw new RowNotFoundOrTooManyRowsException(model.orm.exception.Table.Client, Order.INSERT,
 						"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
 			}
 
@@ -70,7 +77,7 @@ public class AccessCompteCourant {
 
 			compte.idNumCli = numCliBase;
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.Client, Order.INSERT, "Erreur accès", e);
+			throw new DataAccessException(model.orm.exception.Table.Client, Order.INSERT, "Erreur accès", e);
 		}
 	}
 
@@ -109,7 +116,7 @@ public class AccessCompteCourant {
 			rs.close();
 			pst.close();
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
+			throw new DataAccessException(model.orm.exception.Table.CompteCourant, Order.SELECT, "Erreur accès", e);
 		}
 
 		return alResult;
@@ -156,14 +163,14 @@ public class AccessCompteCourant {
 			}
 
 			if (rs.next()) {
-				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.SELECT,
+				throw new RowNotFoundOrTooManyRowsException(model.orm.exception.Table.CompteCourant, Order.SELECT,
 						"Recherche anormale (en trouve au moins 2)", null, 2);
 			}
 			rs.close();
 			pst.close();
 			return cc;
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
+			throw new DataAccessException(model.orm.exception.Table.CompteCourant, Order.SELECT, "Erreur accès", e);
 		}
 	}
 
@@ -189,7 +196,7 @@ public class AccessCompteCourant {
 				cc.debitAutorise = -cc.debitAutorise;
 			}
 			if (cAvant.solde < cc.debitAutorise) {
-				throw new ManagementRuleViolation(Table.CompteCourant, Order.UPDATE,
+				throw new ManagementRuleViolation(model.orm.exception.Table.CompteCourant, Order.UPDATE,
 						"Erreur de règle de gestion : sole à découvert", null);
 			}
 			Connection con = LogToDatabase.getConnexion();
@@ -206,12 +213,12 @@ public class AccessCompteCourant {
 			pst.close();
 			if (result != 1) {
 				con.rollback();
-				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.UPDATE,
+				throw new RowNotFoundOrTooManyRowsException(model.orm.exception.Table.CompteCourant, Order.UPDATE,
 						"Update anormal (update de moins ou plus d'une ligne)", null, result);
 			}
 			con.commit();
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
+			throw new DataAccessException(model.orm.exception.Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
 
@@ -242,7 +249,7 @@ public class AccessCompteCourant {
 
 			if (result != 1) {
 				con.rollback();
-				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.INSERT,
+				throw new RowNotFoundOrTooManyRowsException(model.orm.exception.Table.Client, Order.INSERT,
 						"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
 			}
 
@@ -250,8 +257,33 @@ public class AccessCompteCourant {
 			con.commit();
 
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.Client, Order.UPDATE, "Erreur accès", e);
+			throw new DataAccessException(model.orm.exception.Table.Client, Order.UPDATE, "Erreur accès", e);
 		}
 	}
 
+    public void generatePDF(CompteCourant cpt) {
+		try {
+			Document document = new Document();
+			PdfWriter.getInstance(document, new FileOutputStream("CompteCourant.pdf"));
+			document.open();
+			document.add(new Paragraph("Compte Courant"));
+			document.add(new Paragraph("Numero de compte : " + cpt.idNumCompte));
+			document.add(new Paragraph("Solde : " + cpt.solde));
+			document.add(new Paragraph("Debit autorisé : " + cpt.debitAutorise));
+			document.add(new Paragraph("Client : " + cpt.idNumCli));
+			AccessOperation ao = new AccessOperation();
+			float [] pointColumnWidths = {150F, 150F, 150F};
+			Table table = new Table(pointColumnWidths);
+			for(Operation op : ao.getOperations(cpt.idNumCompte)) {
+				Cell cell = new Cell();
+				cell.add((IBlockElement) new Paragraph("Date : " + op.dateOp));
+				cell.add((IBlockElement) new Paragraph("Montant : " + op.montant));
+				cell.add((IBlockElement) new Paragraph("Type : " + op.idTypeOp));
+				table.addCell(cell);
+			}
+			document.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
 }
