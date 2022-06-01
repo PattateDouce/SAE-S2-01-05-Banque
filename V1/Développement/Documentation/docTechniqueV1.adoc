@@ -11,7 +11,22 @@
 
 La banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients pour remplacer plusieurs outils obsolètes. Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
 
-== 2. Structure du code
+
+== 2. Répartition des tâches 
+Pour cette V1, nous avons réparti les tâches de la manière suivante :
+
+* James SANDALL ROBERTSON : 
+- Créer un compte
+- Clôturer un compte
+
+* Nolan JACQUEMONT :
+- Créditer/débiter un compte
+- Effectuer un virement de compte à compte
+
+* Rémy GUIBERT :
+- Gérer les employés (opérations CRUD)
+
+== 3. Structure du code
 
 Les packages :
 
@@ -36,7 +51,7 @@ Les packages :
     model.exception
         Classes des exceptions spécifiques d’accès à la BD, levées par les classes de model.orm
 
-== 3. Le paradigme MVC
+== 4 Le paradigme MVC
 
 Si on prend le modèle MVC pour l’application entière, on a :
 
@@ -59,7 +74,7 @@ Le reste est juste de "l’aide" :
 
 
 
-==  4. Le rôle des classes
+==  5. Le rôle des classes
 
     application
         - DailyBank : main() de l’application
