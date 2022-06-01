@@ -95,7 +95,7 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 |50
 |TestNouvelEmploye
 |Gérer les employés
-|Lorsque la fenêtre de création d'employé se ferme, l'objet renvoyer ne doit pas être nul et l'identifiant de l'employé doit être unique.
+|Lorsque la fenêtre de création d'employé se ferme, l'objet renvoyer ne doit pas être `null` et l'identifiant de l'employé doit être unique.
 |Être connecté en tant que chef d'agence
 
 |===
