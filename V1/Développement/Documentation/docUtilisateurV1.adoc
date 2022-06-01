@@ -15,15 +15,15 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 
 == 2. Répartition des tâches 
 Pour cette V1, nous avons réparti les tâches de la manière suivante :
-James SANDALL ROBERTSON : 
+* James SANDALL ROBERTSON : 
 - Créer un compte
 - Clôturer un compte
 
-Nolan JACQUEMONT :
+* Nolan JACQUEMONT :
 - Créditer/débiter un compte
 - Effectuer un virement de compte à compte
 
-Rémy GUIBERT :
+* Rémy GUIBERT :
 - Gérer les employés (opérations CRUD)
 
 
