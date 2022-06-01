@@ -5,6 +5,7 @@ META-INF
 *.iml
 *.jar
 *.pdf
+LIBS
 
 # Eclipse
 .classpath
