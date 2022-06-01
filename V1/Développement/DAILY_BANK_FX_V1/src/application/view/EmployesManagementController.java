@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.control.EmployesManagement;
+import application.tools.AlertUtilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Employe;
@@ -154,11 +156,15 @@ public class EmployesManagementController implements Initializable {
 
 	@FXML
 	private void doSuppEmploye() {
-		int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0) {
-			Employe empMod = this.ole.get(selectedIndice);
-			if (this.em.supprimerEmploye(empMod.idEmploye)) {
-				this.ole.remove(selectedIndice);
+		// TODO demander confirmation quant on supprime un employé
+		if (AlertUtilities.confirmYesCancel(this.primaryStage, "Suppression d'employé",
+				"Êtes vous sur de vouloir supprimer l'employé ?", null, AlertType.CONFIRMATION)) {
+			int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
+			if (selectedIndice >= 0) {
+				Employe empMod = this.ole.get(selectedIndice);
+				if (this.em.supprimerEmploye(empMod.idEmploye)) {
+					this.ole.remove(selectedIndice);
+				}
 			}
 		}
 	}
