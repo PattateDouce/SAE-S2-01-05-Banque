@@ -1,20 +1,16 @@
 package application.view;
 
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
-import application.tools.AlertUtilities;
 import application.tools.CategorieOperation;
 import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
