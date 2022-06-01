@@ -20,7 +20,7 @@ import javafx.stage.WindowEvent;
 import model.data.Employe;
 
 /**
- * The type Client editor pane controller.
+ * Contrôleur de la page de modification/création d'un employé
  */
 public class EmployeEditorPaneController implements Initializable {
 
