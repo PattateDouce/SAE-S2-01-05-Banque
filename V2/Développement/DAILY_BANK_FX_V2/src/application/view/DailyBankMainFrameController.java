@@ -89,10 +89,16 @@ public class DailyBankMainFrameController implements Initializable {
 	private MenuItem mitemDeConnexion;
 	@FXML
 	private MenuItem mitemQuitter;
+
+	@FXML
+	MenuItem mitemSimulerEmprunt;
 	@FXML
 	private Button btnConn;
 	@FXML
 	private Button btnDeconn;
+
+
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -171,6 +177,17 @@ public class DailyBankMainFrameController implements Initializable {
 	@FXML
 	private void doEmployeOption() {
 		this.dbmf.gestionEmployes();
+	}
+
+
+	@FXML
+	private void doSimulerEmprunt() {
+		// TODO
+	}
+
+	@FXML
+	private void doSimulerAssurance() {
+		// TODO
 	}
 
 	private void actionQuitterBD() {
