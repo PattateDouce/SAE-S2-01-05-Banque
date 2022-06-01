@@ -101,17 +101,16 @@ public class DailyBankMainFrameController implements Initializable {
 	@FXML
 	private void doQuit() {
 
-		this.actionQuitterBD();
-
 		if (AlertUtilities.confirmYesCancel(this.primaryStage, "Quitter l'application",
 				"Êtes vous sur de vouloir quitter l'application ?", "Vous perdrez votre session", AlertType.CONFIRMATION)) {
+			this.actionQuitterBD();
 			this.primaryStage.close();
 		}
 	}
 
 	@FXML
 	private void doActionAide() {
-		String contenu = "DailyBank v1.01\nSAE 2.01 Développement\nIUT-Blagnac";
+		String contenu = "DailyBank V1\nSAE 2.01 Développement\nIUT-Blagnac";
 		AlertUtilities.showAlert(this.primaryStage, "Aide", null, contenu, AlertType.INFORMATION);
 	}
 
