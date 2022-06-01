@@ -85,3 +85,59 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 |Le compte est sélectionné
 
 |===
+
+=== Créer un employé
+
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
+
+|50
+|TestNouvelEmploye
+|Gérer les employés
+|Lorsque la fenêtre de création d'employé se ferme, l'objet renvoyer ne doit pas être nul et l'identifiant de l'employé doit être unique.
+|Être connecté en tant que chef d'agence
+
+|===
+
+=== Rechercher un employé
+
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
+
+|60
+|TestRechercherEmploye
+|Gérer les employés
+|Que tout les champs de recherche soit vides, ou qu'il y ait un numéro de compte, ou qu'il y ait un nom, ou un nom et un prénom
+|Être connecté en tant que chef d'agence
+
+|===
+
+=== Modifier un employé
+
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
+
+|70
+|TestModifierEmploye
+|Gérer les employés
+|Étant donné un employé sélectionné, lorsque la fenêtre de modification d'employé se ferme, l'objet renvoyer ne doit pas être nul et l'identifiant de l'employé doit existé dans la base de données.
+|Être connecté en tant que chef d'agence
+
+|===
+
+=== Supprimer un employé
+
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
+
+|80
+|TestSupprimerEmploye
+|Gérer les employés
+|Étant donné un employé sélectionné, lorsque la fenêtre de confirmation se ferme après avoir appuyé sur "Ok"
+|Être connecté en tant que chef d'agence
+
+|===
