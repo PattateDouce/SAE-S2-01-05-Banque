@@ -182,7 +182,7 @@ public class DailyBankMainFrameController implements Initializable {
 
 	@FXML
 	private void doSimulerEmprunt() {
-		// TODO
+		this.dbmf.simulerEmprunt();
 	}
 
 	@FXML

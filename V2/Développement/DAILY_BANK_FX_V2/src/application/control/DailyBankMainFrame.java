@@ -171,4 +171,13 @@ public class DailyBankMainFrame extends Application {
     	EmployesManagement em = new EmployesManagement(this.primaryStage, this.dbs);
 		em.doEmployeManagementDialog();
     }
+
+
+	/**
+	 * Permet de simuler un emprunt
+	 */
+	public void simulerEmprunt() {
+		LoanSimulatorPane loanSimulatorPane = new LoanSimulatorPane(this.primaryStage,this.dbs);
+		loanSimulatorPane.doLoadSimulation();
+	}
 }
