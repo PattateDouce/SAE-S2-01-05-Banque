@@ -168,7 +168,7 @@ public class DailyBankMainFrame extends Application {
      * Gestion des employés par un chef d'agence
      */
     public void gestionEmployes() {
-    	EmployesManagement cm = new EmployesManagement(this.primaryStage, this.dbs);
-		cm.doEmployeManagementDialog();
+    	EmployesManagement em = new EmployesManagement(this.primaryStage, this.dbs);
+		em.doEmployeManagementDialog();
     }
 }

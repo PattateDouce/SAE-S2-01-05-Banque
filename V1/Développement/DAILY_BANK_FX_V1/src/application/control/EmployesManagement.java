@@ -18,7 +18,7 @@ import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 
 /**
- * The type Clients management.
+ * Classe "Pane" de la liste des employés
  */
 public class EmployesManagement {
 
@@ -27,7 +27,7 @@ public class EmployesManagement {
 	private EmployesManagementController emc;
 
     /**
-     * Instantiates a new Clients management.
+     * Instantiates a new Employes management.
      *
      * @param _parentStage the parent stage
      * @param _dbstate     the dbstate
@@ -58,7 +58,7 @@ public class EmployesManagement {
 	}
 
     /**
-     * Do client management dialog.
+     * Do Employe management dialog.
      */
     public void doEmployeManagementDialog() {
 		this.emc.displayDialog();

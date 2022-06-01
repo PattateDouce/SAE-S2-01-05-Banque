@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import application.DailyBankState;
 import application.control.EmployesManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +18,7 @@ import javafx.stage.WindowEvent;
 import model.data.Employe;
 
 /**
- * The type Clients management controller.
+ * Contrôleur de la liste des employés
  */
 public class EmployesManagementController implements Initializable {
 
@@ -38,7 +37,6 @@ public class EmployesManagementController implements Initializable {
      * @param _primaryStage the primary stage
      * @param _em           the em
      */
-// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, EmployesManagement _em) {
 		this.em = _em;
 		this.primaryStage = _primaryStage;
@@ -175,7 +173,6 @@ public class EmployesManagementController implements Initializable {
 	}
 
 	private void validateComponentState() {
-		// Non implémenté => désactivé
 		int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			this.btnModifEmploye.setDisable(false);

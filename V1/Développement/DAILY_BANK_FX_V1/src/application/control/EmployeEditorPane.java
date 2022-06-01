@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import model.data.Employe;
 
 /**
- * The type Employe editor pane.
+ * Classe "Pane" de la modification/création d'un employé
  */
 public class EmployeEditorPane {
 
@@ -22,7 +22,7 @@ public class EmployeEditorPane {
 	private EmployeEditorPaneController eepc;
 
     /**
-     * Instantiates a new Client editor pane.
+     * Instantiates a new Employe editor pane.
      *
      * @param _parentStage the parent stage
      * @param _dbstate     the dbstate
