@@ -6,20 +6,6 @@ Mettre à jour l'application DailyBank.
 
 
 
-== Livrables SEMAINE 21
-
-**⚠⚠⚠⚠ C'EST ICI QU'IL FAUT CLIQUER POUR ACCEDER AUX DIFFERENTS LIVRABLES ⚠⚠⚠⚠**
-
-https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V0/Développement/Documentation[Documentations V0] (utilisateur et technique)
-
-https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V1/Développement/DAILY_BANK_FX_V1[Code V1] (développement terminé)
-
-https://github.com/IUT-Blagnac/sae2022-bank-4b01/releases/download/V1/DailyBankV1.jar[Fichier JAR V1]
-
-https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V1/Développement/Documentation[Documentations V1] (utilisateur, technique et cahier de tests; doc utilisateur et cahier de tests non terminés, mais déjà bien avancés)
-
-
-
 [cols="1,2,2,5",options=header]
 |===
 | Date    | Nom         |  Lien                             | Retour
@@ -43,11 +29,11 @@ https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V1/Développement/Doc
 |         | Suivi projet|   | 
 | 22/05   | Gantt V2  à jour    |       | 
 |         | Doc. Util. V1 |   https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/Développement/Documentation/docUtilisateurV1.adoc[Doc_user_V1]   |       manque doc user V1  
-|         | Doc. Tec. V1 | | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/D%C3%A9veloppement/Documentation/retourDocTechnique.adoc[Retour_Doc_Tec_v1]                
-|         | Code V1     | |  la javadoc  pas vu                    
-|         | Recette V1 | |    il manque les tests pour le CRUD employé sinon ok                  
+|         | Doc. Tec. V1 | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/Développement/Documentation/docTechniqueV1.adoc[Doc technique] | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/D%C3%A9veloppement/Documentation/retourDocTechnique.adoc[Retour_Doc_Tec_v1]                
+|         | Code V1     | https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V1/Développement/DAILY_BANK_FX_V1[Code V1] |  la javadoc  pas vu                    
+|         | Recette V1 | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/Développement/Documentation/cahierDeRecetteV1.adoc[Recette v1] |    il manque les tests pour le CRUD employé sinon ok                  
 |         | Gantt V3 à jour   |                      | 
-|         | `jar` projet |   | 
+|         | `jar` projet | https://github.com/IUT-Blagnac/sae2022-bank-4b01/releases/download/V1/DailyBankV1.jar[Fichier JAR V1] | 
 | 05/06   | Gantt V3 à Jour  |    |  
 |         | Doc. Util. V2 |         |           
 |         | Doc. Tec. V2 |    |     
