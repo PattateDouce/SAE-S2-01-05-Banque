@@ -8,7 +8,7 @@ Mettre à jour l'application DailyBank.
 
 == Livrables SEMAINE 21
 
-**C'EST ICI QU'IL FAUT CLIQUER POUR ACCEDER AUX DIFFERENTS LIVRABLES**
+**⚠⚠⚠⚠ C'EST ICI QU'IL FAUT CLIQUER POUR ACCEDER AUX DIFFERENTS LIVRABLES ⚠⚠⚠⚠**
 
 https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V0/Développement/Documentation[Documentations V0] (utilisateur et technique)
 
