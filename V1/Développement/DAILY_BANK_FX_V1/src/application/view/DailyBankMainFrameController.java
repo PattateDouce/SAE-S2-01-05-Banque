@@ -103,8 +103,8 @@ public class DailyBankMainFrameController implements Initializable {
 
 		this.actionQuitterBD();
 
-		if (AlertUtilities.confirmYesCancel(this.primaryStage, "Quitter Appli Principale",
-				"Etes vous sur de vouloir quitter l'appli ?", null, AlertType.CONFIRMATION)) {
+		if (AlertUtilities.confirmYesCancel(this.primaryStage, "Quitter l'application",
+				"Êtes vous sur de vouloir quitter l'application ?", "Vous perdrez votre session", AlertType.CONFIRMATION)) {
 			this.primaryStage.close();
 		}
 	}
