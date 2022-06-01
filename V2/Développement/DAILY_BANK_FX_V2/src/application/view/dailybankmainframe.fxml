@@ -37,6 +37,13 @@
                         <MenuItem fx:id="mitemEmploye" disable="true" mnemonicParsing="false" onAction="#doEmployeOption" text="Employés" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Simulation">
+                     <items>
+                        <MenuItem fx:id="mitemSimulerEmprunt" mnemonicParsing="false" onAction="#doSimulerEmprunt" text="Simuler un emprunt" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#doSimulerAssurance" text="Simuler une assurance" />
+                     </items>
+                  </Menu>
                 <Menu mnemonicParsing="false" text="?">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#doActionAide" text="Aide" />
