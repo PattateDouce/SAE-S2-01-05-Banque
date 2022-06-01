@@ -13,9 +13,6 @@
 La banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients pour remplacer plusieurs outils obsolètes. Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
 
 
-
-
-
 == 2. Installation
 
 Cette application nécessite d'avoir Java 8 d'installé au préalable.
@@ -111,4 +108,40 @@ Il suffit ensuite de cliquer sur "Ok" sur la page de confirmation
 
 image::gestioncompte/gestion_compte_supprimer_6.png["Confirmer la suppression d'un compte"]
 
+=== Accéder à la page de gestion des employés
 
+Pour accéder à la page de gestion des empolyés, vous devez être connecté en tant que Chef d'Agence, ensuite cliquez sur l'onglet **"Gestion" puis sur "Employés"**. Vous arriverez ensuite sur la page de gestion employés, qui sera tout d'abord vide. Pour afficher la liste de tous les employés, cliquez simplement sur le bouton **"Rechercher"**, en laissant tous les champs vides. Vous obtiendrez alors quelque chose comme ceci :
+
+image::gestion_employes.png["Gestion employés"]
+
+=== Créer un nouvel employé
+
+À partir de la fenêtre précédente, il suffit de cliquer sur "Nouvel employé"
+
+image::gestion_employes_nouveau.png["Créer un nouvel employé"]
+
+Une fenêtre comme celle-ci apparaîtra
+
+image::nouvel_employe.png["Créer un nouvel employé"]
+
+Une fois sur la fenêtre de création d'employé, vous pouvez entrez les informations du futur employé et appuyer sur "Valider"
+Chaque champs doit être rempli et les espaces en début et fin de ligne seront ignorés.
+
+=== Supprimer un employé
+
+À partir de la fenêtre de gestion d'employé, il faut selectionner un compte dans la liste et puis cliquer sur "Supprimer employé"
+
+image::supprimer_employe.png["Supprimer un employé"]
+
+Il suffit ensuite de cliquer sur "Ok" sur la page de confirmation
+
+image::supprimer_employe_confirmation.png["Confirmer la suppression d'un employé"]
+
+=== Modifier les informations d'un employé
+
+À partir de la fenêtre de gestion d'employé, il faut selectionner un compte dans la liste et puis cliquer sur "Modifier employé"
+
+image::modifier_employer.png["Modification d'un employé"]
+
+Une fois sur la fenêtre de modification d'employé, vous pouvez modifier n'importe quelle information (sauf l'ID) et les confirmées en appuyant sur "Valider"
+Comme à la création, chaque champs doit être rempli et les espaces en début et fin de ligne seront ignorés.
