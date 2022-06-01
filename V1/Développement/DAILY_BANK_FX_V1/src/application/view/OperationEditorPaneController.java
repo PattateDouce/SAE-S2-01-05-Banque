@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.CompteCourant;
 import model.data.Operation;
+import model.orm.AccessClient;
 import model.orm.AccessCompteCourant;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -299,17 +300,33 @@ public class OperationEditorPaneController implements Initializable {
 				this.txtMontant.requestFocus();
 				return;
 			}
-			String numCompte = this.txtCompte.getText().trim();
+			String numCompteStr = this.txtCompte.getText().trim();
+			int numCompte = 0;
+			try {
+				numCompte = Integer.parseInt(numCompteStr);
+			} catch (NumberFormatException nfe) {
+				infoVirement = "Numéro de compte invalide ! - Cpt. : " + this.compteEdite.idNumCompte + "  ";
+				this.lblMessage.setText(infoVirement);
+				this.txtCompte.getStyleClass().add("borderred");
+				this.lblCompte.getStyleClass().add("borderred");
+				this.txtCompte.requestFocus();
+				return;
+			}
 			AccessCompteCourant acc = new AccessCompteCourant();
-			if (numCompte.equals(this.compteEdite.idNumCompte)) {
+			AccessClient accl = new AccessClient();
+			if (numCompte == this.compteEdite.idNumCompte) {
+				infoVirement = "Le compte cible ne peut pas être le même que le compte source !";
+				this.lblMessage.setText(infoVirement);
 				this.txtCompte.getStyleClass().add("borderred");
 				this.lblCompte.getStyleClass().add("borderred");
 				this.txtCompte.requestFocus();
 				return;
 			}
 			try {
-				compteCible = acc.getCompteCourant(Integer.parseInt(numCompte));
-				if(compteCible == null) {
+				compteCible = acc.getCompteCourant(numCompte);
+				if(compteCible == null || accl.getClient(compteCible.idNumCli).idAg != accl.getClient(this.compteEdite.idNumCli).idAg) {
+					infoVirement = "Le compte cible n'existe pas ou n'appartient pas à votre agence !";
+					this.lblMessage.setText(infoVirement);
 					this.txtCompte.getStyleClass().add("borderred");
 					this.lblCompte.getStyleClass().add("borderred");
 					this.txtCompte.requestFocus();
