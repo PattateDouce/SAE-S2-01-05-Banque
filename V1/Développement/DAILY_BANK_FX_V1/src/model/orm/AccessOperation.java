@@ -158,6 +158,50 @@ public class AccessOperation {
 	}
 
 	/**
+	 * Enregistrement d'un virement.
+	 *
+	 * Se fait par procédure stockée : - Vérifie que le montant n'est pas négatif -
+	 * Enregistre l'opération - Met à jour le solde du compte.
+	 *
+	 * @param idNumCompteDebite compte débiteur
+	 * @param idNumCompteCredite compte créditeur
+	 * @param montant montant débité
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 * @throws ManagementRuleViolation
+	 */
+	public void insertVirement(int idNumCompteDebite, int idNumCompteCredite, double montant)
+			throws DatabaseConnexionException, ManagementRuleViolation, DataAccessException {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			CallableStatement call;
+
+			String q = "{call Virer (?, ?, ?, ?)}";
+			// les ? correspondent aux paramètres : cf. déf procédure (3 paramètres)
+			call = con.prepareCall(q);
+			// Paramètres in
+			call.setInt(1, idNumCompteDebite);
+			call.setInt(2, idNumCompteCredite);
+			call.setDouble(3, montant);
+			// Paramètres out
+			call.registerOutParameter(4, java.sql.Types.INTEGER);
+			// 4 type du quatrième paramètre qui est déclaré en OUT, cf. déf procédure
+
+			call.execute();
+
+			int res = call.getInt(4);
+
+			if (res != 0) { // Erreur applicative
+				throw new ManagementRuleViolation(Table.Operation, Order.INSERT,
+						"Erreur de règle de gestion : découvert autorisé dépassé", null);
+			}
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
+		}
+	}
+
+	/**
 	 * Fonction utilitaire qui retourne un ordre sql "to_date" pour mettre une date
 	 * dans une requête sql
 	 *
