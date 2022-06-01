@@ -1,0 +1,87 @@
+= Cahier de Recette V2
+:toc:
+:toc-title: Sommaire
+
+== Équipe
+* Nolan JACQUEMONT 
+* James SANDALL ROBERTSON 
+* Rémy GUIBERT
+
+== 1. Contexte
+
+La banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients pour remplacer plusieurs outils obsolètes. Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
+
+== 2. Fiches de test
+
+=== Créer un compte
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
+
+// 1ère ligne
+|10
+|TestCréerCompte
+|Créer un compte
+|**Etant donné un client** existant, crée un nouveau compte pour ce client. L'identification du compte est unique et son solde est 50 €
+|Le client existe
+|===
+
+=== Clôturer un compte
+
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
+
+|20
+|TestCloturerCompte
+|Créer un compte
+|**Etant donné un compte** existant, clôturer le compte, son solde doit être égal à 0 et son attribut `estCloture` doit être égal à "O"
+|Le client existe
+
+|===
+
+=== Effectuer un crédit
+
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
+
+|30
+|testEffectuerCreditValide
+|Effectuer un crédit
+|**Etant donné un compte** existant, accéder à sa liste d'opérations, effectuer un crédit d'un montant m, le montant m doit être ajouté à l'attribut `solde`.
+|Le compte est sélectionné
+
+|31
+|testEffectuerCreditInvalide
+|Effectuer un crédit invalide
+|**Etant donné un compte** existant, accéder à sa liste d'opérations, effectuer un crédit d'un montant m strictement négatif, rien ne doit se passer hormis le changement de couleur du texte `Montant`.
+|Le compte est sélectionné
+
+|===
+
+=== Effectuer un virement de compte à compte
+
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
+
+|40
+|testEffectuerVirementValide
+|Effectuer un virement de compte à compte
+|**Etant donné un compte** existant, accéder à sa liste d'opérations, effectuer un virement compte à compte valide vers un destinataire valide, le montant doit être retiré du compte sélectionné, et doit être ajouté au compte destinataire.
+|Le compte est sélectionné
+
+|41
+|testEffectuerVirementInvalide1
+|Effectuer un virement de compte à compte invalide (découvert)
+|**Étant donné un compte** existant, accéder à sa liste d'opérations, effectuer un virement compte à compte d'un montant entrainant le compte à un découvert, rien ne doit se passer hormis l'apparition du message "Dépassement du découvert".
+|Le compte est sélectionné
+
+|42
+|testEffectuerVirementInvalide2
+|Effectuer un virement de compte à compte invalide (destinataire invalide)
+|**Étant donné un compte** existant, accéder à sa liste d'opérations, effectuer un virement compte à compte vers un compte inexistant, rien ne doit se passer hormis un changement de couleur indiquant l'erreur.
+|Le compte est sélectionné
+
+|===
