@@ -39,9 +39,9 @@
                 </Menu>
                   <Menu mnemonicParsing="false" text="Simulation">
                      <items>
-                        <MenuItem fx:id="mitemSimulerEmprunt" mnemonicParsing="false" onAction="#doSimulerEmprunt" text="Simuler un emprunt" />
+                        <MenuItem fx:id="mitemLoanSimulation" mnemonicParsing="false" onAction="#doSimulerEmprunt" text="Simuler un emprunt" />
                         <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" onAction="#doSimulerAssurance" text="Simuler une assurance" />
+                        <MenuItem fx:id="mitemWarantySimulation" mnemonicParsing="false" onAction="#doSimulerAssurance" text="Simuler une assurance" />
                      </items>
                   </Menu>
                 <Menu mnemonicParsing="false" text="?">

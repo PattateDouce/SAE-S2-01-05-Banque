@@ -84,14 +84,15 @@ public class DailyBankMainFrameController implements Initializable {
 	@FXML
 	private MenuItem mitemEmploye;
 	@FXML
+	private MenuItem mitemLoanSimulation;
+	@FXML
+	private MenuItem mitemWarantySimulation;
+	@FXML
 	private MenuItem mitemConnexion;
 	@FXML
 	private MenuItem mitemDeConnexion;
 	@FXML
 	private MenuItem mitemQuitter;
-
-	@FXML
-	MenuItem mitemSimulerEmprunt;
 	@FXML
 	private Button btnConn;
 	@FXML
@@ -146,8 +147,12 @@ public class DailyBankMainFrameController implements Initializable {
 			this.lblEmpPrenom.setText(e.prenom);
 			if (this.dbs.isChefDAgence()) {
 				this.mitemEmploye.setDisable(false);
+				this.mitemLoanSimulation.setDisable(false);
+				this.mitemWarantySimulation.setDisable(false);
 			} else {
 				this.mitemEmploye.setDisable(true);
+				this.mitemLoanSimulation.setDisable(true);
+				this.mitemWarantySimulation.setDisable(true);
 			}
 			this.mitemClient.setDisable(false);
 			this.mitemConnexion.setDisable(true);
@@ -162,6 +167,8 @@ public class DailyBankMainFrameController implements Initializable {
 
 			this.mitemClient.setDisable(true);
 			this.mitemEmploye.setDisable(true);
+			this.mitemLoanSimulation.setDisable(true);
+			this.mitemWarantySimulation.setDisable(true);
 			this.mitemConnexion.setDisable(false);
 			this.mitemDeConnexion.setDisable(true);
 			this.btnConn.setVisible(true);
