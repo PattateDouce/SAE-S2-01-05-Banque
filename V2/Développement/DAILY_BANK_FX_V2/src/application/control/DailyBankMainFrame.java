@@ -50,7 +50,7 @@ public class DailyBankMainFrame extends Application {
 			scene.getStylesheets().add(DailyBankApp.class.getResource("application.css").toExternalForm());
 
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Fenêtre Principale");
+			primaryStage.setTitle("DailyBank");
 
 			/*
 			// En mise au point :
@@ -183,5 +183,13 @@ public class DailyBankMainFrame extends Application {
 	public void simulerEmprunt() {
 		LoanSimulatorPane loanSimulatorPane = new LoanSimulatorPane(this.primaryStage,this.dbs);
 		loanSimulatorPane.doLoadSimulation();
+	}
+	
+	/**
+	 * Permet de simuler une assurance d'emprunt
+	 */
+	public void simulerAssurance() {
+		WarantySimulatorPane warantySimulatorPane = new WarantySimulatorPane(this.primaryStage,this.dbs);
+		warantySimulatorPane.doSimulationDialog();
 	}
 }
