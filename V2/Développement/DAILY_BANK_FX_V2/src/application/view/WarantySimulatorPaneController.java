@@ -84,7 +84,6 @@ public class WarantySimulatorPaneController implements Initializable {
         @FXML
         private void doSimulation() {
         	if (isSaisieValide()) {
-        		System.out.println("oui");
         		double mensualite = tauxAssurance/100 * (capitalEmprunt/12);
         		double dureeMois = dureeAnnee * 12;
         		double coutAssurance = mensualite * dureeMois;
