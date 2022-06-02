@@ -36,7 +36,7 @@ public class LoanSimulatorPane {
 
             this.primaryStage = new Stage();
             this.primaryStage.initModality(Modality.WINDOW_MODAL);
-            this.primaryStage.initOwner(_parentStage);
+            this.primaryStage .initOwner(_parentStage);
             StageManagement.manageCenteringStage(_parentStage, this.primaryStage);
             this.primaryStage.setScene(scene);
             this.primaryStage.setTitle("Simulation d'un emprunt");

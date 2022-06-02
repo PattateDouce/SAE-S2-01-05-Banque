@@ -38,7 +38,11 @@ public class AccessCompteCourant {
 	 * @throws DatabaseConnexionException
 	 */
 	public void insertCompte(CompteCourant compte)
-			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException, SoldeNotNullException {
+
+		if (compte.solde != 0) {
+			throw new SoldeNotNullException();
+		}
 		try {
 
 			Connection con = LogToDatabase.getConnexion();

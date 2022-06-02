@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import application.DailyBankState;
 import application.control.ComptesManagement;
+import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -190,11 +191,13 @@ public class ComptesManagementController implements Initializable {
 			this.btnModifierCompte.setDisable(false);
 			this.btnSupprCompte.setDisable(false);
 
+
+
 			CompteCourant cpt = lvComptes.getItems().get(selectedIndice);
 
 			if (cpt != null) {
 
-				if (cpt.estCloture.equals("O")) {
+				if (cpt.estCloture.equals("O") || cpt.solde != 0) {
 					btnSupprCompte.setDisable(true);
 					btnModifierCompte.setDisable(true);
 				}

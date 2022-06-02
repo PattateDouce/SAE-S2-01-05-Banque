@@ -17,6 +17,7 @@ import model.data.CompteCourant;
 import model.orm.AccessCompteCourant;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.SoldeNotNullException;
 
 /**
  * The type Comptes management.
@@ -104,6 +105,8 @@ public class  ComptesManagement {
 			} catch (ApplicationException ae) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
 				ed.doExceptionDialog();
+			} catch (SoldeNotNullException e) {
+				throw new RuntimeException(e);
 			}
 		}
 		return compte;
