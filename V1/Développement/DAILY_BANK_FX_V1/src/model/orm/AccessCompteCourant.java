@@ -7,12 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.data.CompteCourant;
-import model.orm.exception.DataAccessException;
-import model.orm.exception.DatabaseConnexionException;
-import model.orm.exception.ManagementRuleViolation;
-import model.orm.exception.Order;
-import model.orm.exception.RowNotFoundOrTooManyRowsException;
-import model.orm.exception.Table;
+import model.orm.exception.*;
 
 public class AccessCompteCourant {
 
@@ -224,33 +219,38 @@ public class AccessCompteCourant {
 	 * @throws DataAccessException
 	 * @throws DatabaseConnexionException
 	 */
-	public void supprimerCompte(CompteCourant compte)
-			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
-		try {
+		public void supprimerCompte(CompteCourant compte)
+				throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException, SoldeNotNullException {
 
-			Connection con = LogToDatabase.getConnexion();
-
-			String query = "UPDATE CompteCourant SET " + "solde = 0 "  + ", " + " estCloture = 'O' " + "WHERE idNumCompte = ?";
-			PreparedStatement pst = con.prepareStatement(query);
-			pst.setInt(1, compte.idNumCompte);
-
-			System.err.println(query);
-
-			int result = pst.executeUpdate();
-			pst.close();
-
-			if (result != 1) {
-				con.rollback();
-				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.INSERT,
-						"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
-			}
-
-
-			con.commit();
-
-		} catch (SQLException e) {
-			throw new DataAccessException(Table.Client, Order.UPDATE, "Erreur accès", e);
+		if (compte.solde != 0) {
+			throw new SoldeNotNullException();
 		}
-	}
+
+			try {
+
+				Connection con = LogToDatabase.getConnexion();
+
+				String query = "UPDATE CompteCourant SET " + " estCloture = 'O' " + "WHERE idNumCompte = ?";
+				PreparedStatement pst = con.prepareStatement(query);
+				pst.setInt(1, compte.idNumCompte);
+
+				System.err.println(query);
+
+				int result = pst.executeUpdate();
+				pst.close();
+
+				if (result != 1) {
+					con.rollback();
+					throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.INSERT,
+							"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
+				}
+
+
+				con.commit();
+
+			} catch (SQLException e) {
+				throw new DataAccessException(Table.Client, Order.UPDATE, "Erreur accès", e);
+			}
+		}
 
 }

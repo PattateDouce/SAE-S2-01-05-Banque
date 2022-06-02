@@ -15,8 +15,10 @@ import javafx.stage.Stage;
 import model.data.Client;
 import model.data.CompteCourant;
 import model.orm.AccessCompteCourant;
+import model.orm.AccessOperation;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.SoldeNotNullException;
 
 /**
  * The type Comptes management.
@@ -173,6 +175,7 @@ public class  ComptesManagement {
 		if (compte != null) {
 
 			try {
+				AccessOperation ao = new AccessOperation();
 				AccessCompteCourant ac = new AccessCompteCourant();
 				ac.supprimerCompte(compte);
 			} catch (DatabaseConnexionException e) {
@@ -182,6 +185,8 @@ public class  ComptesManagement {
 			} catch (ApplicationException ae) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
 				ed.doExceptionDialog();
+			} catch (SoldeNotNullException e) {
+				throw new RuntimeException(e);
 			}
 
 

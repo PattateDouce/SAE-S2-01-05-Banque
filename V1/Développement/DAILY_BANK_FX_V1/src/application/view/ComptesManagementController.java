@@ -180,7 +180,7 @@ public class ComptesManagementController implements Initializable {
 
 			if (cpt != null) {
 
-				if (cpt.estCloture.equals("O")) {
+				if (cpt.estCloture.equals("O") || cpt.solde != 0) {
 					btnSupprCompte.setDisable(true);
 					btnModifierCompte.setDisable(true);
 				}
