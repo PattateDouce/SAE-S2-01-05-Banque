@@ -28,7 +28,7 @@ Mettre à jour l'application DailyBank.
 |         | Recette V1  |                      | 
 |         | Suivi projet|   | 
 | 22/05   | Gantt V2  à jour    |       | 
-|         | Doc. Util. V1 |   https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/Développement/Documentation/docUtilisateurV1.adoc[Doc_user_V1]   |       manque doc user V1  
+|         | Doc. Util. V1 |   https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/Développement/Documentation/docUtilisateurV1.adoc[Doc_user_V1]   |       Entete : préciser nom de l'appli/client. Présenter les rôles dans l'application car les users n'auront pas tous les mêmes fonctionnalités. Pour la suite, mieux structurer les fonctionnalités par domaine et par user : gestion des clients, gestion des employés .... Attention aux fautes. 
 |         | Doc. Tec. V1 | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/Développement/Documentation/docTechniqueV1.adoc[Doc technique] | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/D%C3%A9veloppement/Documentation/retourDocTechnique.adoc[Retour_Doc_Tec_v1]                
 |         | Code V1     | https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V1/Développement/DAILY_BANK_FX_V1[Code V1] |  la javadoc  pas vu                    
 |         | Recette V1 | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/Développement/Documentation/cahierDeRecetteV1.adoc[Recette v1] |    il manque les tests pour le CRUD employé sinon ok                  
