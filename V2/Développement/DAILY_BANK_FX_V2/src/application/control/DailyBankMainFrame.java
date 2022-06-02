@@ -10,8 +10,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.data.AgenceBancaire;
 import model.orm.AccessAgenceBancaire;
+import model.orm.AccessOperation;
 import model.orm.LogToDatabase;
 import model.orm.exception.ApplicationException;
+import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
 
 /**
@@ -28,8 +30,10 @@ public class DailyBankMainFrame extends Application {
 	 * @param primaryStage	stage given by JavaFX
 	 */
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws DataAccessException {
 
+		AccessOperation ao = new AccessOperation();
+		ao.executerPrelevAuto();
 		this.primaryStage = primaryStage;
 
 		try {

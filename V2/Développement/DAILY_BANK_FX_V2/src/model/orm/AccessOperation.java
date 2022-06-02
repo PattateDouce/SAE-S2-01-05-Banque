@@ -1,11 +1,6 @@
 package model.orm;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -201,22 +196,30 @@ public class AccessOperation {
 		}
 	}
 
-	/**
-	 * Fonction utilitaire qui retourne un ordre sql "to_date" pour mettre une date
-	 * dans une requête sql
-	 *
-	 * @param d Date (java.sql) à transformer
-	 * @return Une chaine : TO_DATE ('j/m/a', 'DD/MM/YYYY') 'j/m/a' : jour mois an
-	 *         de d ex : TO_DATE ('25/01/2019', 'DD/MM/YYYY')
-	 */
-	private String dateToString(Date d) {
-		String sd;
-		Calendar cal;
-		cal = Calendar.getInstance();
-		cal.setTime(d);
-		sd = "" + cal.get(Calendar.DAY_OF_MONTH) + "/" + (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(Calendar.YEAR);
-		sd = "TO_DATE( '" + sd + "' , 'DD/MM/YYYY')";
-		return sd;
+	public void executerPrelevAuto() throws DataAccessException {
+
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			CallableStatement call;
+
+			String q = "{call ExecuterPrelevAuto(?)}";
+
+			call = con.prepareCall(q);
+
+			call.registerOutParameter(1, Types.VARCHAR);
+
+			call.execute();
+
+			String res = call.getString(1);
+
+			if(res != null)
+				System.out.println(res);
+
+		}catch (SQLException e) {
+			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
+		} catch (DatabaseConnexionException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
