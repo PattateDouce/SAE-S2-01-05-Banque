@@ -24,20 +24,20 @@ Mettre à jour l'application DailyBank.
 |         | Gantt V2    | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V2/Conception/gantt/SAE%202.05%20GANTT%20V2.pdf[Gantt V2] |     
 |         | Gantt V3 | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V3/Conception/gantt/SAE%202.05%20GANTT%20V3.pdf[Gantt V3] |     
 |         | Suivi projet|   | 
-| 22/05   | Gantt V2  à jour    | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V2/Conception/gantt/SAE%202.05%20GANTT%20V2.pdf[Gantt V2] | 
+| 22/05   | Gantt V2  à jour    | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V2/Conception/gantt/SAE%202.05%20GANTT%20V2%20à%20jour.pdf[Gantt V2 à jour] | 
 |         | Doc. Util. V1 |   https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/Développement/Documentation/docUtilisateurV1.adoc[Doc. util. V1]   |       Entete : préciser nom de l'appli/client. Présenter les rôles dans l'application car les users n'auront pas tous les mêmes fonctionnalités. Pour la suite, mieux structurer les fonctionnalités par domaine et par user : gestion des clients, gestion des employés .... Attention aux fautes. 
 |         | Doc. Tec. V1 | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/Développement/Documentation/docTechniqueV1.adoc[Doc. tec. V1] | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/D%C3%A9veloppement/Documentation/retourDocTechnique.adoc[Retour Doc. Tec. V1]                
 |         | Code V1     | https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V1/Développement/DAILY_BANK_FX_V1[Code V1] |  la javadoc  pas vu                    
 |         | Recette V1 | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/Développement/Documentation/cahierDeRecetteV1.adoc[Recette V1] |    il manque les tests pour le CRUD employé sinon ok                  
-|         | Gantt V3 à jour   | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V3/Conception/gantt/SAE%202.05%20GANTT%20V3.pdf[Gantt V3] | 
+|         | Gantt V3 à jour   | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V3/Conception/gantt/SAE%202.05%20GANTT%20V3%20à%20jour.pdf[Gantt V3 à jour] | 
 |         | `jar` projet | https://github.com/IUT-Blagnac/sae2022-bank-4b01/releases/download/V1/DailyBankV1.jar[Fichier JAR V1] | 
-| 05/06   | Gantt V3 à Jour  | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V3/Conception/gantt/SAE%202.05%20GANTT%20V3.pdf[Gantt V3] |  
+| 05/06   | Gantt V3 à Jour  | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V3/Conception/gantt/SAE%202.05%20GANTT%20V3%205%20juin.pdf[Gantt V3 5 juin] |  
 |         | Doc. Util. V2 | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V2/D%C3%A9veloppement/Documentation/docUtilisateurV2.adoc[Doc. Util. V2] |           
 |         | Doc. Tec. V2 | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V2/D%C3%A9veloppement/Documentation/docTechniqueV2.adoc[Doc. Tec. V2] |     
 |         | Code V2     | https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V2/D%C3%A9veloppement/DAILY_BANK_FX_V2[Code V2] |
 |         | Recette V2  | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V2/D%C3%A9veloppement/Documentation/cahierDeRecetteV2.adoc[Recette V2] |
 |         | `jar` projet |     |
-|12/06   | Gantt V3 à Jour  | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V3/Conception/gantt/SAE%202.05%20GANTT%20V3.pdf[Gantt V3] |  
+|12/06   | Gantt V3 à Jour  |  |  
 |         | Doc. Util. V3 |         |           
 |         | Doc. Tec. V3 |    |     
 |         | Code V3     |                       |
