@@ -190,3 +190,24 @@ image::modifier_employer.png["Modification d'un employé"]
 
 Une fois sur la fenêtre de modification d'employé, vous pouvez modifier n'importe quelle information (sauf l'ID) et les confirmées en appuyant sur **"Valider"**.
 Comme à la création, chaque champs doit être rempli et les espaces en début et fin de ligne seront ignorés.
+
+
+=== 4.5. Simulation d'une assurance d'emprunt
+`Accessible uniquement aux chefs d'agence`
+
+Pour accéder à la page de la simulation, vous devez être connecté en tant que Chef d'Agence, ensuite, cliquez sur l'onglet **"Simulation"** puis sur **"Simuler une assurance"** :
+
+image::sim_assurance/acces_sim_assurance.png["Accès simulation d'assurance"]
+
+La fenêtre des paramètres souvrira, avec les champs vide par défaut :
+
+image::sim_assurance/sim_assurance_vide.png["Simulation d'assurance, champs vides"]
+
+Une fois les champs complétés, il ne reste plus qu'à afficher le résultat avec le bouton **"Simuler"** :
+
+image::sim_assurance/sim_assurance_completee.png["Simulation d'assurance, champs complétés"]
+
+Le résultat sera afficher entre les champs et les boutons :
+
+image::sim_assurance/sim_assurance_resultat.png["Résultat de la simulation d'assurance"]
+
