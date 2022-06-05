@@ -1,4 +1,4 @@
-= Documentation Utilisateur V2
+= Documentation Utilisateur de l’application DailyBank V2
 :toc:
 :toc-title: Sommaire
 :imagesdir: ../../../resources/images
@@ -10,13 +10,19 @@
 
 == 1. Contexte
 
-La banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients pour remplacer plusieurs outils obsolètes. Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
+La banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients pour remplacer plusieurs outils obsolètes. Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau.
+
+L'application compte deux niveaux de droits d'accès :
+
+* Chef d'aggence : a tout les droits.
+
+* Guicheiter : possèdent moins de droits qu'un chef d'agence : ne peut pas gérer les employés ou rendre inactif un client, ne pas pas accèder aux simulation ou faire un débit exceptionnel.
 
 
 == 2. Installation
 
 Cette application nécessite d'avoir Java 8 d'installé au préalable.
-Pour se faire, il suffit de se rendre sur le site d'Oracle https://www.oracle.com/java/technologies/java8.html
+Pour se faire, il suffit de se rendre sur https://www.java.com/fr/download/[ce site]
 
 Il se peut que la version de Java ne soit prioritaire, si c'est le cas, il faut suivre les étapes suivantes
 
@@ -145,6 +151,8 @@ image:gestionop/gestion_op_virement_2.png["Fenêtre enregistrer un virement"]
 Enfin, saisissez le montant du virement et le compte à créditer. Cliquez ensuite sur **"Effectuer virement"**.
 
 === 4.4. Gestion des employés
+`Accessible uniquement aux chefs d'agence`
+
 ==== Accéder à la page de gestion des employés
 
 Pour accéder à la page de gestion des empolyés, vous devez être connecté en tant que Chef d'Agence, ensuite cliquez sur l'onglet **"Gestion" puis sur "Employés"**. Vous arriverez ensuite sur la page de gestion employés, qui sera tout d'abord vide. Pour afficher la liste de tous les employés, cliquez simplement sur le bouton **"Rechercher"**, en laissant tous les champs vides. Vous obtiendrez alors quelque chose comme ceci :
