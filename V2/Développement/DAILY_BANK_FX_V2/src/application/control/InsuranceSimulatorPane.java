@@ -3,16 +3,16 @@ package application.control;
 import application.DailyBankApp;
 import application.DailyBankState;
 import application.tools.StageManagement;
-import application.view.WarantySimulatorPaneController;
+import application.view.InsuranceSimulatorPaneController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class WarantySimulatorPane {
+public class InsuranceSimulatorPane {
     private Stage primaryStage;
-    private WarantySimulatorPaneController wspc;
+    private InsuranceSimulatorPaneController wspc;
 
     /**
      * Instantiates a new Waranty Simulator pane.
@@ -20,9 +20,9 @@ public class WarantySimulatorPane {
      * @param _parentStage the parent stage
      * @param _dbstate     the dbstate
      */
-    public WarantySimulatorPane(Stage _parentStage, DailyBankState _dbstate) {
+    public InsuranceSimulatorPane(Stage _parentStage, DailyBankState _dbstate) {
         try {
-            FXMLLoader loader = new FXMLLoader(WarantySimulatorPaneController.class.getResource("warantysimulatorpane.fxml"));
+            FXMLLoader loader = new FXMLLoader(InsuranceSimulatorPaneController.class.getResource("insurancesimulatorpane.fxml"));
             BorderPane root = loader.load();
 
             Scene scene = new Scene(root, root.getPrefWidth()+20, root.getPrefHeight()+10);

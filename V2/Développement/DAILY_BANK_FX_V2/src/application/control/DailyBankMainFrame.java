@@ -189,7 +189,7 @@ public class DailyBankMainFrame extends Application {
 	 * Permet de simuler une assurance d'emprunt
 	 */
 	public void simulerAssurance() {
-		WarantySimulatorPane warantySimulatorPane = new WarantySimulatorPane(this.primaryStage,this.dbs);
+		InsuranceSimulatorPane warantySimulatorPane = new InsuranceSimulatorPane(this.primaryStage,this.dbs);
 		warantySimulatorPane.doSimulationDialog();
 	}
 }

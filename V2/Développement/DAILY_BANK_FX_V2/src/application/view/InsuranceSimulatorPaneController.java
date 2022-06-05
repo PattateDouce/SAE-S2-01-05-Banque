@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class WarantySimulatorPaneController implements Initializable {
+public class InsuranceSimulatorPaneController implements Initializable {
 
         // Etat application
         private DailyBankState dbs;
@@ -93,46 +93,45 @@ public class WarantySimulatorPaneController implements Initializable {
         }
         
         /** Converti un String en Double
-         * @param s		chaîne à convertir
-         * @return Un Double si la chaîne correspond à un Double, sinon -1
+         * @param number	chaîne à convertir
+         * @return Le Double correspondant à la chaîne, ou -1 si elle ne correspond pas à un Double
          */
-        private double toDouble(String s) {
+        private double toDouble(String number) {
         	try {
-        		double number = Double.parseDouble(s);
-        		return number;
+        		return Double.parseDouble(number);
         	} catch(Exception e) {
         		return -1;
         	}
         }
 
-        /** Vérifie si les entrée sont valides
-         * @return Vrai si l'entrée est valide, Faux sinon
+        /** Vérifie si les entrées sont valides
+         * @return Vrai si les entrées sont valides, Faux sinon
          */
         private boolean isSaisieValide() {
-        	this.capitalEmprunt = toDouble(this.tfCapitalEmprunt.getText().trim());
-        	this.dureeAnnee = toDouble(this.tfDureeAnnee.getText().trim());
-        	this.tauxAssurance = toDouble(this.tfTauxAssurance.getText().trim());
-        	this.fraisDossier = toDouble(this.tfFraisDossier.getText().trim());
+        	this.capitalEmprunt = toDouble(this.tfCapitalEmprunt.getText());
+        	this.dureeAnnee = toDouble(this.tfDureeAnnee.getText());
+        	this.tauxAssurance = toDouble(this.tfTauxAssurance.getText());
+        	this.fraisDossier = toDouble(this.tfFraisDossier.getText());
 
-    		if (capitalEmprunt == -1 || capitalEmprunt < 0) {
+    		if (capitalEmprunt < 0) {
     			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le capital doit être un nombre (sans espaces, les virgules doivent être des points)",
     					AlertType.WARNING);
     			this.tfCapitalEmprunt.requestFocus();
     			return false;
     		}
-    		if (dureeAnnee == -1 || dureeAnnee < 0) {
+    		if (dureeAnnee < 0) {
     			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "La durée doit être un nombre entier d'années (sans espaces, les virgules doivent être des points)",
     					AlertType.WARNING);
     			this.tfDureeAnnee.requestFocus();
     			return false;
     		}
-    		if (tauxAssurance == -1 || tauxAssurance < 0) {
+    		if (tauxAssurance < 0) {
     			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le taux doit être un nombre (sans espaces, les virgules doivent être des points)",
     					AlertType.WARNING);
     			this.tfTauxAssurance.requestFocus();
     			return false;
     		}
-    		if (fraisDossier == -1 || fraisDossier < 0) {
+    		if (fraisDossier < 0) {
     			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Les frais de dossier doivent être un nombre (sans espaces, les virgules doivent être des points)",
     					AlertType.WARNING);
     			this.tfFraisDossier.requestFocus();
