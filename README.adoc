@@ -32,10 +32,10 @@ Mettre à jour l'application DailyBank.
 |         | Gantt V3 à jour   | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V3/Conception/gantt/SAE%202.05%20GANTT%20V3.pdf[Gantt V3] | 
 |         | `jar` projet | https://github.com/IUT-Blagnac/sae2022-bank-4b01/releases/download/V1/DailyBankV1.jar[Fichier JAR V1] | 
 | 05/06   | Gantt V3 à Jour  | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V3/Conception/gantt/SAE%202.05%20GANTT%20V3.pdf[Gantt V3] |  
-|         | Doc. Util. V2 |         |           
-|         | Doc. Tec. V2 |    |     
-|         | Code V2     |                       |
-|         | Recette V2  |   |
+|         | Doc. Util. V2 | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V2/D%C3%A9veloppement/Documentation/docUtilisateurV2.adoc[Doc. Util. V2] |           
+|         | Doc. Tec. V2 | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V2/D%C3%A9veloppement/Documentation/docTechniqueV2.adoc[Doc. Tec. V2] |     
+|         | Code V2     | https://github.com/IUT-Blagnac/sae2022-bank-4b01/tree/main/V2/D%C3%A9veloppement/DAILY_BANK_FX_V2[Code V2] |
+|         | Recette V2  | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V2/D%C3%A9veloppement/Documentation/cahierDeRecetteV2.adoc[Recette V2] |
 |         | `jar` projet |     |
 |12/06   | Gantt V3 à Jour  | https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V3/Conception/gantt/SAE%202.05%20GANTT%20V3.pdf[Gantt V3] |  
 |         | Doc. Util. V3 |         |           
