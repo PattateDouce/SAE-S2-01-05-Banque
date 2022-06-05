@@ -13,23 +13,7 @@
 La banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients pour remplacer plusieurs outils obsolètes. Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
 
 
-== 2. Répartition des tâches 
-Pour cette V1, nous avons réparti les tâches de la manière suivante :
-
-* James SANDALL ROBERTSON : 
-- Créer un compte
-- Clôturer un compte
-
-* Nolan JACQUEMONT :
-- Créditer/débiter un compte
-- Effectuer un virement de compte à compte
-
-* Rémy GUIBERT :
-- Gérer les employés (opérations CRUD)
-
-
-
-== 3. Installation
+== 2. Installation
 
 Cette application nécessite d'avoir Java 8 d'installé au préalable.
 Pour se faire, il suffit de se rendre sur le site d'Oracle https://www.oracle.com/java/technologies/java8.html
@@ -76,13 +60,14 @@ Modifiez le fichier de démarrage (~/.bashrc).
     % java -version
 
 
-== 4. Lancement
+== 3. Lancement
 Une fois que les dépendances sont installés, il suffit de lancer le cmd/shell et executer la commande suivante `java -jar <nom-ici>.jar`
 
 
-== 5. Fonctionnement
+== 4. Fonctionnement
 
-=== Accéder à son agence
+=== 4.1. Connexion
+==== Accéder à son agence
 
 Lorsque vous lancez l'application, vous arrivez sur la fenêtre suivante : 
 
@@ -96,32 +81,104 @@ Une fois vos identifiants rentrés, cliquez sur **"Valider"**. Vous arriverez en
 
 image::accueil_agence.png["Accueil agence"]
 
-=== Accéder à la page de gestion des clients
+=== 4.2. Gestion d'un client et de ses comptes
+==== Accéder à la page de gestion des clients
 
 Pour accéder à la page de gestion des clients, cliquez sur l'onglet **"Gestion" puis sur "Clients"**. Vous arriverez ensuite sur la page de gestion clients, qui sera tout d'abord vide. Pour afficher la liste de tous les clients, cliquez simplement sur le bouton **"Rechercher"**, en laissant tous les champs vides. Vous obtiendrez alors quelque chose comme ceci :
 
 image::gestion_clients.png["Gestion clients"]
 
-=== Gérer les comptes d'un client
+==== Gérer les comptes d'un client
 
-Tout d'abord, accédez à la page de **gestion des clients** et sélectionnez le client auquel vous souhaitez gérer les comptes. Cliquez ensuite sur le bouton **"Comptes client"**
+Tout d'abord, accédez à la page de **gestion des clients** et sélectionnez le client auquel vous souhaitez gérer les comptes. Cliquez ensuite sur le bouton **"Comptes client"**, vous obtiendrez une page proche de celle-ci :
 
 image::gestion_comptes.png["Gestion comptes"]
 
-=== Créer un nouveau compte
-Il suffit de cliquer sur "Nouveau Compte"
+==== Créer un nouveau compte
+Tout d'abord, accédez à la page de **gestion des clients** , puis il suffit de cliquer sur "Nouveau Compte" :
 
 image::gestioncompte/gestion_compte_nouveau_5.png["Créer un compte"]
 
-Une fois sur la page nouveau compte
+Une fenêtre s'ouvre, vous pouvez alors remplir deux champs, le découvert autorisé et le solde du compte au départ. Voici un exemple :
 
-=== Pour supprimer un compte
-Tout d'abord, il faut selectionner un compte dans la liste et puis cliquer sur "Supprimer Compte
+image::gestioncompte/gestion_compte_creer.png["Fenêtre créer un compte"]
+
+==== Supprimer un compte
+Tout d'abord, il faut selectionner un compte dans la liste et puis cliquer sur **"Supprimer Compte"** :
 
 image::gestioncompte/gestion_compte_supprimer_5.png["Supprimer un compte"]
 
-Il suffit ensuite de cliquer sur "Ok" sur la page de confirmation
+Il suffit ensuite de cliquer sur **"Ok"** sur la page de confirmation :
 
 image::gestioncompte/gestion_compte_supprimer_6.png["Confirmer la suppression d'un compte"]
 
+=== 4.3. Gestion des opérations
+==== Accéder à la page de gestion des opérations
+Tout d'abord, accédez à la page de **gestion des comptes**, puis cliquez sur le bouton **"Voir opérations"** :
 
+image::gestionop/gestion_op_bouton.png["Bouton voir opérations"]
+
+Une page comme celle-ci s'ouvrira :
+
+image::gestionop/gestion_op_accueil.png["Page de gestion des opérations"]
+
+==== Enregistrer un débit / crédit
+Tout d'abord, accédez à la page de **gestion des opérations**, puis cliquez sur le bouton **"Enregistrer Débit"** ou sur le bouton **"Enregistrer Crédit"** :
+
+image::gestionop/gestion_op_enregistrer.png["Enregistrer un débit / crédit"]
+
+S'ouvre ensuite cette fenêtre :
+
+image:gestionop/gestion_op_valider.png["Fenêtre enregistrer un débit / crédit"]
+
+Enfin, sélectionnez le type d'opération, puis saisissez le montant de l'opération. Cliquez ensuite sur **"Effectuer Débit"** ou **"Effectuer Crédit"**.
+
+==== Enregistrer un virement
+Tout d'abord, accédez à la page de **gestion des opérations**, puis cliquez sur le bouton **"Effectuer un virement"** :
+
+image:gestionop/gestion_op_virement_1.png["Enregistrer un virement"]
+
+S'ouvre ensuite cette fenêtre :
+
+image:gestionop/gestion_op_virement_2.png["Fenêtre enregistrer un virement"]
+
+Enfin, saisissez le montant du virement et le compte à créditer. Cliquez ensuite sur **"Effectuer virement"**.
+
+=== 4.4. Gestion des employés
+==== Accéder à la page de gestion des employés
+
+Pour accéder à la page de gestion des empolyés, vous devez être connecté en tant que Chef d'Agence, ensuite cliquez sur l'onglet **"Gestion" puis sur "Employés"**. Vous arriverez ensuite sur la page de gestion employés, qui sera tout d'abord vide. Pour afficher la liste de tous les employés, cliquez simplement sur le bouton **"Rechercher"**, en laissant tous les champs vides. Vous obtiendrez alors quelque chose comme ceci :
+
+image::gestion_employes.png["Gestion employés"]
+
+==== Créer un nouvel employé
+
+À partir de la fenêtre précédente, il suffit de cliquer sur **"Nouvel employé"** :
+
+image::gestion_employes_nouveau.png["Créer un nouvel employé"]
+
+Une fenêtre comme celle-ci apparaîtra :
+
+image::nouvel_employe.png["Créer un nouvel employé"]
+
+Une fois sur la fenêtre de création d'employé, vous pouvez entrez les informations du futur employé et appuyer sur **"Valider"**.
+Chaque champ doit être rempli et les espaces en début et fin de ligne seront ignorés.
+
+==== Supprimer un employé
+
+À partir de la fenêtre de gestion d'employé, il faut selectionner un compte dans la liste et puis cliquer sur **"Supprimer employé"** :
+
+image::supprimer_employe.png["Supprimer un employé"]
+
+Il suffit ensuite de cliquer sur **"Ok"** sur la page de confirmation :
+
+image::supprimer_employe_confirmation.png["Confirmer la suppression d'un employé"]
+
+==== Modifier les informations d'un employé
+
+À partir de la fenêtre de gestion d'employé, il faut selectionner un compte dans la liste et puis cliquer sur **"Modifier employé"** : 
+
+image::modifier_employer.png["Modification d'un employé"]
+
+Une fois sur la fenêtre de modification d'employé, vous pouvez modifier n'importe quelle information (sauf l'ID) et les confirmées en appuyant sur **"Valider"**.
+Comme à la création, chaque champs doit être rempli et les espaces en début et fin de ligne seront ignorés.
