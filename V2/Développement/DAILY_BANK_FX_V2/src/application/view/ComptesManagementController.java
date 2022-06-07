@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import application.DailyBankState;
 import application.control.ComptesManagement;
+import application.control.PrelevementsManagement;
 import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -128,7 +129,6 @@ public class ComptesManagementController implements Initializable {
 	@FXML
 	private void doModifierCompte() {
 
-
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			CompteCourant compteMod = this.lvComptes.getItems().get(selectedIndice);
@@ -175,7 +175,14 @@ public class ComptesManagementController implements Initializable {
 
 	@FXML
 	private void gererPrelev() {
-
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
+			PrelevementsManagement pm = new PrelevementsManagement(this.primaryStage, this.dbs, cpt);
+			pm.doPrelevementsManagement();
+		}
+		this.loadList();
+		this.validateComponentState();
 	}
 
 	private void loadList () {
