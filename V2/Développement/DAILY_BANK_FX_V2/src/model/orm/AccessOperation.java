@@ -198,28 +198,53 @@ public class AccessOperation {
 
 	public void executerPrelevAuto() throws DataAccessException {
 
+		if(!isPrelevedToday()) {
+			try {
+				Connection con = LogToDatabase.getConnexion();
+				CallableStatement call;
+
+				String q = "{call ExecuterPrelevAuto(?)}";
+
+				call = con.prepareCall(q);
+
+				call.registerOutParameter(1, Types.VARCHAR);
+
+				call.execute();
+
+				String res = call.getString(1);
+
+				if(res != null)
+					System.out.println(res);
+
+			}catch (SQLException e) {
+				throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
+			} catch (DatabaseConnexionException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public boolean isPrelevedToday() throws DataAccessException {
 		try {
 			Connection con = LogToDatabase.getConnexion();
 			CallableStatement call;
 
-			String q = "{call ExecuterPrelevAuto(?)}";
+			String q = "SELECT DISTINCT O.dateOp FROM PrelevementAutomatique P, OPERATION O " +
+					"WHERE P.DATERECURRENTE = TO_CHAR(SYSDATE, 'DD') AND O.IDNUMCOMPTE = P.IDNUMCOMPTE " +
+					"AND idTypeOp = 'Prélèvement automatique' AND TO_CHAR(DATEOP, 'DD/MM/YYYY') = TO_CHAR(SYSDATE, 'DD/MM/YYYY')";
 
 			call = con.prepareCall(q);
 
-			call.registerOutParameter(1, Types.VARCHAR);
+			ResultSet rs = call.executeQuery();
 
-			call.execute();
-
-			String res = call.getString(1);
-
-			if(res != null)
-				System.out.println(res);
+			if(rs.next())
+				return true;
 
 		}catch (SQLException e) {
 			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
 		} catch (DatabaseConnexionException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
-
 }
