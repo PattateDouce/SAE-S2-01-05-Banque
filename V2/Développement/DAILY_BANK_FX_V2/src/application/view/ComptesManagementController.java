@@ -99,6 +99,8 @@ public class ComptesManagementController implements Initializable {
 	@FXML
 	private Button btnPdf;
 	@FXML
+	private Button btnPrelev;
+	@FXML
 	private Button btnModifierCompte;
 	@FXML
 	private Button btnSupprCompte;
@@ -171,6 +173,11 @@ public class ComptesManagementController implements Initializable {
 		this.validateComponentState();
 	}
 
+	@FXML
+	private void gererPrelev() {
+
+	}
+
 	private void loadList () {
 		ArrayList<CompteCourant> listeCpt;
 		listeCpt = this.cm.getComptesDunClient();
@@ -181,8 +188,6 @@ public class ComptesManagementController implements Initializable {
 	}
 
 	private void validateComponentState() {
-		// Non implémenté => désactivé
-
 
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
@@ -190,6 +195,7 @@ public class ComptesManagementController implements Initializable {
 			this.btnPdf.setDisable(false);
 			this.btnModifierCompte.setDisable(false);
 			this.btnSupprCompte.setDisable(false);
+			this.btnPrelev.setDisable(false);
 
 
 
@@ -208,6 +214,7 @@ public class ComptesManagementController implements Initializable {
 			this.btnPdf.setDisable(true);
 			this.btnModifierCompte.setDisable(true);
 			this.btnSupprCompte.setDisable(true);
+			this.btnPrelev.setDisable(true);
 		}
 
 
