@@ -88,8 +88,14 @@ public class OperationsManagement {
 		if (op != null) {
 			try {
 				AccessOperation ao = new AccessOperation();
+				if (dbs.isChefDAgence()) {
+					ao.insertDebitEx(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+				}
 
-				ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+				else {
+					ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+				}
+
 
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
