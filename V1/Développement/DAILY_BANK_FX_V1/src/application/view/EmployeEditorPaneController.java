@@ -61,7 +61,7 @@ public class EmployeEditorPaneController implements Initializable {
 	 * @param mode   the mode
 	 * @return the employe
 	 */
-	public Employe displayDialog(Employe employe, EditionMode mode) {
+	public Employe displayDialog(Employe employe) {
 
 		if (employe == null) {
 			this.employeEdite = new Employe(0, "", "", "", "", "", this.dbs.getEmpAct().idAg);
@@ -137,7 +137,7 @@ public class EmployeEditorPaneController implements Initializable {
 		}
 	}
 
-	/** Vérifie la validiter des saisies
+	/** Vérifie la validité des saisies
 	 * @return True si tout est correct, False sinon
 	 */
 	private boolean isSaisieValide() {

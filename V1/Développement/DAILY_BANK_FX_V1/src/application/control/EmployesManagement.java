@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import application.DailyBankApp;
 import application.DailyBankState;
-import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.EmployesManagementController;
 import javafx.fxml.FXMLLoader;
@@ -72,7 +71,7 @@ public class EmployesManagement {
      */
     public Employe modifierEmploye(Employe e) {
 		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dbs);
-		Employe result = cep.doEmployeEditorDialog(e, EditionMode.MODIFICATION);
+		Employe result = cep.doEmployeEditorDialog(e);
 		if (result != null) {
 			try {
 				AccessEmploye ae = new AccessEmploye();
@@ -99,7 +98,7 @@ public class EmployesManagement {
     public Employe nouvelEmploye() {
     	Employe employe;
 		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dbs);
-		employe = cep.doEmployeEditorDialog(null, EditionMode.CREATION);
+		employe = cep.doEmployeEditorDialog(null);
 		if (employe != null) {
 			try {
 				AccessEmploye ae = new AccessEmploye();
@@ -120,7 +119,7 @@ public class EmployesManagement {
 
     /** Supprime un compte d'employé
      * @param idEmp		ID de l'employé
-     * @return true si cela fonction, false sinon
+     * @return true si cela fonctionne, false sinon
      */
     public boolean supprimerEmploye(int idEmp) {
     	try {
