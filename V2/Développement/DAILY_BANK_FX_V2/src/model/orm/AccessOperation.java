@@ -2,7 +2,6 @@ package model.orm;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import model.data.Operation;
 import model.orm.exception.DataAccessException;
@@ -196,6 +195,11 @@ public class AccessOperation {
 		}
 	}
 
+	/**
+	 * Executer les prélévements automatiques.
+	 *
+	 * @throws DataAccessException
+	 */
 	public void executerPrelevAuto() throws DataAccessException {
 
 		if(!isPrelevedToday()) {
@@ -224,12 +228,18 @@ public class AccessOperation {
 		}
 	}
 
+	/**
+	 * Vérifie si un prélèvement a été effectué aujourd'hui.
+	 *
+	 * @return true si prélèvement effectué aujourd'hui, false sinon.
+	 * @throws DataAccessException
+	 */
 	public boolean isPrelevedToday() throws DataAccessException {
 		try {
 			Connection con = LogToDatabase.getConnexion();
 			CallableStatement call;
 
-			String q = "SELECT DISTINCT O.dateOp FROM PrelevementAutomatique P, OPERATION O " +
+			String q = "SELECT DISTINCT TO_CHAR(O.dateOp, 'DD/MM/YYYY') FROM PrelevementAutomatique P, OPERATION O " +
 					"WHERE P.DATERECURRENTE = TO_CHAR(SYSDATE, 'DD') AND O.IDNUMCOMPTE = P.IDNUMCOMPTE " +
 					"AND idTypeOp = 'Prélèvement automatique' AND TO_CHAR(DATEOP, 'DD/MM/YYYY') = TO_CHAR(SYSDATE, 'DD/MM/YYYY')";
 
