@@ -43,7 +43,7 @@ public class LoanSimulatorPane {
             this.primaryStage.setResizable(false);
 
             this.cepc = loader.getController();
-            //this.cepc.initContext(this.primaryStage, _dbstate);
+            this.cepc.initContext(this.primaryStage, _dbstate);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class LoanSimulatorPane {
      *
      * @return the simulated loan
      */
-    public Emprunt doLoadSimulation() {
-        return this.cepc.displayDialog();
+    public void doLoadSimulation() {
+        this.cepc.displayDialog();
     }
 }

@@ -1,6 +1,7 @@
 package application;
 
 import application.control.DailyBankMainFrame;
+import application.tools.LoanSimulatorTool;
 
 /**
  * The type Daily bank app.
@@ -14,7 +15,7 @@ public class DailyBankApp  {
 	 * @param args the input arguments
 	 */
 	public static void main(String[] args) {
-
+		LoanSimulatorTool.runTests();
 		DailyBankMainFrame.runApp();
 
 	}

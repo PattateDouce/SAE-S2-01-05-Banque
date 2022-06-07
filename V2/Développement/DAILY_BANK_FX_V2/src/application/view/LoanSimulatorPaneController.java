@@ -4,6 +4,7 @@ import application.DailyBankState;
 import application.tools.AlertUtilities;
 import application.tools.ConstantesIHM;
 import application.tools.EditionMode;
+import application.tools.LoanSimulatorTool;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,8 +17,11 @@ import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Emprunt;
+import model.data.Periode;
 
+import javax.xml.soap.Text;
 import java.net.URL;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -36,6 +40,18 @@ public class LoanSimulatorPaneController implements Initializable {
         private CompteCourant compteResult;
 
         private boolean isConfirmed;
+
+
+        @FXML
+        private TextField capital;
+
+        @FXML
+        private TextField duree;
+
+        @FXML
+        private TextField tauxAnnuel;
+
+
         /**
          * Init context.
          *
@@ -47,6 +63,7 @@ public class LoanSimulatorPaneController implements Initializable {
             this.primaryStage = _primaryStage;
             this.dbs = _dbstate;
             this.configure();
+
         }
 
         /**
@@ -54,18 +71,19 @@ public class LoanSimulatorPaneController implements Initializable {
          */
         private void configure() {
             this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
-
+            capital.setEditable(true);
+            duree.setEditable(true);
+            tauxAnnuel.setEditable(true);
         }
 
         /**
          * Display dialog compte courant.
          *
          **/
-        public Emprunt displayDialog() {
+        public void displayDialog() {
 
-            AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Modif de compte n'est pas implémenté", null,
-                            Alert.AlertType.ERROR);
-            return null;
+            primaryStage.showAndWait();
+
 
 
 
@@ -95,13 +113,46 @@ public class LoanSimulatorPaneController implements Initializable {
 
         @FXML
         private void doSimulation() {
-            // todo
+           if (isSaisieValide()) {
+
+               Emprunt emprunt = new Emprunt();
+               emprunt.capital = Double.valueOf(capital.getText());
+               emprunt.tauxAnnuel = Double.valueOf(tauxAnnuel.getText());
+               emprunt.duree = Integer.valueOf(duree.getText());
+
+
+               List<Periode> periodes = LoanSimulatorTool.simulateLoan(emprunt);
+
+
+               int numPeriodes = periodes.size();
+               double mensualite = periodes.get(0).montantARembourser;
+
+               AlertUtilities.showAlert(this.primaryStage, "Simulation", "Il faudra"+" "+numPeriodes+" "+"mois pour rembourser cet emrpunt avec une mensualité de"+" "+ mensualite, null,
+                       Alert.AlertType.INFORMATION);
+           }
+
+           else {
+               AlertUtilities.showAlert(this.primaryStage, "Erreur de simulation", "Vous avez entré des valeurs incorrectes", null,
+                       Alert.AlertType.ERROR);
+           }
 
         }
 
         private boolean isSaisieValide() {
+            try {
+               double capitalD = Double.valueOf(capital.getText());
+               double tx =  Double.valueOf(tauxAnnuel.getText());
+               int dureeI = Integer.valueOf(duree.getText());
 
-            return true;
+               if (capitalD > 0 && tx > 0 && dureeI > 0) {
+                   return true;
+               }
+
+            } catch (Exception e) {
+                return false;
+            }
+
+            return false;
         }
 
 
