@@ -204,15 +204,12 @@ public class ComptesManagementController implements Initializable {
 			this.btnSupprCompte.setDisable(false);
 			this.btnPrelev.setDisable(false);
 
-
-
 			CompteCourant cpt = lvComptes.getItems().get(selectedIndice);
 
 			if (cpt != null) {
 
 				if (cpt.estCloture.equals("O") || cpt.solde != 0) {
 					btnSupprCompte.setDisable(true);
-					btnModifierCompte.setDisable(true);
 				}
 			}
 
