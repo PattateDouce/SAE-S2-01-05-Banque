@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -84,9 +85,7 @@ public class DailyBankMainFrameController implements Initializable {
 	@FXML
 	private MenuItem mitemEmploye;
 	@FXML
-	private MenuItem mitemLoanSimulator;
-	@FXML
-	private MenuItem mitemWarantySimulator;
+	private Menu mSimulation;
 	@FXML
 	private MenuItem mitemConnexion;
 	@FXML
@@ -137,6 +136,9 @@ public class DailyBankMainFrameController implements Initializable {
 		this.validateComponentState();
 	}
 
+	/**
+	 * Vérifie quels boutons doivent être activable en fonction de la personne connecté
+	 */
 	private void validateComponentState() {
 		Employe e = this.dbs.getEmpAct();
 		AgenceBancaire a = this.dbs.getAgAct();
@@ -147,12 +149,10 @@ public class DailyBankMainFrameController implements Initializable {
 			this.lblEmpPrenom.setText(e.prenom);
 			if (this.dbs.isChefDAgence()) {
 				this.mitemEmploye.setDisable(false);
-				this.mitemLoanSimulator.setDisable(false);
-				this.mitemWarantySimulator.setDisable(false);
+				this.mSimulation.setDisable(false);
 			} else {
 				this.mitemEmploye.setDisable(true);
-				this.mitemLoanSimulator.setDisable(true);
-				this.mitemWarantySimulator.setDisable(true);
+				this.mSimulation.setDisable(true);
 			}
 			this.mitemClient.setDisable(false);
 			this.mitemConnexion.setDisable(true);
@@ -167,8 +167,7 @@ public class DailyBankMainFrameController implements Initializable {
 
 			this.mitemClient.setDisable(true);
 			this.mitemEmploye.setDisable(true);
-			this.mitemLoanSimulator.setDisable(true);
-			this.mitemWarantySimulator.setDisable(true);
+			this.mSimulation.setDisable(true);
 			this.mitemConnexion.setDisable(false);
 			this.mitemDeConnexion.setDisable(true);
 			this.btnConn.setVisible(true);
@@ -197,6 +196,9 @@ public class DailyBankMainFrameController implements Initializable {
 		this.dbmf.simulerAssurance();
 	}
 
+	/**
+	 * Déconnect de la base de données
+	 */
 	private void actionQuitterBD() {
 		this.dbmf.disconnect();
 	}

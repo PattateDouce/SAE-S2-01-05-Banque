@@ -2,7 +2,6 @@ package application.control;
 
 import application.DailyBankApp;
 import application.DailyBankState;
-import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.EmployeEditorPaneController;
 import application.view.EmployesManagementController;
@@ -53,13 +52,12 @@ public class EmployeEditorPane {
 	}
 
     /**
-     * Do employe editor dialog.
+     * Show employe editor dialog.
      *
-     * @param employe the employe
-     * @param em     the em
+     * @param employe 	the employe to display
      * @return the employe
      */
-    public Employe doEmployeEditorDialog(Employe employe, EditionMode em) {
-		return this.eepc.displayDialog(employe, em);
+    public Employe doEmployeEditorDialog(Employe employe) {
+		return this.eepc.displayDialog(employe);
 	}
 }

@@ -1,6 +1,5 @@
 package application.view;
 
-import application.DailyBankState;
 import application.tools.AlertUtilities;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,9 +12,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class InsuranceSimulatorPaneController implements Initializable {
-
-        // Etat application
-        private DailyBankState dbs;
 
         // Fenêtre physique
         private Stage primaryStage;
@@ -30,19 +26,9 @@ public class InsuranceSimulatorPaneController implements Initializable {
          * Init context.
          *
          * @param _primaryStage the primary stage
-         * @param _dbstate      the dbstate
          */
-        public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
+        public void initContext(Stage _primaryStage) {
             this.primaryStage = _primaryStage;
-            this.dbs = _dbstate;
-            this.configure();
-        }
-
-        /**
-         * Initialise les labels et les events et d'autres objets
-         */
-        private void configure() {
-            this.primaryStage.setOnCloseRequest(e -> {e.consume(); this.closeWindow();} );
         }
 
         /**
@@ -50,13 +36,6 @@ public class InsuranceSimulatorPaneController implements Initializable {
          **/
         public void displayDialog() {
             this.primaryStage.showAndWait();
-        }
-
-        /**
-         * Fermeture de la fenêtre
-         */
-        private void closeWindow() {
-            this.doCancel();
         }
         
         
@@ -92,7 +71,7 @@ public class InsuranceSimulatorPaneController implements Initializable {
         	}
         }
         
-        /** Converti un String en Double
+        /** Convertie un String en Double
          * @param number	chaîne à convertir
          * @return Le Double correspondant à la chaîne, ou -1 si elle ne correspond pas à un Double
          */

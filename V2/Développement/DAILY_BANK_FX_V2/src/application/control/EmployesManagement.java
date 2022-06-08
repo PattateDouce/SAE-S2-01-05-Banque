@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import application.DailyBankApp;
 import application.DailyBankState;
-import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.EmployesManagementController;
 import javafx.fxml.FXMLLoader;
@@ -67,12 +66,12 @@ public class EmployesManagement {
     /**
      * Modifier un employé.
      *
-     * @param e the employe
-     * @return the employe
+     * @param e 	the employe to edit
+     * @return the edited employe or null if there were no modifications
      */
     public Employe modifierEmploye(Employe e) {
-		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dbs);
-		Employe result = cep.doEmployeEditorDialog(e, EditionMode.MODIFICATION);
+		EmployeEditorPane eep = new EmployeEditorPane(this.primaryStage, this.dbs);
+		Employe result = eep.doEmployeEditorDialog(e);
 		if (result != null) {
 			try {
 				AccessEmploye ae = new AccessEmploye();
@@ -94,18 +93,18 @@ public class EmployesManagement {
     /**
      * Nouvel employé.
      *
-     * @return the employe
+     * @return the new employe
      */
     public Employe nouvelEmploye() {
     	Employe employe;
-		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dbs);
-		employe = cep.doEmployeEditorDialog(null, EditionMode.CREATION);
+		EmployeEditorPane eep = new EmployeEditorPane(this.primaryStage, this.dbs);
+		employe = eep.doEmployeEditorDialog(null);
 		if (employe != null) {
 			try {
 				AccessEmploye ae = new AccessEmploye();
 				ae.insertEmploye(employe);
-			} catch (DatabaseConnexionException e) {
-				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+			} catch (DatabaseConnexionException dce) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, dce);
 				ed.doExceptionDialog();
 				this.primaryStage.close();
 				employe = null;
@@ -120,7 +119,7 @@ public class EmployesManagement {
 
     /** Supprime un compte d'employé
      * @param idEmp		ID de l'employé
-     * @return true si cela fonction, false sinon
+     * @return true si cela fonctionne, false sinon
      */
     public boolean supprimerEmploye(int idEmp) {
     	try {
@@ -128,8 +127,8 @@ public class EmployesManagement {
 			ae.supprimerCompte(idEmp);
 			return true;
 
-		} catch (DatabaseConnexionException e) {
-			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+		} catch (DatabaseConnexionException dce) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, dce);
 			ed.doExceptionDialog();
 			this.primaryStage.close();
 
@@ -156,12 +155,11 @@ public class EmployesManagement {
 			// idEmp != -1 => recherche sur idEmp
 			// idEmp != -1 et debutNom non vide => recherche nom/prenom
 			// idEmp != -1 et debutNom vide => recherche tous les employés
-
 			AccessEmploye ae = new AccessEmploye();
 			listeEmp = ae.getEmployes(this.dbs.getEmpAct().idAg, _idEmp, _debutNom, _debutPrenom);
 
-		} catch (DatabaseConnexionException e) {
-			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+		} catch (DatabaseConnexionException dce) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, dce);
 			ed.doExceptionDialog();
 			this.primaryStage.close();
 			listeEmp = new ArrayList<>();
