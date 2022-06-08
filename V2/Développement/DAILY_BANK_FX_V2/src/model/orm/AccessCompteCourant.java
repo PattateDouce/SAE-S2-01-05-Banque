@@ -450,7 +450,7 @@ public class AccessCompteCourant {
 		}
 	}
 
-	public ArrayList<Prelevement> getPrelev(int idNumCpt) throws DataAccessException {
+	public ArrayList<Prelevement> getPrelevs(int idNumCpt) throws DataAccessException {
 		ArrayList<Prelevement> alResult = new ArrayList<>();
 		try {
 			Connection con = LogToDatabase.getConnexion();
@@ -478,5 +478,77 @@ public class AccessCompteCourant {
 			throw new RuntimeException(e);
 		}
 		return alResult;
+	}
+
+	public Prelevement getPrelev(int idPrelev)
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		try {
+			Prelevement prelev;
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "SELECT * FROM PrelevementAutomatique where" + " idPrelev = ?";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, idPrelev);
+
+			System.err.println(query);
+
+			ResultSet rs = pst.executeQuery();
+
+			if (rs.next()) {
+				double montant = rs.getDouble("montant");
+				int dateRecurrente = rs.getInt("dateRecurrente");
+				String beneficiaire = rs.getString("beneficiaire");
+				int idNumCompte = rs.getInt("idNumCompte");
+
+				prelev = new Prelevement(idPrelev, montant, dateRecurrente, beneficiaire, idNumCompte);
+			} else {
+				rs.close();
+				pst.close();
+				return null;
+			}
+
+			if (rs.next()) {
+				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.SELECT,
+						"Recherche anormale (en trouve au moins 2)", null, 2);
+			}
+			rs.close();
+			pst.close();
+			return prelev;
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
+		}
+	}
+
+	public void updatePrelevement(Prelevement prelev) throws DataAccessException {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "UPDATE PrelevementAutomatique SET MONTANT=?, DATERECURRENTE=?, BENEFICIAIRE=? WHERE IDPRELEV = ?";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setDouble(1, prelev.getMontant());
+			pst.setInt(2, prelev.getDatePrelevement());
+			pst.setString(3, prelev.getBeneficiaire());
+			pst.setInt(4, prelev.getIdPrelevement());
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.UPDATE,
+						"Update anormal (update de moins ou plus d'une ligne)", null, result);
+			}
+			con.commit();
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
+		} catch (RowNotFoundOrTooManyRowsException e) {
+			throw new RuntimeException(e);
+		} catch (DatabaseConnexionException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

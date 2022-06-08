@@ -2,6 +2,7 @@ package application.control;
 
 import application.DailyBankApp;
 import application.DailyBankState;
+import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.OperationsManagementController;
 import application.view.PrelevementsManagementController;
@@ -27,7 +28,6 @@ public class PrelevementsManagement {
 	private Stage primaryStage;
 	private DailyBankState dbs;
 	private PrelevementsManagementController pmc;
-	private Client clientDuCompte;
 	private CompteCourant compteConcerne;
 
     /**
@@ -77,7 +77,7 @@ public class PrelevementsManagement {
 		ArrayList<Prelevement> listePrelev = new ArrayList<>();
 		try {
 			AccessCompteCourant acc = new AccessCompteCourant();
-			listePrelev = acc.getPrelev(this.compteConcerne.idNumCompte);
+			listePrelev = acc.getPrelevs(this.compteConcerne.idNumCompte);
 		} catch (ApplicationException ae) {
 			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
 			ed.doExceptionDialog();
@@ -85,4 +85,24 @@ public class PrelevementsManagement {
 		}
 		return listePrelev;
     }
+
+	public Prelevement modifierPrelev(Prelevement prelevEdite) {
+		Prelevement prelev;
+		PrelevementEditorPane pep = new PrelevementEditorPane(this.primaryStage, this.dbs);
+		prelev = pep.doPrelevementEditorDialog(prelevEdite, this.compteConcerne, EditionMode.MODIFICATION);
+		if (prelev != null) {
+
+			try {
+
+				AccessCompteCourant ac = new AccessCompteCourant();
+				ac.updatePrelevement(prelev);
+
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+			}
+		}
+		return prelev;
+
+	}
 }

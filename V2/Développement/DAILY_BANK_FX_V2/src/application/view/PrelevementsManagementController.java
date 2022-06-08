@@ -107,7 +107,14 @@ public class PrelevementsManagementController implements Initializable {
 
 	@FXML
 	private void doModif() {
-
+		int selectedIndice = this.lvPrelev.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			Prelevement prelevEdite = this.lvPrelev.getItems().get(selectedIndice);
+			Prelevement result = this.pm.modifierPrelev(prelevEdite);
+			if (result != null) {
+				this.olPrelevements.set(selectedIndice, result);
+			}
+		}
 	}
 
 	@FXML
