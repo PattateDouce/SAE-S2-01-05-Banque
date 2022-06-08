@@ -137,3 +137,56 @@ CompteEditorPane : Une classe gérant l'interface de l'éditeur de compte, dans 
 AccessCompteCourant : Cette classe s'occupe d'exécuter des requêtes SQL pour effectuer des opérations CRUD sur les comptes dans la base de données Oracle.
 Une nouvelle instance doit être créée dans chaque domaine où elle est utilisée.
 Dans ce cas, on utilise une nouvelle fonction 'supprimerCompte' qui envoie une requête SQL permettant de passer le solde du compte à 0 et l'attribut 'estCloture' à 'O'
+
+
+
+=== Créer un employé (par Guibert Rémy)
+
+Cette fonctionnalité correspond au use case "Gérer les employés (Crud)".
+La partie du diagramme de classe données nécessaire est la table Employe.
+https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/D%C3%A9veloppement/Documentation/docUtilisateurV1.adoc#cr%C3%A9er-un-nouvel-employ%C3%A9[Documentation utilisateur correspondante]
+
+Les classes impliquées sont :
+- model.data.Employe : représente un employé (nom, prénom, ...).
+- model.orm.AccessEmploye : contient les méthodes de gestion des employés sur la base de données (get, insert, ...), envoyer des requêtes SQL.
+- application.control.EmployeEditorPane : classe chargeant une vue, l'intègre dans la scène et appelle le contrôleur correspondant.
+- application.view.EmployeEditorPaneController : contrôleur de la vue FXML "employeeditorpane", s'occupe de tout le fonctionnement de l'interface de création/modification de compte, ici elle sert nottament à valider la saisie et renvoiyer un objet Employe.
+
+Extraits significatifs : la méthode displayDialog(Employe) de EmployeEditorPane prend en paramtre `null` si on souhaite afficher un employé
+
+=== Lire un employé (par Guibert Rémy)
+
+Cette fonctionnalité correspond au use case "Gérer les employés (cRud)".
+La partie du diagramme de classe données nécessaire est la table Employe.
+https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/D%C3%A9veloppement/Documentation/docUtilisateurV1.adoc#acc%C3%A9der-à-la-page-de-gestion-des-employ%C3%A9s[Documentation utilisateur correspondante]
+
+Les classes impliquées sont :
+- model.data.Employe : représente un employé (nom, prénom, ...).
+- model.orm.AccessEmploye : contient les méthodes de gestion des employés sur la base de données (get, insert, ...), ici utilisée pour récupérer les employés avec getEmployes() et getEmploye().
+- application.control.EmployesManagement : classe chargeant une vue, l'intègre dans la scène, appelle le contrôleur correspondant et fait gise d'intermédiaire entre le reste de l'appli et contrôleur, c'est nottamment cette classe qui appel Employe.getEmployes().
+- application.view.EmployesManagementController : contrôleur de la vue FXML "employesmanagement", s'occupe de l'initialisation de l'interface et de la vérification des valeurs saisies dans les champs de recherche.
+
+=== Modifier un employé (par Guibert Rémy)
+
+Cette fonctionnalité correspond au use case "Gérer les employés (crUd)".
+La partie du diagramme de classe données nécessaire est la table Employe.
+https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/D%C3%A9veloppement/Documentation/docUtilisateurV1.adoc#modifier-les-informations-dun-employ%C3%A9[Documentation utilisateur correspondante]
+
+Les classes impliquées sont :
+- model.data.Employe : représente un employé (nom, prénom, ...).
+- model.orm.AccessEmploye : contient les méthodes de gestion des employés sur la base de données (get, insert, ...), ici utilisée pour mettre à jour les employés avec la méthode updateEmploye().
+- application.control.EmployeEditorPane : classe chargeant la vue FXML "employeeditorpane", l'intègre dans la scène et appelle le contrôleur correspondant.
+- application.view.EmployeEditorPaneController : contrôleur de la vue, s'occupe de tout le fonctionnement de l'interface de modification de compte, ici elle sert nottament à valider la saisie et renvoiyer un objet Employe ou null  si on annule.
+
+
+=== Supprimer un employé (par Guibert Rémy)
+
+Cette fonctionnalité correspond au use case "Gérer les employés (cruD)".
+La partie du diagramme de classe données nécessaire est la table Employe.
+https://github.com/IUT-Blagnac/sae2022-bank-4b01/blob/main/V1/D%C3%A9veloppement/Documentation/docUtilisateurV1.adoc#supprimer-un-employ%C3%A9[Documentation utilisateur correspondante]
+
+Les classes impliquées sont :
+- model.data.Employe : représente un employé (nom, prénom, ...).
+- model.orm.AccessEmploye : contient les méthodes de gestion des employés sur la base de données (get, insert, ...), ici utilisée pour supprimer un employé avec supprimerCompte().
+- application.control.EmployesManagement : classe chargeant la vue FXML "employesmanagement", l'intègre dans la scène et appelle le contrôleur correspondant..
+- application.view.EmployesManagementController : contrôleur de la vue, s'occupe de l'initialisation de l'interface et de la demande de confirmation pour supprimer un compte.
