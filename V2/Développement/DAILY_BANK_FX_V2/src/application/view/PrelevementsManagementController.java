@@ -119,12 +119,22 @@ public class PrelevementsManagementController implements Initializable {
 
 	@FXML
 	private void doSupprimer() {
-
+		int selectedIndice = this.lvPrelev.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			Prelevement prelevSuppr = this.lvPrelev.getItems().get(selectedIndice);
+			Prelevement result = this.pm.supprimerPrelev(prelevSuppr);
+			if (result != null) {
+				this.olPrelevements.set(selectedIndice, result);
+			}
+		}
 	}
 
 	@FXML
 	private void doNouveau() {
-
+		Prelevement nouveau = this.pm.nouveauPrelev();
+		if (nouveau != null) {
+			this.olPrelevements.add(nouveau);
+		}
 	}
 
 	private void loadList () {
@@ -145,6 +155,9 @@ public class PrelevementsManagementController implements Initializable {
 
 			Prelevement prelev = lvPrelev.getItems().get(selectedIndice);
 
+			if(prelev.getDatePrelevement() == 0) {
+				this.btnSuppr.setDisable(true);
+			}
 		} else {
 			this.btnModifier.setDisable(true);
 			this.btnSuppr.setDisable(true);

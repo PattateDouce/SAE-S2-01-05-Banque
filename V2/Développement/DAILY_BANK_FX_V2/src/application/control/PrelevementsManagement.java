@@ -91,6 +91,44 @@ public class PrelevementsManagement {
 		PrelevementEditorPane pep = new PrelevementEditorPane(this.primaryStage, this.dbs);
 		prelev = pep.doPrelevementEditorDialog(prelevEdite, this.compteConcerne, EditionMode.MODIFICATION);
 		if (prelev != null) {
+			try {
+
+				AccessCompteCourant ac = new AccessCompteCourant();
+				ac.updatePrelevement(prelev);
+
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+			}
+		}
+		return prelev;
+
+	}
+
+	public Prelevement nouveauPrelev() {
+		Prelevement prelev;
+		PrelevementEditorPane pep = new PrelevementEditorPane(this.primaryStage, this.dbs);
+		prelev = pep.doPrelevementEditorDialog(null, this.compteConcerne, EditionMode.CREATION);
+		if (prelev != null) {
+			try {
+
+				AccessCompteCourant ac = new AccessCompteCourant();
+				ac.addPrelevement(prelev);
+
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+			}
+		}
+		return prelev;
+
+	}
+
+	public Prelevement supprimerPrelev(Prelevement prelevSuppr) {
+		Prelevement prelev;
+		PrelevementEditorPane pep = new PrelevementEditorPane(this.primaryStage, this.dbs);
+		prelev = pep.doPrelevementEditorDialog(prelevSuppr, this.compteConcerne, EditionMode.SUPPRESSION);
+		if (prelev != null) {
 
 			try {
 

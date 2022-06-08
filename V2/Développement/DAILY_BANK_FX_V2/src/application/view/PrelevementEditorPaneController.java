@@ -1,12 +1,10 @@
 package application.view;
 
 import application.DailyBankState;
-import application.tools.AlertUtilities;
 import application.tools.EditionMode;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -16,7 +14,6 @@ import model.data.CompteCourant;
 import model.data.Prelevement;
 
 import java.net.URL;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
@@ -54,9 +51,11 @@ public class PrelevementEditorPaneController implements Initializable {
 	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
+		
 		this.txtMontant.focusedProperty().addListener((t, o, n) -> this.focusMontant(t, o, n));
 		this.txtDateRecurrente.focusedProperty().addListener((t, o, n) -> this.focusDate(t, o, n));
 		this.txtBeneficiaire.focusedProperty().addListener((t, o, n) -> this.focusBeneficiaire(t, o, n));
+
 	}
 
     /**
@@ -69,7 +68,7 @@ public class PrelevementEditorPaneController implements Initializable {
     public Prelevement displayDialog(Prelevement prelev, CompteCourant cpte, EditionMode mode) {
 		this.em = mode;
 		if (prelev == null) {
-			this.prelevEdite = new Prelevement(0, 100, 1, "benef", cpte.idNumCompte);
+			this.prelevEdite = new Prelevement(0, 0, 0, "benef", cpte.idNumCompte);
 		} else {
 			this.prelevEdite = new Prelevement(prelev);
 		}
@@ -145,7 +144,7 @@ public class PrelevementEditorPaneController implements Initializable {
 				}
 				this.prelevEdite.setDatePrelevement(val);
 			} catch (NumberFormatException nfe) {
-				this.txtMontant.setText("" + this.prelevEdite.getMontant());
+				this.txtDateRecurrente.setText("" + this.prelevEdite.getDatePrelevement());
 			}
 		}
 		return null;
@@ -156,9 +155,12 @@ public class PrelevementEditorPaneController implements Initializable {
 		if(oldPropertyValue) {
 			try {
 				String val = this.txtBeneficiaire.getText().trim();
+				if(this.txtBeneficiaire.getText().trim().isEmpty()) {
+					throw new NumberFormatException();
+				}
 				this.prelevEdite.setBeneficiaire(val);
 			} catch (NumberFormatException nfe) {
-				this.txtMontant.setText("" + this.prelevEdite.getMontant());
+				this.txtBeneficiaire.setText("" + this.prelevEdite.getBeneficiaire());
 			}
 		}
 		return null;
@@ -209,9 +211,10 @@ public class PrelevementEditorPaneController implements Initializable {
 			break;
 		case SUPPRESSION:
 			if (prelevEdite != null) {
+				this.prelevEdite.setBeneficiaire("Supprimé (old : date " + prelevEdite.getDatePrelevement() +
+												" / montant " + prelevEdite.getMontant() + ")");
 				this.prelevEdite.setMontant(0);
 				this.prelevEdite.setDatePrelevement(0);
-				this.prelevEdite.setBeneficiaire("Supprimé");
 			}
 			this.prelevResult = this.prelevEdite;
 			this.primaryStage.close();
@@ -221,7 +224,19 @@ public class PrelevementEditorPaneController implements Initializable {
 	}
 
 	private boolean isSaisieValide() {
-
+		if(this.txtMontant.getText().trim().isEmpty() || Double.parseDouble(txtMontant.getText().trim()) <= 0) {
+			this.txtMontant.setText("" + this.prelevEdite.getMontant());
+			return false;
+		}
+		double date = Double.parseDouble(txtDateRecurrente.getText().trim());
+		if(this.txtDateRecurrente.getText().trim().isEmpty() || date <= 0 || date > 28) {
+			this.txtDateRecurrente.setText("" + this.prelevEdite.getDatePrelevement());
+			return false;
+		}
+		if(this.txtBeneficiaire.getText().trim().isEmpty()) {
+			this.txtBeneficiaire.setText("" + this.prelevEdite.getBeneficiaire());
+			return false;
+		}
 		return true;
 	}
 

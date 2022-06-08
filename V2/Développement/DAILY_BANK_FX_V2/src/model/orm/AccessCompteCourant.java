@@ -533,6 +533,7 @@ public class AccessCompteCourant {
 			pst.setString(3, prelev.getBeneficiaire());
 			pst.setInt(4, prelev.getIdPrelevement());
 
+			System.out.println(prelev);
 			System.err.println(query);
 
 			int result = pst.executeUpdate();
@@ -551,4 +552,78 @@ public class AccessCompteCourant {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public void addPrelevement(Prelevement prelev) throws DataAccessException {
+		try {
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "INSERT INTO PRELEVEMENTAUTOMATIQUE VALUES (SEQ_ID_PRELEVAUTO.NEXTVAL, ?, ?, ?, ?)";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setDouble(1, prelev.getMontant());
+			pst.setInt(2, prelev.getDatePrelevement());
+			pst.setString(3, prelev.getBeneficiaire());
+			pst.setInt(4, prelev.getIdNumCompte());
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.INSERT,
+						"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
+			}
+
+			query = "SELECT SEQ_ID_PRELEVAUTO.CURRVAL from DUAL";
+
+			System.err.println(query);
+			PreparedStatement pst2 = con.prepareStatement(query);
+
+			ResultSet rs = pst2.executeQuery();
+			rs.next();
+			int numPrelev = rs.getInt(1);
+
+			con.commit();
+			rs.close();
+			pst2.close();
+
+			prelev.setIdPrelevement(numPrelev);
+		} catch (SQLException | RowNotFoundOrTooManyRowsException e) {
+			throw new DataAccessException(Table.Client, Order.INSERT, "Erreur accès", e);
+		} catch (DatabaseConnexionException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+/*	public void supprimerPrelev(int idPrelev) {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "DELETE FROM PrelevementAutomatique WHERE idPrelev = ?";
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setInt(1, idPrelev);
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.DELETE,
+						"Delete anormal (delete de moins ou plus d'une ligne)", null, result);
+			}
+
+			con.commit();
+		} catch (DatabaseConnexionException e) {
+			throw new RuntimeException(e);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} catch (RowNotFoundOrTooManyRowsException e) {
+			throw new RuntimeException(e);
+		}
+	}*/
 }
