@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class InsuranceSimulatorPane {
     private Stage primaryStage;
-    private InsuranceSimulatorPaneController wspc;
+    private InsuranceSimulatorPaneController ispc;
 
     /**
      * Instantiates a new Waranty Simulator pane.
@@ -36,8 +36,8 @@ public class InsuranceSimulatorPane {
             this.primaryStage.setTitle("Simulateur d'assurance d'emprunt");
             this.primaryStage.setResizable(false);
 
-            this.wspc = loader.getController();
-            this.wspc.initContext(this.primaryStage, _dbstate);
+            this.ispc = loader.getController();
+            this.ispc.initContext(this.primaryStage);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,11 +45,9 @@ public class InsuranceSimulatorPane {
     }
 
     /**
-     * Opens a dialog to create a waranty simulation
-     *
-     * @return the simulated waranty
+     * Opens a dialog to create a insurance simulation
      */
     public void doSimulationDialog() {
-    	this.wspc.displayDialog();
+    	this.ispc.displayDialog();
     }
 }

@@ -26,7 +26,7 @@ public class DailyBankMainFrame extends Application {
 	private Stage primaryStage;
 
 	/**
-	 * Créer l'état de l'app, charge le FMl et son controleur
+	 * Créer l'état de l'app, charge le FXML et son controleur
 	 * @param primaryStage	stage given by JavaFX
 	 */
 	@Override
@@ -51,47 +51,6 @@ public class DailyBankMainFrame extends Application {
 
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("DailyBank");
-
-			/*
-			// En mise au point :
-			// Forcer une connexion existante pour rentrer dans l'appli en mode connecté
-
-			try {
-				Employe e;
-				AccessEmploye ae = new AccessEmploye();
-
-				e = ae.getEmploye("Tuff", "Lejeune");
-
-				if (e == null) {
-					System.out.println("\n\nPB DE CONNEXION\n\n");
-				} else {
-					this.dbs.setEmpAct(e);
-				}
-			} catch (DatabaseConnexionException e) {
-				ExceptionDialog ed = new ExceptionDialog(primaryStage, this.dbs, e);
-				ed.doExceptionDialog();
-				this.dbs.setEmpAct(null);
-			} catch (ApplicationException ae) {
-				ExceptionDialog ed = new ExceptionDialog(primaryStage, this.dbs, ae);
-				ed.doExceptionDialog();
-				this.dbs.setEmpAct(null);
-			}
-
-			if (this.dbs.getEmpAct() != null) {
-				this.dbs.setChefDAgence(this.dbs.getEmpAct().droitsAccess);
-				try {
-					AccessAgenceBancaire aab = new AccessAgenceBancaire();
-					AgenceBancaire agTrouvee;
-
-					agTrouvee = aab.getAgenceBancaire(this.dbs.getEmpAct().idAg);
-					this.dbs.setAgAct(agTrouvee);
-				} catch (ApplicationException e) {
-					System.out.println("\n\nPB DE CONNEXION\n\n");
-					ExceptionDialog ed = new ExceptionDialog(primaryStage, this.dbs, e);
-					ed.doExceptionDialog();
-				}
-			}
-			*/
 
 			DailyBankMainFrameController dbmc = loader.getController();
 			dbmc.initContext(primaryStage, this, this.dbs);

@@ -16,7 +16,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.data.Employe;
 
 /**
@@ -49,8 +48,6 @@ public class EmployesManagementController implements Initializable {
 	 * Initialise les labels et les events et d'autres objets
 	 */
 	private void configure() {
-		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
-
 		this.ole = FXCollections.observableArrayList();
 		this.lvEmploye.setItems(this.ole);
 		this.lvEmploye.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -64,13 +61,6 @@ public class EmployesManagementController implements Initializable {
      */
     public void displayDialog() {
 		this.primaryStage.showAndWait();
-	}
-
-	// Gestion du stage
-	private Object closeWindow(WindowEvent e) {
-		this.doCancel();
-		e.consume();
-		return null;
 	}
 
 	// Attributs de la scene + actions
@@ -127,16 +117,16 @@ public class EmployesManagementController implements Initializable {
 			}
 		}
 
-		// Recherche des clients en BD. cf. AccessClient > getClients(.)
-		// numCompte != -1 => recherche sur numCompte
-		// numCompte != -1 et debutNom non vide => recherche nom/prenom
-		// numCompte != -1 et debutNom vide => recherche tous les clients
+		// Recherche des employés en BD. cf. AccessEmploye > getEmployes(.)
+		// idEmp != -1 => recherche sur idEmp
+		// idEmp != -1 et debutNom non vide => recherche nom/prenom
+		// idEmp != -1 et debutNom vide => recherche tous les employés
 		ArrayList<Employe> listeEmp;
 		listeEmp = this.em.getlisteEmploye(numCompte, debutNom, debutPrenom);
 
 		this.ole.clear();
-		for (Employe cli : listeEmp) {
-			this.ole.add(cli);
+		for (Employe emp : listeEmp) {
+			this.ole.add(emp);
 		}
 
 		this.validateComponentState();
@@ -177,6 +167,9 @@ public class EmployesManagementController implements Initializable {
 		}
 	}
 
+	/**
+	 * Vérifie si certain bouton doivent être activable ou non
+	 */
 	private void validateComponentState() {
 		int selectedIndice = this.lvEmploye.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {

@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import application.DailyBankState;
 import application.tools.AlertUtilities;
 import application.tools.ConstantesIHM;
-import application.tools.EditionMode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
@@ -16,7 +15,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.data.Employe;
 
 /**
@@ -48,21 +46,21 @@ public class EmployeEditorPaneController implements Initializable {
 	}
 
 	/**
-	 * Initialise les labels et les events et d'autres objets
+	 * Initialise la fermeture de l'application voulue
 	 */
 	private void configure() {
-		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
+		this.primaryStage.setOnCloseRequest(e -> this.doCancel() );
 	}
 
 	/**
 	 * Display dialog employe.
 	 *
 	 * @param employe the employe
-	 * @param mode   the mode
 	 * @return the employe
 	 */
-	public Employe displayDialog(Employe employe, EditionMode mode) {
+	public Employe displayDialog(Employe employe) {
 
+		// employe == null -> création d'un employé / employe != null -> modification d'un employé
 		if (employe == null) {
 			this.employeEdite = new Employe(0, "", "", "", "", "", this.dbs.getEmpAct().idAg);
 		} else {
@@ -84,15 +82,9 @@ public class EmployeEditorPaneController implements Initializable {
 			this.chefAgence.setSelected(false);
 		}
 
+		// affichage de la fenêtre
 		this.primaryStage.showAndWait();
 		return this.employeResult;
-	}
-
-	// Gestion du stage
-	private Object closeWindow(WindowEvent e) {
-		this.doCancel();
-		e.consume();
-		return null;
 	}
 
 	// Attributs de la scene + actions
@@ -137,7 +129,7 @@ public class EmployeEditorPaneController implements Initializable {
 		}
 	}
 
-	/** Vérifie la validiter des saisies
+	/** Vérifie la validité des saisies
 	 * @return True si tout est correct, False sinon
 	 */
 	private boolean isSaisieValide() {
