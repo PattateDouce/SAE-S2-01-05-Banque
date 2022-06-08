@@ -21,6 +21,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Operation;
+import model.data.Prelevement;
 import model.orm.exception.*;
 
 public class AccessCompteCourant {
@@ -447,5 +448,35 @@ public class AccessCompteCourant {
 			default:
 				return "";
 		}
+	}
+
+	public ArrayList<Prelevement> getPrelev(int idNumCpt) throws DataAccessException {
+		ArrayList<Prelevement> alResult = new ArrayList<>();
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			String query = "SELECT * FROM PrelevementAutomatique where idNumCompte = ? ORDER BY dateRecurrente";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, idNumCpt);
+			System.err.println(query);
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				int idPrelev = rs.getInt("idPrelev");
+				double montant = rs.getDouble("montant");
+				int dateRecurrente = rs.getInt("dateRecurrente");
+				String beneficiaire = rs.getString("beneficiaire");
+				int idNumCompte = rs.getInt("idNumCompte");
+
+				alResult.add(new Prelevement(idPrelev, montant, dateRecurrente, beneficiaire, idNumCompte));
+			}
+			rs.close();
+			pst.close();
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
+		} catch (DatabaseConnexionException e) {
+			throw new RuntimeException(e);
+		}
+		return alResult;
 	}
 }

@@ -3,6 +3,7 @@ package application;
 import application.tools.ConstantesIHM;
 import model.data.AgenceBancaire;
 import model.data.Employe;
+import model.data.Prelevement;
 
 /**
  * The type Daily bank state.

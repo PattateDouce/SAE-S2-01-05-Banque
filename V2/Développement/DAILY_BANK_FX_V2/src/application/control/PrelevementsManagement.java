@@ -12,6 +12,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.Prelevement;
+import model.orm.AccessCompteCourant;
+import model.orm.exception.ApplicationException;
+import model.orm.exception.DatabaseConnexionException;
+
+import java.util.ArrayList;
 
 /**
  * The type Operations management.
@@ -48,7 +54,7 @@ public class PrelevementsManagement {
 			this.primaryStage.initOwner(_parentStage);
 			StageManagement.manageCenteringStage(_parentStage, this.primaryStage);
 			this.primaryStage.setScene(scene);
-			this.primaryStage.setTitle("Gestion des prélévements");
+			this.primaryStage.setTitle("Gestion des prélèvements");
 			this.primaryStage.setResizable(false);
 
 			this.pmc = loader.getController();
@@ -67,4 +73,16 @@ public class PrelevementsManagement {
 		this.pmc.displayDialog();
 	}
 
+    public ArrayList<Prelevement> getListePrelev() {
+		ArrayList<Prelevement> listePrelev = new ArrayList<>();
+		try {
+			AccessCompteCourant acc = new AccessCompteCourant();
+			listePrelev = acc.getPrelev(this.compteConcerne.idNumCompte);
+		} catch (ApplicationException ae) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+			ed.doExceptionDialog();
+			listePrelev = new ArrayList<>();
+		}
+		return listePrelev;
+    }
 }

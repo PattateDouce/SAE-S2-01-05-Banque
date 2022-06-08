@@ -14,6 +14,7 @@ import javafx.scene.control.SelectionMode;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.CompteCourant;
+import model.data.Prelevement;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class PrelevementsManagementController implements Initializable {
 
 	// Données de la fenêtre
 	private CompteCourant compte;
-	private ObservableList<CompteCourant> olCompteCourant;
+	private ObservableList<Prelevement> olPrelevements;
 
 	/**
 	 * Init context.
@@ -58,13 +59,13 @@ public class PrelevementsManagementController implements Initializable {
 
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 
-		this.olCompteCourant = FXCollections.observableArrayList();
-		this.lvPrelev.setItems(this.olCompteCourant);
+		this.olPrelevements = FXCollections.observableArrayList();
+		this.lvPrelev.setItems(this.olPrelevements);
 		this.lvPrelev.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		this.lvPrelev.getFocusModel().focus(-1);
 		this.lvPrelev.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
 
-		info = String.valueOf(this.compte.idNumCompte);
+		info = "Numéro de compte : " + this.compte.idNumCompte;
 		this.lblInfos.setText(info);
 
 		this.loadList();
@@ -89,7 +90,7 @@ public class PrelevementsManagementController implements Initializable {
 	@FXML
 	private Label lblInfos;
 	@FXML
-	private ListView<CompteCourant> lvPrelev;
+	private ListView<Prelevement> lvPrelev;
 	@FXML
 	private Button btnModifier;
 	@FXML
@@ -120,12 +121,12 @@ public class PrelevementsManagementController implements Initializable {
 	}
 
 	private void loadList () {
-		/*ArrayList<CompteCourant> listeCpt;
-		listeCpt = this.pm.
-		this.olCompteCourant.clear();
-		for (CompteCourant co : listeCpt) {
-			this.olCompteCourant.add(co);
-		}*/
+		ArrayList<Prelevement> listePrelev;
+		listePrelev = this.pm.getListePrelev();
+		this.olPrelevements.clear();
+		for (Prelevement prelev : listePrelev) {
+			this.olPrelevements.add(prelev);
+		}
 	}
 
 	private void validateComponentState() {
@@ -135,22 +136,12 @@ public class PrelevementsManagementController implements Initializable {
 			this.btnModifier.setDisable(false);
 			this.btnSuppr.setDisable(false);
 
-
-			CompteCourant cpt = lvPrelev.getItems().get(selectedIndice);
-
-			if (cpt != null) {
-
-				if (cpt.estCloture.equals("O") || cpt.solde != 0) {
-					btnModifier.setDisable(true);
-					btnSuppr.setDisable(true);
-				}
-			}
+			Prelevement prelev = lvPrelev.getItems().get(selectedIndice);
 
 		} else {
 			this.btnModifier.setDisable(true);
 			this.btnSuppr.setDisable(true);
 		}
-
 
 	}
 }
