@@ -204,8 +204,7 @@ Les classes impliquées sont :
 - application.view.EmployesManagementController : contrôleur de la vue, s'occupe de l'initialisation de l'interface et de la demande de confirmation pour supprimer un compte.
 
 
-
-=== Simuler une assurance d'emprunt (par Robertson James)
+=== Simuler un emprunt (par Robertson James)
 
 
 Les classes impliquées sont :
