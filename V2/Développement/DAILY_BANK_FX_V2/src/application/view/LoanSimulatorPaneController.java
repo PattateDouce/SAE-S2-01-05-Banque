@@ -106,7 +106,6 @@ public class LoanSimulatorPaneController implements Initializable {
 
         @FXML
         private void doCancel() {
-            this.compteResult = null;
             this.primaryStage.close();
         }
 
