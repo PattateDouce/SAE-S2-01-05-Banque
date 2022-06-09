@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
@@ -65,6 +67,10 @@ public class LoanSimulatorPaneController implements Initializable {
          * Initialise les labels et les events et d'autres objets
          */
         private void configure() {
+        	this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+                if (e.getCode() == KeyCode.ENTER) {
+    				doSimulation();
+    			} } );
             this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
             capital.setEditable(true);
             duree.setEditable(true);
