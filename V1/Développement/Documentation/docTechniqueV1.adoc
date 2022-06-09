@@ -113,7 +113,7 @@ Le reste est juste de "l’aide" :
         - Chaque classe : effectue une requête SQL, presque la requête qu’on ferait au clavier envoyée au serveur sous forme de String. Ensuite elle emballe le résultat en java (objets de model.data, ArrayList, …).
 
 
-== Les fonctionnalités
+== 6. Les fonctionnalités
 
 === Créer un compte pour un client (par James ROBERTSON)
 
@@ -190,3 +190,30 @@ Les classes impliquées sont :
 - model.orm.AccessEmploye : contient les méthodes de gestion des employés sur la base de données (get, insert, ...), ici utilisée pour supprimer un employé avec supprimerCompte().
 - application.control.EmployesManagement : classe chargeant la vue FXML "employesmanagement", l'intègre dans la scène et appelle le contrôleur correspondant..
 - application.view.EmployesManagementController : contrôleur de la vue, s'occupe de l'initialisation de l'interface et de la demande de confirmation pour supprimer un compte.
+
+
+== 7. Répartition des tâches et état d'avancement
+
+[options="header,footer"]
+|=======================
+|version|user     |use case   |cas...                 |   Nolan JACQUEMONT | James SANDALL ROBERTSON | Rémy GUIBERT
+|1    |Chef de projet    |CRUD employé  |C| | | F
+|1    |chef de projet    |CRUD employé  |R| | | F
+|1    |chef de projet    |CRUD employé  |U| | | F
+|1    |chef de projet    |CRUD employé  |D| | | F
+|1    |Guichetier     | Compte | Créer|| F | 
+|1    |Guichetier     | Compte | Créditer/Débiter| F | |
+|1    |Guichetier     | Compte | Effectuer un virement| F | | 
+|1    |Guichetier     | Compte | Clôturer|| F | 
+|2    |Chef d’Agence     | Compte | Débit exceptionnel|| F | 
+|2    |Chef d’Agence     | Emprunt | Simuler emprunt|| F | 
+|2    |Chef d’Agence     | Emprunt | Simuler assurance|| | F
+|2    |Guichetier     | Compte | Relevé PDF| F | | 
+|2    |Guichetier     | CRUD Prélèvement | C| F | | 
+|2    |Guichetier     | CRUD Prélèvement | R| F | | 
+|2    |Guichetier     | CRUD Prélèvement | U| F | | 
+|2    |Guichetier     | CRUD Prélèvement | D| F | | 
+|2    |Bach     | Prélèvements automatiques | | F | | 
+|2    |Bach     | Reléves mensuels | | F | | 
+
+|=======================
