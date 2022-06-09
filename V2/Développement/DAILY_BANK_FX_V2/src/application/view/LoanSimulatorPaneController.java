@@ -2,15 +2,12 @@ package application.view;
 
 import application.DailyBankState;
 import application.tools.AlertUtilities;
-import application.tools.ConstantesIHM;
 import application.tools.EditionMode;
 import application.tools.LoanSimulatorTool;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -19,10 +16,8 @@ import model.data.CompteCourant;
 import model.data.Emprunt;
 import model.data.Periode;
 
-import javax.xml.soap.Text;
 import java.net.URL;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class LoanSimulatorPaneController implements Initializable {
@@ -103,6 +98,10 @@ public class LoanSimulatorPaneController implements Initializable {
 
         @Override
         public void initialize(URL location, ResourceBundle resources) {
+            this.capital.focusedProperty().addListener((t, o, n) -> this.focusCapital(t, o, n));
+            this.duree.focusedProperty().addListener((t, o, n) -> this.focusDuree(t, o, n));
+            this.tauxAnnuel.focusedProperty().addListener((t, o, n) -> this.focusTaux(t, o, n));
+
         }
 
         @FXML
@@ -127,7 +126,7 @@ public class LoanSimulatorPaneController implements Initializable {
                int numPeriodes = periodes.size();
                double mensualite = periodes.get(0).montantARembourser;
 
-               AlertUtilities.showAlert(this.primaryStage, "Simulation", "Il faudra"+" "+numPeriodes+" "+"mois pour rembourser cet emrpunt avec une mensualité de"+" "+ mensualite, null,
+               AlertUtilities.showAlert(this.primaryStage, "Simulation", null, "Il faudra"+" "+numPeriodes+" "+"mois pour rembourser cet emrpunt avec une mensualité de"+" "+ Math.round(mensualite)+".",
                        Alert.AlertType.INFORMATION);
            }
 
@@ -155,6 +154,53 @@ public class LoanSimulatorPaneController implements Initializable {
             return false;
         }
 
-
+    private Object focusCapital(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
+                                boolean newPropertyValue) {
+        if(oldPropertyValue) {
+            try {
+                int val;
+                val = Integer.parseInt(this.capital.getText().trim());
+                if (val <= 0) {
+                    throw new NumberFormatException();
+                }
+            } catch (Exception e) {
+                this.capital.setText("1");
+            }
+        }
+        return null;
     }
+
+    private Object focusDuree(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
+                                boolean newPropertyValue) {
+        if(oldPropertyValue) {
+            try {
+                int val;
+                val = Integer.parseInt(this.duree.getText().trim());
+                if (val <= 0) {
+                    throw new NumberFormatException();
+                }
+            } catch (Exception e) {
+                this.duree.setText("1");
+            }
+        }
+        return null;
+    }
+
+
+    private Object focusTaux(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
+                                boolean newPropertyValue) {
+        if(oldPropertyValue) {
+            try {
+                int val;
+                val = Integer.parseInt(this.tauxAnnuel.getText().trim());
+                if (val <= 0) {
+                    throw new NumberFormatException();
+                }
+            } catch (Exception e) {
+                this.tauxAnnuel.setText("1");
+            }
+        }
+        return null;
+    }
+}
 
