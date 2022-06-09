@@ -9,6 +9,8 @@ import application.tools.ConstantesIHM;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -46,9 +48,13 @@ public class EmployeEditorPaneController implements Initializable {
 	}
 
 	/**
-	 * Initialise la fermeture de l'application voulue
+	 * Initialise les labels et les events et d'autres objets
 	 */
 	private void configure() {
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+				doAjouter();
+			} } );
 		this.primaryStage.setOnCloseRequest(e -> this.doCancel() );
 	}
 
