@@ -232,6 +232,32 @@ image::gestionprelev/acces_prelev.png["Accès prélèvement"]
 
 ==== Ajouter un prélèvement
 
+Tout d'abord, accédez à la page de **gestion des prélèvements**, puis cliquez sur le bouton **"Nouveau prélèvement"** comme ci-dessous :
+
+image::gestionprelev/nouveau_btn.png["Bouton nouveau prélèvement"]
+
+S'ouvrira ensuite la fenêtre suivante, vous affichant les différents champs nécessaires à l'ajout d'un prélèvement, à savoir : le **montant**, la **date** ainsi que le **bénéficiaire** :
+
+image::gestionprelev/nouveau.png["Nouveau prélèvement"]
+
 ==== Modifier un prélèvement
 
+Tout d'abord, accédez à la page de **gestion des prélèvements**, puis cliquez sur le bouton **"Modifier prélèvement"** comme ci-dessous :
+
+image::gestionprelev/modif_btn.png["Bouton modifier prélèvement"]
+
+S'ouvrira ensuite la fenêtre suivante, vous affichant les informations actuelles du prélèvement et vous permettant de modifier les champs de **montant** et de **date** ainsi que le **bénéficiaire** :
+
+image::gestionprelev/modif.png["Modifier prélèvement"]
+
 ==== Supprimer un prélèvement
+
+Tout d'abord, accédez à la page de **gestion des prélèvements**, puis cliquez sur le bouton **Supprimer prélèvement"** comme ci-dessous :
+
+image::gestionprelev/suppr_btn.png["Bouton supprimer prélèvement"]
+
+S'ouvrira ensuite la fenêtre suivante, vous affichant les informations du prélèvement et vous demandant confirmation avant de supprimer :
+
+image::gestionprelev/suppr.png["Supprimer prélèvement"]
+
+A noter : en cas d'**erreur** de suppression, ce n'est pas grave, le prélèvement sera **toujours affiché** dans la liste, et vous pourrez le modifier afin de le **réactiver**. De plus, la **date** et le **montant** avant suppression sont **affichés** dans le nom du bénéficiaire. 
