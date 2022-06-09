@@ -165,7 +165,7 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 |100
 |testGenerationReleve
 |Générer un relevé mensuel en PDF
-|Étant donné un compte sélectionné, cliquer sur "voir relevé". Le relevé mensuel en pdf généré doit s'ouvrir dans un lecteur pdf et être enregistré dans le répertoire source de l'application
+|Étant donné un compte sélectionné, cliquer sur "voir relevé". Le relevé mensuel en pdf généré doit s'ouvrir dans un lecteur pdf et être enregistré dans le même répertoire que le .jar de l'application
 |x
 
 |===

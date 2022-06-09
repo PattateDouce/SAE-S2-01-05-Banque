@@ -218,7 +218,7 @@ Tout d'abord, accédez à la page de **gestion des comptes**, puis cliquez sur l
 
 image::relevepdf/voir_releve.png["Bouton voir relevé"]
 
-S'ouvrira ensuite un fichier pdf dans votre lecteur de pdf favori. Il sera enregistré dans le répertoire du code de l'application : ceci implique qu'à chaque relevé, le précédent est écrasé, ce qui permet d'éviter de surcharger de fichiers. Il est donc fortement recommandé d'enregistrer le pdf dans un autre dossier sous le nom que vous souhaitez. Le pdf ressemblera à ceci :
+S'ouvrira ensuite un fichier pdf dans votre lecteur de pdf favori. Il sera enregistré dans le même répertoire que le fichier .jar de l'application : ceci implique qu'à chaque génération, le précédent est écrasé, ce qui permet d'éviter de surcharger de fichiers. Il est donc fortement recommandé d'enregistrer le pdf dans un autre dossier sous le nom que vous souhaitez. Le pdf ressemblera à ceci :
 
 image::relevepdf/ex_releve.png["Exemple de relevé"]
 
