@@ -193,6 +193,7 @@ Comme à la création, chaque champs doit être rempli et les espaces en début 
 
 
 === 4.5. Simulation d'une assurance d'emprunt
+
 `Accessible uniquement aux chefs d'agence`
 
 Pour accéder à la page de la simulation, vous devez être connecté en tant que Chef d'Agence, ensuite, cliquez sur l'onglet **"Simulation"** puis sur **"Simuler une assurance"** :
@@ -211,3 +212,26 @@ Le résultat sera afficher entre les champs et les boutons :
 
 image::sim_assurance/sim_assurance_resultat.png["Résultat de la simulation d'assurance"]
 
+=== 4.6. Génération des relevés mensuels au format PDF
+
+Tout d'abord, accédez à la page de **gestion des comptes**, puis cliquez sur le bouton **"voir relevé"** comme ci-dessous : 
+
+image::relevepdf/voir_releve.png["Bouton voir relevé"]
+
+S'ouvrira ensuite un fichier pdf dans votre lecteur de pdf favori. Il sera enregistré dans le répertoire du code de l'application : ceci implique qu'à chaque relevé, le précédent est écrasé, ce qui permet d'éviter de surcharger de fichiers. Il est donc fortement recommandé d'enregistrer le pdf dans un autre dossier sous le nom que vous souhaitez. Le pdf ressemblera à ceci :
+
+image::relevepdf/ex_releve.png["Exemple de relevé"]
+
+=== 4.7. Gérer les prélèvements
+
+==== Accéder à la page de gestion des prélèvements
+
+Tout d'abord, accédez à la page de **gestion des comptes**, puis cliquez sur le bouton **"Gérer prélèvements"** comme ci-dessous : 
+
+image::gestionprelev/acces_prelev.png["Accès prélèvement"]
+
+==== Ajouter un prélèvement
+
+==== Modifier un prélèvement
+
+==== Supprimer un prélèvement
