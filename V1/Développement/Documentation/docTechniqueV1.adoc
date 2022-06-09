@@ -197,17 +197,17 @@ Les classes impliquées sont :
 [options="header,footer"]
 |=======================
 |version|user     |use case   |cas...                 |   Nolan JACQUEMONT | James SANDALL ROBERTSON | Rémy GUIBERT
-|1    |Chef de projet    |CRUD employé  |C| | |
-|1    |chef de projet    |CRUD employé  |R| | |
-|1    |chef de projet    |CRUD employé  |U| | |
-|1    |chef de projet    |CRUD employé  |D| | |
+|1    |Chef de projet    |CRUD employé  |C| | | F
+|1    |chef de projet    |CRUD employé  |R| | | F
+|1    |chef de projet    |CRUD employé  |U| | | F
+|1    |chef de projet    |CRUD employé  |D| | | F
 |1    |Guichetier     | Compte | Créer|| F | 
 |1    |Guichetier     | Compte | Créditer/Débiter| F | |
 |1    |Guichetier     | Compte | Effectuer un virement| F | | 
 |1    |Guichetier     | Compte | Clôturer|| F | 
 |2    |Chef d’Agence     | Compte | Débit exceptionnel|| F | 
 |2    |Chef d’Agence     | Emprunt | Simuler emprunt|| F | 
-|2    |Chef d’Agence     | Emprunt | Simuler assurance|| | 
+|2    |Chef d’Agence     | Emprunt | Simuler assurance|| | F
 |2    |Guichetier     | Compte | Relevé PDF| F | | 
 |2    |Guichetier     | CRUD Prélèvement | C| F | | 
 |2    |Guichetier     | CRUD Prélèvement | R| F | | 
