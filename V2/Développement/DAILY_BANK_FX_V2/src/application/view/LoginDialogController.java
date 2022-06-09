@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Employe;
@@ -48,6 +50,10 @@ public class LoginDialogController implements Initializable {
 	 */
 	private void configure() {
 		this.txtLogin.requestFocus();
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+				doOK();
+			} } );
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
 

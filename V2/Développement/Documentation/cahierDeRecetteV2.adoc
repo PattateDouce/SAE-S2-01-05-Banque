@@ -165,7 +165,27 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 |100
 |testGenerationReleve
 |Générer un relevé mensuel en PDF
-|Étant donné un compte sélectionné, cliquer sur "voir relevé". Le relevé mensuel en pdf généré doit s'ouvrir dans un lecteur pdf et être enregistré dans le répertoire source de l'application
+|Étant donné un compte sélectionné, cliquer sur "voir relevé". Le relevé mensuel en pdf généré doit s'ouvrir dans un lecteur pdf et être enregistré dans le même répertoire que le .jar de l'application
 |x
+
+|===
+
+=== Éxecution automatique des prélèvements au lancement de l'application
+
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
+
+|110
+|testPrelevAuto
+|Éxécuter automatiquement les prélèvements du jour au lancement de l'application
+|Lorsqu'on lance l'application, les prélèvements du jour sont réalisés automatiquement en fond.
+|Il y a des prélèvements à faire ce même jour
+
+|111
+|testPrelevAuto2
+|Ne pas éxécuter automatiquement les prélèvements du jour au lancement de l'application une deuxième fois ou plus
+|Lorsqu'on lance l'application, les prélèvements du jour ne sont pas réalisés car ils ont déjà été réalisés plus tôt.
+|Il y a des prélèvements à faire ce même jour, l'application a été lancée au moins une fois avant, ce même jour
 
 |===

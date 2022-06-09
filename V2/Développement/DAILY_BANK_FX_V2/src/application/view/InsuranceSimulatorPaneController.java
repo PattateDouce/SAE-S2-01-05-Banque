@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -29,8 +31,20 @@ public class InsuranceSimulatorPaneController implements Initializable {
          */
         public void initContext(Stage _primaryStage) {
             this.primaryStage = _primaryStage;
+            this.configure();
         }
 
+    	/**
+    	 * Initialise les labels et les events et d'autres objets
+    	 */
+    	private void configure() {
+    		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+                if (e.getCode() == KeyCode.ENTER) {
+    				doSimulation();
+    			} } );
+    		this.primaryStage.setOnCloseRequest(e -> this.doCancel() );
+    	}
+        
         /**
          * Display dialog simulation.
          **/

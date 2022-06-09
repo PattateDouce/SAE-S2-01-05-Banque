@@ -30,9 +30,9 @@
                         <MenuItem fx:id="mitemQuitter" mnemonicParsing="false" onAction="#doQuit" text="Quitter" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Gestion">
+                <Menu fx:id="mGestion" mnemonicParsing="false" text="Gestion">
                   <items>
-                    <MenuItem fx:id="mitemClient" disable="true" mnemonicParsing="false" onAction="#doClientOption" text="Clients" />
+                    <MenuItem mnemonicParsing="false" onAction="#doClientOption" text="Clients" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem fx:id="mitemEmploye" disable="true" mnemonicParsing="false" onAction="#doEmployeOption" text="Employés" />
                   </items>
