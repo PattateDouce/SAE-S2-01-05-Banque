@@ -190,9 +190,9 @@ public class LoanSimulatorPaneController implements Initializable {
                                 boolean newPropertyValue) {
         if(oldPropertyValue) {
             try {
-                int val;
-                val = Integer.parseInt(this.tauxAnnuel.getText().trim());
-                if (val <= 0) {
+                Double val;
+                val = Double.parseDouble(this.tauxAnnuel.getText().trim());
+                if (val <= 0 || val >= 1) {
                     throw new NumberFormatException();
                 }
             } catch (Exception e) {
