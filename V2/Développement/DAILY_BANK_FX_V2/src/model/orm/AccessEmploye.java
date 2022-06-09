@@ -202,7 +202,11 @@ public class AccessEmploye {
 
 			employe.idEmploye = numEmpBase;
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.Employe, Order.INSERT, "Erreur accès", e);
+			Throwable error = e;
+			if (e.getMessage().contains("G4B1.AK_EMPLOYE")) {
+				error = new Throwable("Le login choisi existe déjà veuillez en choisir un autre");
+			}
+			throw new DataAccessException(Table.Employe, Order.INSERT, "Erreur accès", error);
 		}
 	}
 

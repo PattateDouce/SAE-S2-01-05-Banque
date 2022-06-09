@@ -204,6 +204,16 @@ Les classes impliquées sont :
 - application.view.EmployesManagementController : contrôleur de la vue, s'occupe de l'initialisation de l'interface et de la demande de confirmation pour supprimer un compte.
 
 
+=== Simuler un emprunt (par Robertson James)
+
+
+Les classes impliquées sont :
+
+- application.control.LoanSimulatorPane : classe chargeant la vue FXML "loansimulatorpane", l'intègre dans la scène et appelle le contrôleur correspondant.
+- application.view.LoanSimulatorPaneController : contrôleur de la vue, s'occupe de l'initialisation de l'interface et de la vérification des données entrées.
+En cas de données inutilisables (String, chiffres negatifs) les données sont remplacéés par des données acceptables.
+
+
 === Simulation d'assurance d'emprunt (par Guibert Rémy)
 
 Cette fonctionnalité correspond au use case "Simuler une assurance d'emprunt".

@@ -143,26 +143,26 @@ public class EmployeEditorPaneController implements Initializable {
 			this.employeEdite.droitsAccess = ConstantesIHM.AGENCE_CHEF;
 		}
 
-		if (this.employeEdite.nom.isEmpty()) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le nom ne doit pas être vide",
+		if (this.employeEdite.nom.isEmpty() || this.txtNom.getText().length() > 25) {
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le nom ne doit pas être vide et au maximum de 25 charatères",
 					AlertType.WARNING);
 			this.txtNom.requestFocus();
 			return false;
 		}
-		if (this.employeEdite.prenom.isEmpty()) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le prénom ne doit pas être vide",
+		if (this.employeEdite.prenom.isEmpty() || this.txtPrenom.getText().length() > 15) {
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le prénom ne doit pas être vide et au maximum de 15 charatères",
 					AlertType.WARNING);
 			this.txtPrenom.requestFocus();
 			return false;
 		}
-		if (this.employeEdite.login.isEmpty()) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le login ne doit pas être vide",
+		if (this.employeEdite.login.isEmpty() || this.txtLogin.getText().length() > 8) {
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le login ne doit pas être vide et au maximum de 8 charatères",
 					AlertType.WARNING);
 			this.txtLogin.requestFocus();
 			return false;
 		}
-		if (this.employeEdite.motPasse.isEmpty()) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le mot de passe ne doit pas être vide",
+		if (this.employeEdite.motPasse.isEmpty() || this.txtMotPasse.getText().length() > 15) {
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le mot de passe ne doit pas être vide et au maximum de 15 charatères",
 					AlertType.WARNING);
 			this.txtMotPasse.requestFocus();
 			return false;

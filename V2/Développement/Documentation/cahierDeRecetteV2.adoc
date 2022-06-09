@@ -151,7 +151,21 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 |90
 |TestSaisieSimulationAssuranceValide
 |Simuler une assurance d'emprunt
-|Que tout les champs de paramètre soit remplis et positifs
+|Que tout les champs de paramètre soient remplis et positifs
 |Être connecté en tant que chef d'agence
+
+|===
+
+=== Génération d'un relevé mensuel en PDF
+
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
+
+|100
+|testGenerationReleve
+|Générer un relevé mensuel en PDF
+|Étant donné un compte sélectionné, cliquer sur "voir relevé". Le relevé mensuel en pdf généré doit s'ouvrir dans un lecteur pdf et être enregistré dans le répertoire source de l'application
+|x
 
 |===
