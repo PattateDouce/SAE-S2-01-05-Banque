@@ -202,7 +202,7 @@ image::sim_emprunt/accueil_sim_emprunt.png["Accès simulation d'emprunt"]
 
 La fenêtre des paramètres s'ouvrira, avec les champs vide par défaut :
 
-image::sim_emprunt/page_vide.png["Simulation d'emprunt, champs vides"]
+image::sim_emprunt/page_vide.PNG["Simulation d'emprunt, champs vides"]
 
 Une fois les champs complétés, il ne reste plus qu'à afficher le résultat avec le bouton **"Simuler"** :
 
