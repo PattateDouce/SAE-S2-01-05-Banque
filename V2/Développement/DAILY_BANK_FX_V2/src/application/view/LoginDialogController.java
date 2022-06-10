@@ -54,6 +54,10 @@ public class LoginDialogController implements Initializable {
             if (e.getCode() == KeyCode.ENTER) {
 				doOK();
 			} } );
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ESCAPE) {
+				doCancel();
+			} } );
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
 

@@ -1,8 +1,6 @@
 package application.view;
 
-import application.DailyBankState;
 import application.tools.AlertUtilities;
-import application.tools.EditionMode;
 import application.tools.LoanSimulatorTool;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -12,9 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-import model.data.Client;
-import model.data.CompteCourant;
 import model.data.Emprunt;
 import model.data.Periode;
 
@@ -24,19 +19,8 @@ import java.util.ResourceBundle;
 
 public class LoanSimulatorPaneController implements Initializable {
 
-        // Etat application
-        private DailyBankState dbs;
-
         // Fenêtre physique
         private Stage primaryStage;
-
-        // Données de la fenêtre
-        private EditionMode em;
-        private Client clientDuCompte;
-        private CompteCourant compteEdite;
-        private CompteCourant compteResult;
-
-        private boolean isConfirmed;
 
 
         @FXML
@@ -48,7 +32,6 @@ public class LoanSimulatorPaneController implements Initializable {
         @FXML
         private TextField tauxAnnuel;
 
-
         /**
          * Init context.
          *
@@ -56,11 +39,9 @@ public class LoanSimulatorPaneController implements Initializable {
          * @param _dbstate      the dbstate
          */
         // Manipulation de la fenêtre
-        public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
+        public void initContext(Stage _primaryStage) {
             this.primaryStage = _primaryStage;
-            this.dbs = _dbstate;
             this.configure();
-
         }
 
         /**
@@ -71,43 +52,25 @@ public class LoanSimulatorPaneController implements Initializable {
                 if (e.getCode() == KeyCode.ENTER) {
     				doSimulation();
     			} } );
-            this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
-            capital.setEditable(true);
-            duree.setEditable(true);
-            tauxAnnuel.setEditable(true);
+        	this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+                if (e.getCode() == KeyCode.ESCAPE) {
+    				doCancel();
+    			} } );
         }
 
         /**
-         * Display dialog compte courant.
+         * Display dialog simulateur d'emprunt.
          *
          **/
         public void displayDialog() {
-
             primaryStage.showAndWait();
-
-
-
-
         }
-
-        // Gestion du stage
-        private Object closeWindow(WindowEvent e) {
-            this.doCancel();
-            e.consume();
-            return null;
-        }
-
-
-
-
-
 
         @Override
         public void initialize(URL location, ResourceBundle resources) {
             this.capital.focusedProperty().addListener((t, o, n) -> this.focusCapital(t, o, n));
             this.duree.focusedProperty().addListener((t, o, n) -> this.focusDuree(t, o, n));
             this.tauxAnnuel.focusedProperty().addListener((t, o, n) -> this.focusTaux(t, o, n));
-
         }
 
         @FXML
@@ -131,7 +94,7 @@ public class LoanSimulatorPaneController implements Initializable {
                int numPeriodes = periodes.size();
                double mensualite = periodes.get(0).montantARembourser;
 
-               AlertUtilities.showAlert(this.primaryStage, "Simulation", null, "Il faudra"+" "+numPeriodes+" "+"mois pour rembourser cet emrpunt avec une mensualité de"+" "+ Math.round(mensualite)+".",
+               AlertUtilities.showAlert(this.primaryStage, "Simulation", null,"Il faudra "+numPeriodes+" mois pour rembourser cet emprunt avec une mensualité de "+ Math.round(mensualite)+".",
                        Alert.AlertType.INFORMATION);
            }
 
@@ -139,9 +102,11 @@ public class LoanSimulatorPaneController implements Initializable {
                AlertUtilities.showAlert(this.primaryStage, "Erreur de simulation", "Vous avez entré des valeurs incorrectes", null,
                        Alert.AlertType.ERROR);
            }
-
         }
 
+        /** Vérfifie si les saisie sont valides
+         * @return Vrai si tout est correct, Faux sinon
+         */
         private boolean isSaisieValide() {
             try {
                double capitalD = Double.valueOf(capital.getText());
@@ -159,53 +124,52 @@ public class LoanSimulatorPaneController implements Initializable {
             return false;
         }
 
-    private Object focusCapital(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
-                                boolean newPropertyValue) {
-        if(oldPropertyValue) {
-            try {
-                int val;
-                val = Integer.parseInt(this.capital.getText().trim());
-                if (val <= 0) {
-                    throw new NumberFormatException();
-                }
-            } catch (Exception e) {
-                this.capital.setText("1");
-            }
-        }
-        return null;
-    }
-
-    private Object focusDuree(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
-                                boolean newPropertyValue) {
-        if(oldPropertyValue) {
-            try {
-                int val;
-                val = Integer.parseInt(this.duree.getText().trim());
-                if (val <= 0) {
-                    throw new NumberFormatException();
-                }
-            } catch (Exception e) {
-                this.duree.setText("1");
-            }
-        }
-        return null;
-    }
-
-
-    private Object focusTaux(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
-                                boolean newPropertyValue) {
-        if(oldPropertyValue) {
-            try {
-                Double val;
-                val = Double.parseDouble(this.tauxAnnuel.getText().trim());
-                if (val <= 0 || val >= 1) {
-                    throw new NumberFormatException();
-                }
-            } catch (Exception e) {
-                this.tauxAnnuel.setText("1");
-            }
-        }
-        return null;
-    }
+		private Object focusCapital(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
+		                            boolean newPropertyValue) {
+		    if(oldPropertyValue) {
+		        try {
+		            int val;
+		            val = Integer.parseInt(this.capital.getText().trim());
+		            if (val <= 0) {
+		                throw new NumberFormatException();
+		            }
+		        } catch (Exception e) {
+		            this.capital.setText("1");
+		        }
+		    }
+		    return null;
+		}
+		
+		private Object focusDuree(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
+		                            boolean newPropertyValue) {
+		    if(oldPropertyValue) {
+		        try {
+		            int val;
+		            val = Integer.parseInt(this.duree.getText().trim());
+		            if (val <= 0) {
+		                throw new NumberFormatException();
+		            }
+		        } catch (Exception e) {
+		            this.duree.setText("1");
+		        }
+		    }
+		    return null;
+		}
+		
+		private Object focusTaux(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
+		                            boolean newPropertyValue) {
+		    if(oldPropertyValue) {
+		        try {
+		            Double val;
+		            val = Double.parseDouble(this.tauxAnnuel.getText().trim());
+		            if (val <= 0 || val >= 1) {
+		                throw new NumberFormatException();
+		            }
+		        } catch (Exception e) {
+		            this.tauxAnnuel.setText("1");
+		        }
+		    }
+		    return null;
+		}
 }
 

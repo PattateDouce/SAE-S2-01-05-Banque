@@ -2,22 +2,17 @@ package application.control;
 
 import application.DailyBankApp;
 import application.DailyBankState;
-import application.tools.EditionMode;
 import application.tools.StageManagement;
-import application.view.CompteEditorPaneController;
 import application.view.LoanSimulatorPaneController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.data.Client;
-import model.data.CompteCourant;
-import model.data.Emprunt;
 
 public class LoanSimulatorPane {
     private Stage primaryStage;
-    private LoanSimulatorPaneController cepc;
+    private LoanSimulatorPaneController lspc;
 
     /**
      * Instantiates a new Compte editor pane.
@@ -42,8 +37,8 @@ public class LoanSimulatorPane {
             this.primaryStage.setTitle("Simulation d'un emprunt");
             this.primaryStage.setResizable(false);
 
-            this.cepc = loader.getController();
-            this.cepc.initContext(this.primaryStage, _dbstate);
+            this.lspc = loader.getController();
+            this.lspc.initContext(this.primaryStage);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,11 +46,11 @@ public class LoanSimulatorPane {
     }
 
     /**
-     * Opens a dialog to create a load simulation
+     * Opens a dialog to create a loan simulation
      *
      * @return the simulated loan
      */
     public void doLoadSimulation() {
-        this.cepc.displayDialog();
+        this.lspc.displayDialog();
     }
 }

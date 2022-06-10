@@ -54,9 +54,9 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="capital" editable="false" GridPane.columnIndex="1" />
-            <TextField fx:id="duree" editable="false" layoutX="171.0" layoutY="23.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="tauxAnnuel" editable="false" layoutX="171.0" layoutY="58.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="capital" GridPane.columnIndex="1" />
+            <TextField fx:id="duree" layoutX="171.0" layoutY="23.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tauxAnnuel" layoutX="171.0" layoutY="58.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </center>
@@ -68,7 +68,7 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Annuler" />
+            <Button mnemonicParsing="false" onAction="#doCancel" text="Annuler" />
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
