@@ -142,6 +142,8 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 
 |===
 
+
+
 === Simulation d'assurance d'emprunt
 
 [cols="1,1,1,1,1"]
@@ -189,3 +191,23 @@ La banque DailyBank souhaite développer une application JAVA-Oracle de gestion 
 |Il y a des prélèvements à faire ce même jour, l'application a été lancée au moins une fois avant, ce même jour
 
 |===
+
+
+
+
+=== Simulation d'un emprunt
+
+[cols="1,1,1,1,1"]
+|===
+|id Test | nom Test | Nom Cas d'Utilisation | Conditions de satisfaction | Pré-Conditions
+
+|120
+|TestSaisieSimulationEmpruntValide
+|Simuler unemprunt
+|Vérifier que tous les champs soit remplies et positifs peut importe ce qu'on saisit et que le taux se situent entre 0 et 1.
+|Être connecté en tant que chef d'agence
+
+|===
+
+
+
