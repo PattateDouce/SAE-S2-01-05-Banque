@@ -13,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.AgenceBancaire;
@@ -59,6 +61,10 @@ public class DailyBankMainFrameController implements Initializable {
 	 * Initialise les labels et les events et d'autres objets
 	 */
 	private void configure() {
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+			if (e.getCode() == KeyCode.ESCAPE) {
+				doQuit();
+			} } );
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 		this.btnConn.managedProperty().bind(this.btnConn.visibleProperty());
 		this.btnDeconn.managedProperty().bind(this.btnDeconn.visibleProperty());
