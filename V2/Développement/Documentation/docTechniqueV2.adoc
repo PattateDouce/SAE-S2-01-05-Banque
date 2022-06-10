@@ -241,3 +241,10 @@ private double toDouble(String number) {
 }
 ```
 
+=== Réaliser un débit exceptionnel (par Robertson James)
+
+Les classes impliquées sont :
+
+- application.control.OperationEditorPan : classe chargeant la vue FXML "operationeditor", l'intègre dans la scène et appelle le contrôleur correspondant.
+- application.view.OperationEditorPaneController : contrôleur de la vue, s'occupe de l'initialisation de l'interface et de la vérification des données entrées.
+Cette classe a été modifée pour permettre aux Chef d'agences d'ignorer la restriction sur les débits. Une nouvelle procédure a également été crée dans la base de donnée appelée DebitEx qui se comporte comme Debit sans les préconditions.
