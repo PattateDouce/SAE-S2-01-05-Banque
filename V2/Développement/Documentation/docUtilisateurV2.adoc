@@ -138,6 +138,7 @@ S'ouvre ensuite cette fenêtre :
 image:gestionop/gestion_op_valider.png["Fenêtre enregistrer un débit / crédit"]
 
 Enfin, sélectionnez le type d'opération, puis saisissez le montant de l'opération. Cliquez ensuite sur **"Effectuer Débit"** ou **"Effectuer Crédit"**.
+Si vous êtes Chef d'agence le bouton **Effectuer Débit** permet également d'effectuer des débits exceptionnels. 
 
 ==== Enregistrer un virement
 Tout d'abord, accédez à la page de **gestion des opérations**, puis cliquez sur le bouton **"Effectuer un virement"** :
