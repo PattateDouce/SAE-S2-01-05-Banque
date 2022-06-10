@@ -210,7 +210,7 @@ image::sim_emprunt/page_simulation.png["Simulation d'emprunt, champs complétés
 
 Une nouvelle fenêtre apparaîtra contenant le résultat de la simulation :
 
-image::sim_emprunt/page_resultat.png["Résultat de la simulation d'emprunt"]
+image::sim_emprunt/page_resultat.PNG["Résultat de la simulation d'emprunt"]
 
 
 === 4.6. Simulation d'une assurance d'emprunt
