@@ -11,12 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Prelevement;
 import model.orm.AccessCompteCourant;
 import model.orm.exception.ApplicationException;
-import model.orm.exception.DatabaseConnexionException;
 
 import java.util.ArrayList;
 
@@ -58,7 +56,7 @@ public class PrelevementsManagement {
 			this.primaryStage.setResizable(false);
 
 			this.pmc = loader.getController();
-			this.pmc.initContext(this.primaryStage, this, _dbstate, this.compteConcerne);
+			this.pmc.initContext(this.primaryStage, this, this.compteConcerne);
 
 		} catch (Exception e) {
 			e.printStackTrace();

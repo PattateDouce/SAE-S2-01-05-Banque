@@ -12,11 +12,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
 
@@ -37,7 +38,6 @@ public class CompteEditorPaneController implements Initializable {
 	private CompteCourant compteEdite;
 	private CompteCourant compteResult;
 
-	private boolean isConfirmed;
     /**
      * Init context.
      *
@@ -55,7 +55,15 @@ public class CompteEditorPaneController implements Initializable {
 	 * Initialise les labels et les events et d'autres objets
 	 */
 	private void configure() {
-		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+				doAjouter();
+			} } );
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ESCAPE) {
+				doCancel();
+			} } );
+		this.primaryStage.setOnCloseRequest(e -> this.doCancel());
 
 		this.txtDecAutorise.focusedProperty().addListener((t, o, n) -> this.focusDecouvert(t, o, n));
 		this.txtSolde.focusedProperty().addListener((t, o, n) -> this.focusSolde(t, o, n));
@@ -123,13 +131,6 @@ public class CompteEditorPaneController implements Initializable {
 
 		this.primaryStage.showAndWait();
 		return this.compteResult;
-	}
-
-	// Gestion du stage
-	private Object closeWindow(WindowEvent e) {
-		this.doCancel();
-		e.consume();
-		return null;
 	}
 
 	private Object focusDecouvert(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,

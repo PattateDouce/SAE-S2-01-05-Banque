@@ -1,7 +1,5 @@
 package application.view;
 
-import application.DailyBankState;
-import application.control.ComptesManagement;
 import application.control.PrelevementsManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,8 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.data.CompteCourant;
 import model.data.Prelevement;
 
@@ -26,7 +25,6 @@ import java.util.ResourceBundle;
 public class PrelevementsManagementController implements Initializable {
 
 	// Etat application
-	private DailyBankState dbs;
 	private PrelevementsManagement pm;
 
 	// Fenêtre physique
@@ -38,15 +36,14 @@ public class PrelevementsManagementController implements Initializable {
 
 	/**
 	 * Init context.
-	 *  @param _primaryStage the primary stage
+	 * @param _primaryStage the primary stage
 	 * @param _pm           the pm
-	 * @param _dbstate      the dbstate
+	 * @param compte		the account
 	 */
 // Manipulation de la fenêtre
-	public void initContext(Stage _primaryStage, PrelevementsManagement _pm, DailyBankState _dbstate, CompteCourant compte) {
+	public void initContext(Stage _primaryStage, PrelevementsManagement _pm, CompteCourant compte) {
 		this.pm = _pm;
 		this.primaryStage = _primaryStage;
-		this.dbs = _dbstate;
 		this.compte = compte;
 		this.configure();
 	}
@@ -57,7 +54,10 @@ public class PrelevementsManagementController implements Initializable {
 	private void configure() {
 		String info;
 
-		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ESCAPE) {
+				doCancel();
+			} } );
 
 		this.olPrelevements = FXCollections.observableArrayList();
 		this.lvPrelev.setItems(this.olPrelevements);
@@ -77,13 +77,6 @@ public class PrelevementsManagementController implements Initializable {
 	 */
 	public void displayDialog() {
 		this.primaryStage.showAndWait();
-	}
-
-	// Gestion du stage
-	private Object closeWindow(WindowEvent e) {
-		this.doCancel();
-		e.consume();
-		return null;
 	}
 
 	// Attributs de la scene + actions

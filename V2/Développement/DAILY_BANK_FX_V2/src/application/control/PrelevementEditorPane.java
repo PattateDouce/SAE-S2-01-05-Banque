@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Prelevement;
 
@@ -47,7 +46,7 @@ public class PrelevementEditorPane {
 			this.primaryStage.setResizable(false);
 
 			this.pepc = loader.getController();
-			this.pepc.initContext(this.primaryStage, _dbstate);
+			this.pepc.initContext(this.primaryStage);
 
 		} catch (Exception e) {
 			e.printStackTrace();

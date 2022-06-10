@@ -36,7 +36,6 @@ public class LoanSimulatorPaneController implements Initializable {
          * Init context.
          *
          * @param _primaryStage the primary stage
-         * @param _dbstate      the dbstate
          */
         // Manipulation de la fenêtre
         public void initContext(Stage _primaryStage) {

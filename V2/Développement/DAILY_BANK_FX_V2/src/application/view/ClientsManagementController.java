@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.data.Client;
 
 /**
@@ -50,6 +49,7 @@ public class ClientsManagementController implements Initializable {
 	 * Initialise les labels et les events et d'autres objets
 	 */
 	private void configure() {
+		
 		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
 				doRechercher();
@@ -58,8 +58,8 @@ public class ClientsManagementController implements Initializable {
             if (e.getCode() == KeyCode.ESCAPE) {
 				doCancel();
 			} } );
-		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 
+		this.txtNum.requestFocus();
 		this.olc = FXCollections.observableArrayList();
 		this.lvClients.setItems(this.olc);
 		this.lvClients.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -74,13 +74,6 @@ public class ClientsManagementController implements Initializable {
     public void displayDialog() {
     	doRechercher();
 		this.primaryStage.showAndWait();
-	}
-
-	// Gestion du stage
-	private Object closeWindow(WindowEvent e) {
-		this.doCancel();
-		e.consume();
-		return null;
 	}
 
 	// Attributs de la scene + actions

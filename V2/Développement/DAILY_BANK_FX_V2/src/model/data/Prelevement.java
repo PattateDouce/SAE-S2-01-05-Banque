@@ -1,7 +1,5 @@
 package model.data;
 
-import java.util.Date;
-
 public class Prelevement {
 
     private int idPrelevement;

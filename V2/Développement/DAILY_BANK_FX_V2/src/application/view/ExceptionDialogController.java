@@ -5,23 +5,18 @@ import java.io.StringWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.DailyBankState;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.orm.exception.ApplicationException;
 
 /**
  * The type Exception dialog controller.
  */
 public class ExceptionDialogController implements Initializable {
-
-	// Etat application
-	private DailyBankState dbs;
 
 	// Fenêtre physique
 	private Stage primaryStage;
@@ -34,12 +29,10 @@ public class ExceptionDialogController implements Initializable {
      * Init context.
      *
      * @param _primaryStage the primary stage
-     * @param _dbstate      the dbstate
      * @param _ae           the ae
      */
-    public void initContext(Stage _primaryStage, DailyBankState _dbstate, ApplicationException _ae) {
+    public void initContext(Stage _primaryStage, ApplicationException _ae) {
 		this.primaryStage = _primaryStage;
-		this.dbs = _dbstate;
 		this.ae = _ae;
 		this.configure();
 	}
@@ -48,7 +41,6 @@ public class ExceptionDialogController implements Initializable {
 	 * Initialise les labels et les events et d'autres objets
 	 */
 	private void configure() {
-		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 		this.lblTitre.setText(this.ae.getMessage());
 		this.txtTable.setText(this.ae.getTableName().toString());
 		this.txtOpe.setText(this.ae.getOrder().toString());
@@ -64,15 +56,6 @@ public class ExceptionDialogController implements Initializable {
      */
     public void displayDialog() {
 		this.primaryStage.showAndWait();
-	}
-
-	// Gestion du stage
-	/** Retourne un Objet null
-	 * @param e       WindowEvent
-	 * @return null
-	 */
-	private Object closeWindow(WindowEvent e) {
-		return null;
 	}
 
 	// Attributs de la scene + actions

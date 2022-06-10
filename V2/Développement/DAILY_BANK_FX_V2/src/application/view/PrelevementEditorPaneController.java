@@ -1,6 +1,5 @@
 package application.view;
 
-import application.DailyBankState;
 import application.tools.EditionMode;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -8,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.CompteCourant;
@@ -21,9 +22,6 @@ import java.util.ResourceBundle;
  */
 public class PrelevementEditorPaneController implements Initializable {
 
-	// Etat application
-	private DailyBankState dbs;
-
 	// Fenêtre physique
 	private Stage primaryStage;
 
@@ -32,17 +30,14 @@ public class PrelevementEditorPaneController implements Initializable {
 	private Prelevement prelevEdite;
 	private Prelevement prelevResult;
 
-	private boolean isConfirmed;
     /**
      * Init context.
      *
      * @param _primaryStage the primary stage
-     * @param _dbstate      the dbstate
      */
 	// Manipulation de la fenêtre
-	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
+	public void initContext(Stage _primaryStage) {
 		this.primaryStage = _primaryStage;
-		this.dbs = _dbstate;
 		this.configure();
 	}
 
@@ -50,6 +45,14 @@ public class PrelevementEditorPaneController implements Initializable {
 	 * Initialise les labels et les events et d'autres objets
 	 */
 	private void configure() {
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+				doAjouter();
+			} } );
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ESCAPE) {
+				doCancel();
+			} } );
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 		
 		this.txtMontant.focusedProperty().addListener((t, o, n) -> this.focusMontant(t, o, n));

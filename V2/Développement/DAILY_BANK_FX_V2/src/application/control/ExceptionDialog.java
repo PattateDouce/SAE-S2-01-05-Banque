@@ -44,7 +44,7 @@ public class ExceptionDialog {
 			this.primaryStage.setResizable(false);
 
 			this.edc = loader.getController();
-			this.edc.initContext(this.primaryStage, _dbstate, ae);
+			this.edc.initContext(this.primaryStage, ae);
 
 		} catch (Exception e) {
 			e.printStackTrace();

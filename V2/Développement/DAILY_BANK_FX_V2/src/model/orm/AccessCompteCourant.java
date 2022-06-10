@@ -32,10 +32,10 @@ public class AccessCompteCourant {
 	 * @throws DatabaseConnexionException
 	 */
 	public void insertCompte(CompteCourant compte)
-			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException, SoldeNotNullException {
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 
 		if (compte.solde != 0) {
-			throw new SoldeNotNullException();
+			return;
 		}
 		try {
 
