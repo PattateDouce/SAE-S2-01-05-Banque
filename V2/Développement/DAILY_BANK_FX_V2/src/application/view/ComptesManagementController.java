@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import application.DailyBankState;
 import application.control.ComptesManagement;
 import application.control.PrelevementsManagement;
-import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,8 +15,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
 
@@ -60,7 +60,10 @@ public class ComptesManagementController implements Initializable {
 	private void configure() {
 		String info;
 
-		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ESCAPE) {
+				doCancel();
+			} } );
 
 		this.olCompteCourant = FXCollections.observableArrayList();
 		this.lvComptes.setItems(this.olCompteCourant);
@@ -81,13 +84,6 @@ public class ComptesManagementController implements Initializable {
 	 */
 	public void displayDialog() {
 		this.primaryStage.showAndWait();
-	}
-
-	// Gestion du stage
-	private Object closeWindow(WindowEvent e) {
-		this.doCancel();
-		e.consume();
-		return null;
 	}
 
 	// Attributs de la scene + actions

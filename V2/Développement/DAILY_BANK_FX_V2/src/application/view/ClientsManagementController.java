@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import application.DailyBankState;
 import application.control.ClientsManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +25,6 @@ import model.data.Client;
 public class ClientsManagementController implements Initializable {
 
 	// Etat application
-	private DailyBankState dbs;
 	private ClientsManagement cm;
 
 	// Fenêtre physique
@@ -40,13 +38,11 @@ public class ClientsManagementController implements Initializable {
      *
      * @param _primaryStage the primary stage
      * @param _cm           the cm
-     * @param _dbstate      the dbstate
      */
 // Manipulation de la fenêtre
-	public void initContext(Stage _primaryStage, ClientsManagement _cm, DailyBankState _dbstate) {
+	public void initContext(Stage _primaryStage, ClientsManagement _cm) {
 		this.cm = _cm;
 		this.primaryStage = _primaryStage;
-		this.dbs = _dbstate;
 		this.configure();
 	}
 
@@ -57,6 +53,10 @@ public class ClientsManagementController implements Initializable {
 		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if (e.getCode() == KeyCode.ENTER) {
 				doRechercher();
+			} } );
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ESCAPE) {
+				doCancel();
 			} } );
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 

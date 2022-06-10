@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
@@ -28,7 +30,6 @@ import model.data.Operation;
 public class OperationsManagementController implements Initializable {
 
 	// Etat application
-	private DailyBankState dbs;
 	private OperationsManagement om;
 
 	// Fenêtre physique
@@ -51,7 +52,6 @@ public class OperationsManagementController implements Initializable {
 // Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, OperationsManagement _om, DailyBankState _dbstate, Client client, CompteCourant compte) {
 		this.primaryStage = _primaryStage;
-		this.dbs = _dbstate;
 		this.om = _om;
 		this.clientDuCompte = client;
 		this.compteConcerne = compte;
@@ -59,6 +59,10 @@ public class OperationsManagementController implements Initializable {
 	}
 
 	private void configure() {
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ESCAPE) {
+				doCancel();
+			} } );
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 
 		this.olOperation = FXCollections.observableArrayList();

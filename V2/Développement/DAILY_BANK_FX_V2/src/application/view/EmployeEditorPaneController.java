@@ -55,6 +55,10 @@ public class EmployeEditorPaneController implements Initializable {
             if (e.getCode() == KeyCode.ENTER) {
 				doAjouter();
 			} } );
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ESCAPE) {
+				doCancel();
+			} } );
 		this.primaryStage.setOnCloseRequest(e -> this.doCancel() );
 	}
 

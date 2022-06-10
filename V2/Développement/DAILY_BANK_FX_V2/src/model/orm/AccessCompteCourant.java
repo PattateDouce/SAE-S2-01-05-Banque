@@ -1,7 +1,6 @@
 package model.orm;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -9,10 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -25,10 +22,6 @@ import model.data.Prelevement;
 import model.orm.exception.*;
 
 public class AccessCompteCourant {
-
-	public AccessCompteCourant() {
-	}
-
 
 	/**
 	 * Insertion d'un compte
@@ -276,6 +269,7 @@ public class AccessCompteCourant {
 	 * @throws DocumentException
 	 * @throws IOException
 	 */
+	@SuppressWarnings("deprecation")
 	public void generatePDF(CompteCourant cpt) {
 		try {
 			LocalDateTime date = LocalDateTime.now();
@@ -596,34 +590,4 @@ public class AccessCompteCourant {
 			throw new RuntimeException(e);
 		}
 	}
-
-/*	public void supprimerPrelev(int idPrelev) {
-		try {
-			Connection con = LogToDatabase.getConnexion();
-
-			String query = "DELETE FROM PrelevementAutomatique WHERE idPrelev = ?";
-
-			PreparedStatement pst = con.prepareStatement(query);
-
-			pst.setInt(1, idPrelev);
-
-			System.err.println(query);
-
-			int result = pst.executeUpdate();
-
-			if (result != 1) {
-				con.rollback();
-				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.DELETE,
-						"Delete anormal (delete de moins ou plus d'une ligne)", null, result);
-			}
-
-			con.commit();
-		} catch (DatabaseConnexionException e) {
-			throw new RuntimeException(e);
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		} catch (RowNotFoundOrTooManyRowsException e) {
-			throw new RuntimeException(e);
-		}
-	}*/
 }

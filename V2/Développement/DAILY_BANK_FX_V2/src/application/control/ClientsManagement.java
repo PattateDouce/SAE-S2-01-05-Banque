@@ -50,7 +50,7 @@ public class ClientsManagement {
 			this.primaryStage.setResizable(false);
 
 			this.cmc = loader.getController();
-			this.cmc.initContext(this.primaryStage, this, _dbstate);
+			this.cmc.initContext(this.primaryStage, this);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -29,7 +29,6 @@ public class OperationsManagement {
 	private Stage primaryStage;
 	private DailyBankState dbs;
 	private OperationsManagementController omc;
-	private Client clientDuCompte;
 	private CompteCourant compteConcerne;
 
     /**
@@ -42,7 +41,6 @@ public class OperationsManagement {
      */
     public OperationsManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant compte) {
 
-		this.clientDuCompte = client;
 		this.compteConcerne = compte;
 		this.dbs = _dbstate;
 		try {

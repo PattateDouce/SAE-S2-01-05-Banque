@@ -58,19 +58,24 @@ public class EmployesManagementController implements Initializable {
             if (e.getCode() == KeyCode.DELETE) {
 				doSuppEmploye();
 			} } );
+		this.primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ESCAPE) {
+				doCancel();
+			} } );
+		this.txtNum.requestFocus();
 		this.ole = FXCollections.observableArrayList();
 		this.lvEmploye.setItems(this.ole);
 		this.lvEmploye.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		this.lvEmploye.getFocusModel().focus(-1);
 		this.lvEmploye.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
 		this.validateComponentState();
+		doRechercher();
 	}
 
     /**
      * Display dialog.
      */
     public void displayDialog() {
-    	doRechercher();
 		this.primaryStage.showAndWait();
 	}
 

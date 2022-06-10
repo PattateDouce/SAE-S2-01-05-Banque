@@ -40,7 +40,7 @@ public class EmployeEditorPane {
 			this.primaryStage.initOwner(_parentStage);
 			StageManagement.manageCenteringStage(_parentStage, this.primaryStage);
 			this.primaryStage.setScene(scene);
-			this.primaryStage.setTitle("Gestion d'un client");
+			this.primaryStage.setTitle("Gestion d'un employé");
 			this.primaryStage.setResizable(false);
 
 			this.eepc = loader.getController();
