@@ -192,8 +192,28 @@ image::modifier_employer.png["Modification d'un employé"]
 Une fois sur la fenêtre de modification d'employé, vous pouvez modifier n'importe quelle information (sauf l'ID) et les confirmées en appuyant sur **"Valider"**.
 Comme à la création, chaque champs doit être rempli et les espaces en début et fin de ligne seront ignorés.
 
+=== 4.5. Simulation d'un emprunt
 
-=== 4.5. Simulation d'une assurance d'emprunt
+`Accessible uniquement aux chefs d'agence`
+
+Pour accéder à la page de la simulation, vous devez être connecté en tant que Chef d'Agence, ensuite, cliquez sur l'onglet **"Simulation"** puis sur **"Simuler un emprunt"** :
+
+image::sim_emprunt/accueil_sim_emprunt["Accès simulation d'emprunt"]
+
+La fenêtre des paramètres s'ouvrira, avec les champs vide par défaut :
+
+image::sim_emprunt/page_vide.png["Simulation d'emprunt, champs vides"]
+
+Une fois les champs complétés, il ne reste plus qu'à afficher le résultat avec le bouton **"Simuler"** :
+
+image::sim_emprunt/page_simulation["Simulation d'emprunt, champs complétés"]
+
+Une nouvelle fenêtre apparaîtra contenant le résultat de la simulation :
+
+image::sim_emprunt/page_resultat.png["Résultat de la simulation d'emprunt"]
+
+
+=== 4.6. Simulation d'une assurance d'emprunt
 
 `Accessible uniquement aux chefs d'agence`
 
@@ -213,7 +233,7 @@ Le résultat sera afficher entre les champs et les boutons :
 
 image::sim_assurance/sim_assurance_resultat.png["Résultat de la simulation d'assurance"]
 
-=== 4.6. Génération des relevés mensuels au format PDF
+=== 4.7. Génération des relevés mensuels au format PDF
 
 Tout d'abord, accédez à la page de **gestion des comptes**, puis cliquez sur le bouton **"voir relevé"** comme ci-dessous : 
 
@@ -223,7 +243,7 @@ S'ouvrira ensuite un fichier pdf dans votre lecteur de pdf favori. Il sera enreg
 
 image::relevepdf/ex_releve.png["Exemple de relevé"]
 
-=== 4.7. Gérer les prélèvements
+=== 4.8. Gérer les prélèvements
 
 ==== Accéder à la page de gestion des prélèvements
 
