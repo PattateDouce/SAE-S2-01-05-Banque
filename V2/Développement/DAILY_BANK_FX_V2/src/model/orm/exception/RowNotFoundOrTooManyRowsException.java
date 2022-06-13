@@ -4,7 +4,7 @@ package model.orm.exception;
  * Erreur applicative sur un ordre select/insert/update/delete "monoligne".
  * L'ordre exécuté devait "traiter" une seule ligne et le résultat aboutit à 0
  * ou plusieurs lignes. Exemple de use case de survenue : - demande d'un update
- * d'un client à partir de son numéro - le numéro inexistant en base - => 0
+ * d'un client à partir de son numéro
  * lignes updatées
  */
 

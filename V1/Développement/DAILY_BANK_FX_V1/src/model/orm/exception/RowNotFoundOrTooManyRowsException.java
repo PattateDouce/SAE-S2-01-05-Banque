@@ -4,7 +4,7 @@ package model.orm.exception;
  * Erreur applicative sur un ordre select/insert/update/delete "monoligne".
  * L'ordre exécuté devait "traiter" une seule ligne et le résultat aboutit à 0
  * ou plusieurs lignes. Exemple de use case de survenue : - demande d'un update
- * d'un client à partir de son numéro - le numéro inexistant en base - => 0
+ * d'un client à partir de son numéro
  * lignes updatées
  */
 
@@ -19,7 +19,7 @@ public class RowNotFoundOrTooManyRowsException extends ApplicationException {
 	 * @param message       message associé à l'erreur
 	 * @param cause         éventuelle autre Exception associée (en cas de
 	 *                      SQLException principalement)
-	 * @param rowsConcerned nombre de lignes concernées (0 ou >1)
+	 * @param rowsConcerned nombre de lignes concernées (0 plus)
 	 */
 	public RowNotFoundOrTooManyRowsException(Table tablename, Order order, String message, Throwable cause,
 			int rowsConcerned) {

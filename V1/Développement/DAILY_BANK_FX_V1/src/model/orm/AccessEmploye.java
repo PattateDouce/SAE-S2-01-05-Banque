@@ -21,7 +21,7 @@ public class AccessEmploye {
 	/**
 	 * Recherche des employé paramétrée (tous/un seul par id/par nom-prénom).
 	 *
-	 * On recherche : - un employé précis si idZmp <> -1 - des employés par début
+	 * On recherche : - un employé précis si idZmp != -1 - des employés par début
 	 * nom/prénom si debutNom donné - tous les employés de idAg sinon
 	 *
 	 * @param idAg        : id de l'agence dont on cherche les employés

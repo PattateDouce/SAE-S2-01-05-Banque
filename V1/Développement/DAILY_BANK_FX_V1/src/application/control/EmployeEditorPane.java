@@ -56,7 +56,6 @@ public class EmployeEditorPane {
      * Do employe editor dialog.
      *
      * @param employe the employe
-     * @param em     the em
      * @return the employe
      */
     public Employe doEmployeEditorDialog(Employe employe) {

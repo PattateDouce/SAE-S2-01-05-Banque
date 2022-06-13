@@ -58,7 +58,6 @@ public class EmployeEditorPaneController implements Initializable {
 	 * Display dialog employe.
 	 *
 	 * @param employe the employe
-	 * @param mode   the mode
 	 * @return the employe
 	 */
 	public Employe displayDialog(Employe employe) {

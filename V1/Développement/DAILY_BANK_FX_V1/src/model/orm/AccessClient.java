@@ -21,7 +21,7 @@ public class AccessClient {
 	/**
 	 * Recherche des clients paramétrée (tous/un seul par id/par nom-prénom).
 	 *
-	 * On recherche : - un client précis si idNumCli <> -1 - des clients par début
+	 * On recherche : - un client précis si idNumCli != -1 - des clients par début
 	 * nom/prénom si debutNom donné - tous les clients de idAg sinon
 	 *
 	 * @param idAg        : id de l'agence dont on cherche les clients

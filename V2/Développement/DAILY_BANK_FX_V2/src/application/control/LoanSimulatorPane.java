@@ -48,7 +48,6 @@ public class LoanSimulatorPane {
     /**
      * Opens a dialog to create a loan simulation
      *
-     * @return the simulated loan
      */
     public void doLoadSimulation() {
         this.lspc.displayDialog();
